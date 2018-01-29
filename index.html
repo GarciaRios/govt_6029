@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Advanced Regression Analysis</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="custom_style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-file-pdf-o fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="fa fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+<li>
+  <a href="labs.html">
+    <span class="fa fa-file-code-o fa-2x"></span>
+     
+    Labs
+  </a>
+</li>
+<li>
+  <a href="assignments.html">
+    <span class="fa fa-pencil-square-o fa-2x"></span>
+     
+    Assignments
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Advanced Regression Analysis</h1>
+
+</div>
+
+
+<hr />
+<div id="statement-from-government-department" class="section level5">
+<h5>Statement from Government Department:</h5>
+<p>In fractious times, we reaffirm core principles. The Government Department at Cornell studies and teaches about intolerance, but will not practice it. We write about xenophobia and bigotry, but will not pretend they only exist elsewhere. We research racism, homophobia, and misogyny, but will not permit them to pass unchallenged. Our role as academics has never been inconsistent with our duty as citizens, and we pledge to honor the rich diversity of our students, staff, and faculty. Those who come to us—as students, co-workers, and colleagues—must be free to learn and live without fear, and we urge the administration to declare—promptly and forcefully—that Cornell is a sanctuary campus.</p>
+<hr />
+</div>
+<div id="teaching-team" class="section level1">
+<h1>Teaching Team</h1>
+<table class="table table-striped table-hover">
+<tr>
+<td>
+Professor
+</td>
+<td>
+<a href="http://www.sergiogarciarios.com">Sergio I Garcia-Rios </a>
+</td>
+<td>
+<a href="mailto:garcia.rios@cornell.edu">garcia.rios@cornell.edu</a>
+</td>
+</tr>
+<tr>
+<td>
+TA
+</td>
+<td>
+<a href="https://claireleavitt.com/">Claire Leavitt</a>
+</td>
+<td>
+<a href="ccl228@cornell.edu">ccl228@cornell.edu</a>
+</td>
+</tr>
+</table>
+</div>
+<div id="class-meetings" class="section level1">
+<h1>Class Meetings</h1>
+<table class="table table-striped table-hover">
+<td>
+Class
+</td>
+<td>
+Monday
+</td>
+<td>
+10:10 am -12:05 pm
+</td>
+<td>
+White Hall 110
+</td>
+</tr>
+</table>
+<div id="office-hours" class="section level2">
+<h2>Office Hours</h2>
+<table class="table table-striped table-hover">
+<tr>
+<td>
+Sergio Garcia-Rios
+</td>
+<td>
+<a href="bookme.html"> <img src= "./images/ycbme.png" style="width: 70px;"/> <a href="bookme.html">Click here to find available office hours</a>
+</td>
+<td>
+White Hall 308
+</td>
+</tr>
+<tr>
+<td>
+Claire Leavitt
+</td>
+<td>
+Tu 3:30–4:30 pm
+</td>
+<td>
+White Hall –
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="overview-and-class-goals" class="section level1">
+<h1>Overview and Class Goals</h1>
+<!-- Begin from Chris Adolph syllabus -->
+<p>This course continues the graduate sequence in quantitative political methodology, focused particularly on fitting, interpreting, and refining the linear regression model.</p>
+<p>Our agenda includes gaining familiarity with statistical programming via the popular R environment, developing clear and informative graphical representations of regression results, and understanding regression models in matrix form.</p>
+<!-- End from Chris Adolph syllabus -->
+</div>
+<div id="prerequisites" class="section level1">
+<h1>Prerequisites</h1>
+<!-- Begin from Chris Adolph syllabus -->
+<p>It is desirable for students to have taken the introductory course in the sequence (Governemnt 6019), but any prior course on basic social statistics and linear regression should suffice.</p>
+<!-- End from Chris Adolph syllabus -->
+</div>
+<div id="assessment-and-evaluation" class="section level1">
+<h1>Assessment and Evaluation</h1>
+<div id="problem-sets" class="section level2">
+<h2>Problem Sets</h2>
+<p>Problem sets assigned weekly or bi-weekly. These problem sets will include programming problems with an emphasis on writing understandable, reproducible code.</p>
+<p>The assignments and due dates will be distributed during the semester <!-- These assignments may involve peer review / grading. --></p>
+<p>Assignments will be submitted digitally through blackboard andgithub at the due date.</p>
+</div>
+<div id="poster-presentation" class="section level2">
+<h2>Poster Presentation</h2>
+<p>You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in poster presetation session. We will invite other facuslty, our chance to show off!</p>
+</div>
+<div id="final-paper" class="section level2">
+<h2>Final Paper</h2>
+<p>A 15–20 page original report on an original quantitative analysis or replication-and-extension of a published article. The quantitative analysis should be conducted in R and reproducible.</p>
+<p>The final paper is due on <strong>May 14, 2015 11:59 pm EST</strong>.</p>
+<p>Further details on the projects will be provided as due dates approach</p>
+</div>
+<div id="email-blackboeard-and-github" class="section level2">
+<h2>Email &amp; Blackboeard and GitHub:</h2>
+<p>The teaching team will send announcements regularly by email.</p>
+<p>Any non-personal questions related to the material in the course should be posted as a Canvas discussion.</p>
+<p>It is often more efficient to answer questions in person, so try to ask them in class or attend office hours.</p>
+<p>All of your assignments will be submitted through GitHub and Blackboard. We have no control over your Github submissions but they will have a time stamp and will be public. On the other hand, only you and the teaching team can have access to your Blackboard submission but these will have a due date and once submitted you cannot modify it. For a number of reason that will become evident you will be submitting your code on Github one day after you submit on Blackboard</p>
+</div>
+</div>
+<div id="texts" class="section level1">
+<h1>Texts</h1>
+<div id="required" class="section level3">
+<h3>Required</h3>
+<ul>
+<li>Gelman, Andrew, and Jennifer Hill. 2006. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. 1st edition. Cambridge ; New York: Cambridge University Press.</li>
+<li>Angrist, Joshua D., and Jörn-Steffen Pischke. 2009. <em>Mostly Harmless Econometrics: An Empiricist’s Companion</em>. 1st edition. Princeton: Princeton University Press.</li>
+</ul>
+</div>
+<div id="optional" class="section level3">
+<h3>Optional</h3>
+<ul>
+<li>Fox, John. 2008. <em>Applied Regression Analysis and Generalized Linear Models</em>. 2nd edition. Los Angeles: SAGE Publications, Inc.</li>
+</ul>
+<hr />
+</div>
+<div id="license" class="section level3">
+<h3>License</h3>
+<p><a rel="license" href="httpso://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></p>
+<p>Science should be open, here at Corenll and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>The source for the materials of this course including the source for this website is on GitHub at <a href="https://github.com/GarciaRios/govt_6029" class="uri">https://github.com/GarciaRios/govt_6029</a>.</p>
+</div>
+<div id="references" class="section level3">
+<h3>References</h3>
+<p>This course has benefited from numerous open materials, which are listed <a href="">here</a>.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

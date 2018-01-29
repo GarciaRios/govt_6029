@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="custom_style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-file-pdf-o fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="fa fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+<li>
+  <a href="labs.html">
+    <span class="fa fa-file-code-o fa-2x"></span>
+     
+    Labs
+  </a>
+</li>
+<li>
+  <a href="assignments.html">
+    <span class="fa fa-pencil-square-o fa-2x"></span>
+     
+    Assignments
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<hr />
+<p><i class="fa fa-warning"></i> <strong>Warning:</strong> The following schedule is a <em>tentative</em> guideline and will be evolving to meet course needs up to and during the semester. The uncertainty on this schedule is high. Given that this is my first time teaching this course, I expect many adjustments to be made. In particular, the pace of the course will be adjusted so that we move as possible conditional on everyone “getting” the material.</p>
+<hr />
+<div id="topic-1-introduction-to-2029-and-r-math-review" class="section level2">
+<h2>Topic 1: Introduction to 2029 and R, Math Review</h2>
+<div id="monday-jan-29" class="section level3">
+<h3>Monday, Jan 29</h3>
+<ul>
+<li><a href="lectures/Lecture_01_handout.pdf">Deck 1</a></li>
+<li>In-class R Markdown example analysis: <a href="docs/Challenger_Analysis.Rmd">Rmd source</a>, <a href="docs/Challenger_Analysis.html">html output</a></li>
+<li>Readings
+<ul>
+<li>Gelman and Hill, Ch 2</li>
+<li>Fox, Ch 2, 3 (review)</li>
+</ul></li>
+</ul>
+</div>
+<div id="monday-february-5" class="section level3">
+<h3>Monday, February 5</h3>
+<ul>
+<li>Lab document: <a href="labs/lab1.Rmd">.Rmd</a>, <a href="labs/lab1.html">html</a></li>
+<li>Data: <a href="labs/gapminder.csv">gapminder.csv</a></li>
+<li><p>Readings:</p>
+<ul>
+<li>Data Camp “Introduction to R”, <a href="https://www.datacamp.com/courses/free-introduction-to-r" class="uri">https://www.datacamp.com/courses/free-introduction-to-r</a></li>
+<li>Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.’’ <em>Journal of Computational and Graphical Statistics</em> 19(1): 3–28. <a href="http://dx.doi.org/10.1198/jcgs.2009.07098" class="uri">http://dx.doi.org/10.1198/jcgs.2009.07098</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="topic-2-assumptions-properties-of-the-linear-regression-model-part-i" class="section level2">
+<h2>Topic 2: Assumptions &amp; Properties of the Linear Regression Model, Part I</h2>
+<div id="monday-february-12" class="section level3">
+<h3>Monday, February 12</h3>
+<ul>
+<li><a href="lectures/Lecture_02_handout.pdf">Deck 2</a></li>
+<li>Readings:
+<ul>
+<li>Matrix algebra readings. Read <strong>any</strong> of the following
+<ul>
+<li>Moore, Will H., and David A. Siegel. 2013. <em>A Mathematics Course for Political and Social Research</em>. 1st edition. Princeton, NJ: Princeton University Press, Chapter 12 (on Canvas).</li>
+<li>Kevin Quinn’s matrix algebra <a href="docs/matrix.pdf">handout</a></li>
+<li><a href="http://www.csss.washington.edu/MathCamp/Lectures/">CSSS Math Camp Lectures</a> Section 4</li>
+</ul></li>
+<li>Fox, Ch. 5, 9.1–9.2</li>
+</ul></li>
+</ul>
+</div>
+<div id="monday-february-19" class="section level3">
+<h3>Monday, February 19</h3>
+<ul>
+<li><p>No Class February Break</p></li>
+<li><p>Readings:</p>
+<ul>
+<li>Hadley Wickham, <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="topic-3-assumptions-properties-of-the-linear-regression-model-part-ii" class="section level2">
+<h2>Topic 3: Assumptions &amp; Properties of the Linear Regression Model, Part II</h2>
+<ul>
+<li><a href="lectures/Lecture_03_handout.pdf">Deck 3</a></li>
+<li><a href="https://raw.githubusercontent.com/POLS503/pols_503_sp15/master/lectures/Sampling_Distribution_Linear_Regression.Rmd">Sampling Distribution of linear regression example</a></li>
+<li><a href="https://github.com/POLS503/pols_503_sp15/blob/master/lectures/multiple_regression_anatomy.R">Multiple regression coefficient anatomy</a></li>
+<li><p>Readings:</p>
+<ul>
+<li>Fox, Ch. 6, 9.3</li>
+</ul></li>
+</ul>
+<p><a href="hw/hw1.html">Problem Set 1</a> Due</p>
+<ul>
+<li>Lab document: <a href="labs/lab3.Rmd">.Rmd</a>, <a href="labs/lab3.html">html</a></li>
+<li><p>Readings</p>
+<ul>
+<li>Wickham, Hadley. 2014. ``Tidy Data.’’ <em>Journal of Statistical Software</em> 59(10). <a href="http://www.jstatsoft.org/v59/i10/" class="uri">http://www.jstatsoft.org/v59/i10/</a>.</li>
+<li>Hadley Wickham, <a href="https://cran.rstudio.com/web/packages/tidyr/vignettes/tidy-data.html">tidyr vignette</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="topic-4-statistical-inference-interpretation-of-the-linear-model" class="section level2">
+<h2>Topic 4: Statistical Inference / Interpretation of the Linear Model</h2>
+<ul>
+<li><a href="lectures/Lecture_04_handout.pdf">Deck 4</a></li>
+<li>Using R with the Duncan occupational prestige data <a href="docs/Duncan_regression_example.Rmd">.Rmd</a>, <a href="docs/Duncan_regression_example.html">.html</a></li>
+<li><p>Readings:</p>
+<ul>
+<li>Fox, Ch. 6, 9.3</li>
+</ul></li>
+<li>Lab document: <a href="labs/lab4.Rmd">.Rmd</a>, <a href="labs/lab4.html">html</a></li>
+<li>Data: <a href="data/ross_2012.csv">ross_2012.csv</a></li>
+<li><p>Readings</p>
+<ul>
+<li><strong>stargazer</strong> <a href="https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf">vignette</a></li>
+<li><strong>broom</strong> <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom.html">vignette</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="topic-5-model-fitting-and-data-transformation" class="section level2">
+<h2>Topic 5: Model Fitting and Data Transformation</h2>
+<p><a href="hw/hw2.html">Problem Set 2</a> Due</p>
+<ul>
+<li><p>More on p-values and significance testing</p>
+<ul>
+<li>Nuzzo, Regina. 2014. ``Scientific Method: Statistical Errors.’’ <em>Nature</em> 506(7487): 150–52. <a href="http://www.nature.com/doifinder/10.1038/506150a" class="uri">http://www.nature.com/doifinder/10.1038/506150a</a></li>
+</ul></li>
+<li><p>Omitted Variable Bias</p>
+<ul>
+<li><a href="handout/OVB_Measurement_Error.pdf">Omitted Variable Bias handout</a></li>
+<li>Fox, Ch. 6.3</li>
+<li>Agrist and Pischke, Ch. 3.2.2</li>
+</ul></li>
+<li><p>Heteroskedasticity and misspecification</p>
+<ul>
+<li><a href="lectures/Lecture_OLS_Residuals_presentation.pdf">OLS Residuals deck</a></li>
+<li>Fox, Ch 12.1–12.3</li>
+<li>Angrist and Pischke, Ch. 8</li>
+<li>King, Gary, and Margaret E. Roberts. 2015. ``How Robust Standard Errors Expose Methodological Problems They Do Not Fix, and What to Do About It.’’ Political Analysis 23(2): 159–79. <a href="http://pan.oxfordjournals.org/content/23/2/159" class="uri">http://pan.oxfordjournals.org/content/23/2/159</a></li>
+</ul></li>
+<li><p>Mispecification, Transforming Covariates</p>
+<ul>
+<li>See Christopher Adolph’s slides from 503 last year <a href="http://faculty.washington.edu/cadolph/503/topic5.pw.pdf" class="uri">http://faculty.washington.edu/cadolph/503/topic5.pw.pdf</a></li>
+<li>Fox, Ch. 4, Ch 17.1–17.3</li>
+<li>Gelman and Hill, Ch. 4.1–4.3, 4.5-4.6</li>
+<li>Brambor, Thomas, William Roberts Clark, and Matt Golder. 2006. “Understanding Interaction Models: Improving Empirical Analyses.” Political Analysis 14(1): 63–82. <a href="http://pan.oxfordjournals.org/content/14/1/63" class="uri">http://pan.oxfordjournals.org/content/14/1/63</a></li>
+</ul></li>
+<li><p>Lab document: <a href="labs/lab5.Rmd">.Rmd</a>, <a href="labs/lab5.html">html</a></p></li>
+</ul>
+</div>
+<div id="topic-6-measurement-error-transformations" class="section level2">
+<h2>Topic 6: Measurement Error, Transformations</h2>
+<p>We covered substantive vs. statistical influence; transformations; and measurement error. You will need to cover collinearity, unusual and influential data, and robust regression on your own.</p>
+<ul>
+<li>The perils of stargazing:
+<ul>
+<li>Christopher Adolph, “Inference and Interpretation of Linear Regression”, POLS 503, Spring 2014. <a href="http://faculty.washington.edu/cadolph/503/topic4.pw.pdf#page=77" class="uri">http://faculty.washington.edu/cadolph/503/topic4.pw.pdf#page=77</a>, pg. 77–.</li>
+</ul></li>
+<li><p>Transformations of Variables</p>
+<ul>
+<li>Lecture deck: <a href="lectures/Lecture_Transformation_handout.pdf">.pdf</a></li>
+</ul></li>
+<li><p>Measurement error</p>
+<ul>
+<li>Lecture deck: <a href="lectures/Lecture_Measurement_Error_handout.pdf">.pdf</a></li>
+<li>Fox. Ch. 6.4</li>
+</ul></li>
+<li><p>Collinearity</p>
+<ul>
+<li>Fox Ch 13 (13.1, skim the rest)</li>
+</ul></li>
+</ul>
+<p>Lab notes: <a href="http://UW-POLS503.github.io/pols_503_sp15/labs/lab6.html">.html</a>, <a href="http://pols503.github.io/pols_503_sp15/labs/lab6.Rmd">.Rmd</a></p>
+</div>
+<div id="topic-7-interpretation-model-selection" class="section level2">
+<h2>Topic 7: Interpretation, Model Selection</h2>
+<p><a href="hw/hw3.html">Problem Set 3</a> Due</p>
+<ul>
+<li><a href="lectures/Lecture_Model_Specification_handout.pdf">Deck on Model Specification and Fit</a></li>
+<li>Life Expectancy Example: <a href="docs/Life_Expectancy_Example.html">.html</a>, <a href="docs/Life_Expectancy_Example.Rmd">.Rmd</a></li>
+<li><p>Interpretation of regression</p>
+<ul>
+<li>King, Gary, Michael Tomz, and Jason Wittenberg. 2000. ``Making the Most of Statistical Analyses: Improving Interpretation and Presentation.&quot; <em>American Journal of Political Science</em> 44(2): 347–61. <a href="http://www.jstor.org/stable/2669316" class="uri">http://www.jstor.org/stable/2669316</a>.</li>
+</ul></li>
+<li><p>Bootstrapping</p>
+<ul>
+<li>Fox, Ch 21</li>
+</ul></li>
+<li><p>Model Selection and Cross-Validation</p>
+<ul>
+<li>Fox, Ch 22</li>
+</ul></li>
+</ul>
+<p>Lab notes: <a href="labs/lab7.html">.html</a>, <a href="labs/lab7.Rmd">.Rmd</a></p>
+</div>
+<div id="topic-8-causal-inference-i" class="section level2">
+<h2>Topic 8: Causal Inference I</h2>
+<ul>
+<li><p>Unusual and Influential Data and Robust Regression</p>
+<ul>
+<li>Worked Example <a href="docs/Outliers_Robust_Regression.Rmd">Rmd</a>, <a href="docs/Outliers_Robust_Regression.html">html</a></li>
+<li>Christopher Adolph, “Outliers and Robust Regression Techniques”, POLS 503, Spring 2014. <a href="http://faculty.washington.edu/cadolph/503/topic6.pw.pdf" class="uri">http://faculty.washington.edu/cadolph/503/topic6.pw.pdf</a></li>
+<li><p>Readings</p>
+<ul>
+<li>Fox, Ch 11, 19</li>
+</ul></li>
+</ul></li>
+<li><p>Missing Data</p>
+<ul>
+<li>Slides on Missing Data <a href="lectures/Lecture_Missing_Data_handout.pdf">pdf</a></li>
+<li>Worked Example <a href="docs/Imputing_Missing_Data.Rmd">Rmd</a>, <a href="docs/Imputing_Missing_Data.html">html</a></li>
+<li><p>Readings:</p>
+<ul>
+<li>King, Gary, James Honaker, Anne Joseph, and Kenneth Scheve. 2001. “Analyzing Incomplete Political Science Data: An Alternative Algorithm for Multiple Imputation.” American Political Science Review 95: 49–69. Copy at <a href="http://j.mp/1zTTZUT" class="uri">http://j.mp/1zTTZUT</a></li>
+</ul></li>
+</ul></li>
+<li><p>Miscellaneous Thoughts on the state of quantitative analysis in political science. <em>We did not talk about this, but these are good readings</em></p>
+<ul>
+<li>Schrodt, Philip A. 2014. ``Seven Deadly Sins of Contemporary Quantitative Political Analysis.’’ <em>Journal of Peace Research</em> 51(2): 287–300. <a href="http://jpr.sagepub.com/content/51/2/287" class="uri">http://jpr.sagepub.com/content/51/2/287</a></li>
+<li>Achen, Christopher H. 2002. ``Toward a New Political Methodology: Microfoundations and ART.’’ <em>Annual Review of Political Science</em> 5(1): 423–50. <a href="http://dx.doi.org/10.1146/annurev.polisci.5.112801.080943" class="uri">http://dx.doi.org/10.1146/annurev.polisci.5.112801.080943</a>. Read the part on a “Rule of Three”; skim other parts.</li>
+<li>Achen, Christopher H. 2005. ``Let’s Put Garbage-Can Regressions and Garbage-Can Probits Where They Belong.’’ <em>Conflict Management and Peace Science</em> 22(4): 327–39. <a href="http://cmp.sagepub.com/content/22/4/327" class="uri">http://cmp.sagepub.com/content/22/4/327</a> <em>skim</em></li>
+</ul></li>
+</ul>
+<div id="monday-may-22" class="section level3">
+<h3>Monday, May 22</h3>
+<p>Lab document: <a href="labs/lab8.html">html</a>, <a href="labs/lab8.Rmd">Rmd</a></p>
+</div>
+</div>
+<div id="topic-9-causal-inference-ii" class="section level2">
+<h2>Topic 9: Causal Inference II</h2>
+<div id="monday-may-26" class="section level3">
+<h3>Monday, May 26</h3>
+<p><strong>Problem Set 4 Due</strong></p>
+<ul>
+<li><p>Limited Dependent Variables</p>
+<ul>
+<li>Slides on the Linear Probability Model and Logit <a href="lectures/Lecture_Binary_Dependent_Variables_handout.pdf">pdf</a></li>
+</ul></li>
+<li><p>Potential outcomes framework, regression, matching</p>
+<ul>
+<li>Slides on Casual Inference <a href="lectures/Lecture_Causal_Inference_handout.pdf">pdf</a></li>
+<li><p>Readings</p>
+<ul>
+<li>Gelman and Hill, Ch 9–10.</li>
+<li>Angrist and Pischke, Ch 1–3.</li>
+<li>Angrist, Joshua D., and Jorn-Steffen Pischke. 2010. ``The Credibility Revolution in Empirical Economics: How Better Research Design Is Taking the Con out of Econometrics.’’ <em>Journal of Economic Perspectives</em> 24(2): 3–30. <a href="http://www.aeaweb.org/articles.php?doi=10.1257/jep.24.2.3" class="uri">http://www.aeaweb.org/articles.php?doi=10.1257/jep.24.2.3</a> <em>For background reading</em></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="monday-may-29" class="section level3">
+<h3>Monday, May 29</h3>
+<p>Lab document: <a href="labs/lab9.Rmd">Rmd</a>, <a href="labs/lab9.html">html</a></p>
+</div>
+</div>
+<div id="topic-10-panel-data" class="section level2">
+<h2>Topic 10: Panel Data</h2>
+<div id="monday-june-2" class="section level3">
+<h3>Monday, June 2</h3>
+<ul>
+<li>Slides on Panel data: <a href="lectures/Lecture_Panel_Data_handout.pdf">pdf</a></li>
+<li>Example with R code: <a href="docs/panel.html">html</a>, <a href="docs/panel.Rmd">Rmd</a></li>
+<li><p>Readings</p>
+<ul>
+<li>Angrist and Pischke, Ch. 5, 8.2</li>
+<li>Peter Kennedy, <em>A Guide to Econometrics</em>, 6th edition, Chapter 18, “Panel Data”. On Canvas.</li>
+<li>Wooldridge, <em>Econometric Analysis of Cross Section and Panel Data</em>, Chapter 10, “Basic Linear Unobserved Effects Panel Data Models”. On Canvas.</li>
+<li>Beck, N., &amp; Katz, J. N. (2011). Modeling Dynamics in Time-Series–Cross-Section Political Economy Data. <em>Annual Review of Political Science</em>, 14(1), 331–352. <a href="http://doi.org/10.1146/annurev-polisci-071510-103222" class="uri">http://doi.org/10.1146/annurev-polisci-071510-103222</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="monday-june-5" class="section level3">
+<h3>Monday, June 5</h3>
+<p>Open office hours to answer questions about your papers</p>
+<hr />
+<p>Syllabus derived from Christopher Adolph. (Spring 2014). <em>POLS/CSSS 503: Advanced Quantitative Political Methodology</em> [Syllabus]. University of Washington. <a href="http://faculty.washington.edu/cadolph/503/503.pdf" class="uri">http://faculty.washington.edu/cadolph/503/503.pdf</a> <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>.</p>
+<!--  LocalWords:  UTC td href TAs García SAV gelman angrist UW eBook
+ -->
+<!--  LocalWords:  zuur Brambor TBD CSSS img src 221B Tu faq html
+ -->
+<!--  LocalWords:  wickham brambor
+ -->
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
