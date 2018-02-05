@@ -1,0 +1,23 @@
+---
+title: "lab1x"
+author: "SGR"
+date: "February 5, 2018"
+output: html_document
+---
+
+
+You can use R as a calculator
+
+```{r}
+1+1
+
+f<-3
+
+D<- "YES"
+```
+
+```{r}
+f + 5
+```
+
+
