@@ -1,0 +1,143 @@
+---
+title: Advanced Regression Analysis
+---
+***
+##### Statement from Government Department: 
+
+In fractious times, we reaffirm core principles.  The Government Department at Cornell studies and teaches about intolerance, but will not practice it.  We write about xenophobia and bigotry, but will not pretend they only exist elsewhere.  We research racism, homophobia, and misogyny, but will not permit them to pass unchallenged.  Our role as academics has never been inconsistent with our duty as citizens, and we pledge to honor the rich diversity of our students, staff, and faculty.  Those who come to us—as students, co-workers, and colleagues—must be free to learn and live without fear, and we urge the administration to declare—promptly and forcefully—that Cornell is a sanctuary campus.
+
+***
+# Teaching Team
+
+<table class = "table table-striped table-hover">
+<tr>
+<td>Professor </td>
+<td> <a href="http://www.sergiogarciarios.com">Sergio I Garcia-Rios </a> </td>
+<td> <a href="mailto:garcia.rios@cornell.edu">garcia.rios@cornell.edu</a> </td>
+</tr>
+<tr>
+<td>TA</td>
+<td><a href="https://claireleavitt.com/">Claire Leavitt</a> </td>
+<td><a href="ccl228@cornell.edu">ccl228@cornell.edu</a> </td>
+</tr>
+
+</table>
+
+# Class Meetings
+
+<table class = "table table-striped table-hover">
+<td>Class </td>
+<td> Monday </td>
+<td> 10:10 am -12:05 pm </td>
+<td> White Hall 110</td>
+</tr>
+
+</table>
+
+## Office Hours
+
+
+
+<table class = "table table-striped table-hover">
+<tr>
+<td>Sergio Garcia-Rios</td>
+<td><a href="bookme.html"> <img src= "./images/ycbme.png" style="width: 70px;"/> [Click here to find available office
+hours](bookme.html)</td>
+<td> White Hall 308 </td>
+</tr>
+<tr>
+<td>Claire Leavitt</td>
+<td>Tu 3:30--4:30 pm </td>
+<td> White Hall --  </td>
+</tr>
+
+</table>
+
+# Overview and Class Goals
+
+<!-- Begin from Chris Adolph syllabus -->
+
+This course continues the graduate sequence in quantitative political methodology, focused particularly on fitting, interpreting, and refining the linear regression model.
+
+Our agenda includes gaining familiarity with statistical programming via the popular R environment, developing clear and informative graphical representations of regression results, and understanding regression models in matrix form.
+
+<!-- End from Chris Adolph syllabus -->
+
+# Prerequisites
+
+<!-- Begin from Chris Adolph syllabus -->
+
+It is desirable for students to have taken the introductory course in the
+sequence (Governemnt 6019), but any prior course on basic social statistics and linear regression should suffice.
+
+<!-- End from Chris Adolph syllabus -->
+
+# Assessment and Evaluation
+
+## Problem Sets
+
+Problem sets assigned weekly or bi-weekly. These problem sets will include programming problems with an emphasis on writing understandable, reproducible code.
+
+The assignments and due dates will be distributed during the semester
+<!-- These assignments may involve peer review / grading. -->
+
+Assignments will be submitted digitally through blackboard andgithub at the due date.
+
+## Poster Presentation
+
+You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in poster presetation session. We will invite other facuslty, our chance to show off!
+
+## Final Paper
+
+A 15--20 page original report on an original quantitative analysis or replication-and-extension of a published article.
+The quantitative analysis should be conducted in R and reproducible.
+
+
+The final paper is due on **May  14, 2015 11:59 pm EST**.
+
+Further details on the projects will be provided as due dates approach
+
+## Email & Blackboeard and GitHub: 
+
+The teaching team will send announcements regularly by email.
+
+Any non-personal questions related to the material in the course should be posted as a Canvas discussion.
+
+
+It is often more efficient to answer questions in person, so try to ask them in class or attend office hours.
+
+All of your assignments will be submitted through GitHub and Blackboard. We have no control over your Github submissions but they will have a time stamp and will be public. On the other hand, only you and the teaching team can have access to your Blackboard submission but these will have a due date and once submitted you cannot modify it.  For a number of reason that will become evident you will be submitting your code on Github one day after you submit on Blackboard
+
+
+# Texts
+
+### Required
+
+
+- Gelman, Andrew, and Jennifer Hill. 2006. *Data Analysis Using Regression and Multilevel/Hierarchical Models*. 1st edition. Cambridge ; New York: Cambridge University Press.
+- Angrist, Joshua D., and Jörn-Steffen Pischke. 2009. *Mostly Harmless Econometrics: An Empiricist’s Companion*. 1st edition. Princeton: Princeton University Press. 
+
+### Optional
+- Fox, John. 2008. *Applied Regression Analysis and Generalized Linear Models*. 2nd edition. Los Angeles: SAGE Publications, Inc.
+
+
+
+* * *
+
+
+### License
+
+<a rel="license" href="httpso://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a>
+
+Science should be open, here at Corenll and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+The source for the materials of this course including the source for this website is on GitHub at <https://github.com/GarciaRios/govt_6029>.
+
+
+
+
+### References
+
+This course has benefited from numerous open materials, which are listed [here](). 
+
+

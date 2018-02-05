@@ -1,0 +1,6 @@
+"0","gapminder <- 
+  left_join(gapminder, just_usa, by = c(""year"")) %>%
+  mutate(gdpPercapRel = gdpPercap / usa_gdpPercap)
+"
+"2","Error in tbl_vars(y) : object 'just_usa' not found
+"
