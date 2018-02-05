@@ -1,0 +1,654 @@
+---
+title: "Lab 1: Introduction to R and RStudio, knitr, and tidyverse"
+output:
+  html_document:
+    theme: paper
+    highlight: haddock
+
+---
+
+```{r echo=FALSE,results='hide'}
+knitr::opts_chunk$set(results = "hide", warning = FALSE, message = FALSE,
+                      fig.show = "hide")
+```
+
+
+
+# Learning Objectives
+
+1. Install R and RStudio
+2. Load data from a csv into R
+3. Understand how R treats missing values and use functions to identify and remove those missing values
+4. Manipulate data using the verbs in the **dplyr**
+5. Use the pipe operator `%>%` to simplify complicated code by chaining expressions together
+6. Create plots using the ggplot2 package.
+
+
+# Installing R
+
+Install R and RStudio
+
+
+# Orientation with RStudio
+
+R is the name of the programming language, and RStudio is a convenient and widely used interface to that language.
+
+Since you will be using it for the remainder of the course, you should familiarize yourself with the RStudio GUI.
+
+![RStudio GUI](../../images/RStudio.png)
+
+It consists of four windows,
+
+1. Bottom left: The **console** window. You type commands at the ``>`` prompt and R executes them.
+2. Top left: The **editor** window. Here you can edit and save R scripts which contain multiple R commands.
+    - You can open a new R script using *File -> New -> R script*.
+    - If you highlight an area, you can run those commands in the console with the "Run" button.
+    - You can run all the commands in the **editor** window using the "Source" button.
+3. Top right
+    - **workspace** lists all R objects (variables) that are defined
+    - **history** lists all the commands that have been typed into the console.
+4. Bottom right
+
+    - **files** allows you to browse directories and open files.
+    - **plots** displays any plots created. In this window you can toggle back through previously created plots.
+    - **packages** shows which packages are installed and loaded.
+    - **help** displays R help.
+
+RStudio documentation can be found at <http://www.rstudio.com/ide/docs/>.
+Of those, the most likely to be useful to you are:
+
+- [Working in the Console](http://www.rstudio.com/ide/docs/using/console)
+- [Editing and Executing Code](http://www.rstudio.com/ide/docs/using/source)
+- [Viewing Command History](http://www.rstudio.com/ide/docs/using/history)
+
+**Challenge:**
+
+1. Go to *Tools > Global Options*. Change the font and color of the editor and console. Which one do you like the best?
+2. What happens when you type `Alt+Shift+1`?
+
+
+# Using R as a calculator
+
+Although it is so much more, you can use R as a calculator.
+For example, to add, subtract, multiply or divide:
+```{r }
+2 + 3
+2 - 3
+2 * 3
+2 / 3
+```
+
+The power of a number is calculated with ``^``, e.g. $4^2$ is,
+
+```{r }
+4 ^ 2
+```
+
+R includes many functions for standard math functions.
+For example, the square root function is ``sqrt``, e.g. $\sqrt{2}$,
+
+```{r }
+sqrt(2)
+```
+
+And you can combine many of them together
+```{r}
+(2 * 4 + 3 ) / 10
+sqrt(2 * 2)
+```
+
+
+
+# Variables and Assignment
+
+In R, you can save the results of calculations into objects that you can use later.
+This is done using the special symbol, ``<-``.
+For example, this saves the results of 2 + 2 to an object named ``foo`` [^1]
+```{r}
+foo <- 2 + 2
+```
+You can see that ``foo`` is equal to ``4``
+```{r}
+foo
+```
+And you can reuse foo in other calculations,
+```{r}
+foo + 3
+foo / 2 * 8 + foo
+```
+
+[^1]: If you are curious as to why the variable was named `foo`, read [this](http://en.wikipedia.org/wiki/Foobar).
+
+You can use `=` instead of `<-` for assignment.
+You may see this in some other code.
+There are some technical reasons to use `<-` instead of `=`, but the primary reason we will use `<-` instead of `=` is that this is the convention used in modern `R` programs.
+
+**Challenge**
+1. Create a variable named whatever strikes your fancy and set it equal to the square root of 2.
+Then multiply it by 4.
+2. Create a variable with a really long name and assign it a value. Start typing its name
+3. Enter the following in the console `sdgagasdgjasda`.
+
+
+# Working Directory and R Projects
+
+## Working Directory
+
+
+## R Projects
+
+Keeping all the files associated with a project organized together – input data, R scripts, analytical results, figures – is such a wise and common practice that RStudio has built-in support for this via its projects.  Read [this](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for more information about RStudio projects.
+
+You will use RStudio projects for your labs and homeworks, and **final paper**.
+Create a RStudio project that you will use for all your labs.
+
+1. *File -> New Project*
+2. Select "New Directory"
+3. Select "Empty Project"
+4. Select a name for your project as Directory Name.
+   "POLS_503_Labs" is as good as any, and better than most.
+   Then choose where to put this directory with "Create project as sub-directory of".
+   Don't worry about the other options.
+
+
+
+# Creating your first R Markdown Document
+
+For this course, you will be we using R Markdown documents for homeworks.
+Create your firs
+
+1. *File -> New File -> R Markdown*
+2. Choose a title and author for your file.  HTML output is fine.
+3. Hit OK. This will open a template for your Markdown file.
+4. Save this file with `Ctrl-S`.
+5. Click on the "Knit HTML" button. This will create a HTML document from this
+   document.
+
+
+Cheatsheets and additional resources about R Markdown are available at <http://rmarkdown.rstudio.com/>.
+
+
+# Loading Data into R
+
+For the remainder of this lab you will be using a dataset of GDP per capita and fertility
+from Gapminder.[^2]
+
+[^2]: Dataset from the [gapminder](https://github.com/jennybc/gapminder) R packager.
+      The dataset in that package is an excerpt from the [Gapminder](http://www.gapminder.org/data/) data. Gapminder data is released under the Creative Commons Attribution 3.0 Unported license. See their [terms of use](https://docs.google.com/document/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM).
+
+
+Download the csv ("[comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values)")" <https://github.com/POLS503/pols_503_sp15/blob/master/labs/gapminder.csv>.
+
+Then load the file
+```{r results='hide',echo=FALSE}
+gapminder <- read.csv("../../data/gapminder.csv", stringsAsFactors = FALSE)
+```
+```{r eval=FALSE}
+gapminder <- read.csv("gapminder.csv", stringsAsFactors = FALSE)
+```
+
+This creates a *data frame*.
+A *data frame* is a type of R object that corresponds to what you usually think of as a dataset or a spreadsheet --- rows are observations and columns are variables.
+
+**Challenge:**
+What happens when you do the following?
+```{r}
+gapminder
+```
+
+This is a lot of information. How can we get a more useful picture of the dataset as a whole?
+
+```{r}
+dim(gapminder)
+names(gapminder)
+head(gapminder)
+summary(gapminder)
+```
+
+- `dim` shows the dimensions of the data frame as the number of rows, columns
+- `names` shows the column names of the data frame.
+- `head` shows the first few observations
+- `summary` calculates summary statistics for all variables in the data frame.
+
+**Challenge:** Given the information previously:
+
+1. What are the variables in the dataset?
+2. How many observations are there?
+3. What is the unit of observation?
+3. What types of data are the different variables?
+4. What is the range of years in the data?
+5. What are the mean and median life expectancy?
+
+# Working with variables in Data Frames
+
+You can extract single variables (or columns) and perform different operations on them.
+To extract a variable, we use the dollar sign (`$`) extraction operator.
+```{r }
+gapminder$lifeExp
+```
+
+Again, perhaps a summary may be more interesting. We can do more specific operations on this variable alone:
+
+```{r}
+mean(gapminder$lifeExp)
+median(gapminder$lifeExp)
+sd(gapminder$lifeExp)
+min(gapminder$lifeExp)
+max(gapminder$lifeExp)
+quantile(gapminder$lifeExp)
+```
+
+**Challenge**
+1. What are the mean and median of GDP per capita?
+2. Find the 30th percentile of GDP per capita?
+3. The function `length()` calculates the length of a vector.
+   The function `unique()` returns the number of unique values in a vector.
+   How many countries in the data are there? How many years?
+
+
+
+
+# Comments
+
+Any R code following a hash (``#``) is not executed.
+These are called comments, and can and **should** be used to annotate and explain your code.
+For example, this doesn't do anything.
+```{r}
+#thisisacomment
+```
+And in this, nothing after the ``#`` is executed,
+```{r}
+#this is still a comment
+2 + 2 # this is also a comment
+```
+
+**Challenge:**
+What is this equal to?
+```{r}
+5 * 4 # + 3 # - 8
+```
+
+
+
+
+## Missing Data
+
+Misssing data is particularly important
+
+```{r}
+foo <- c(1, 2, NA, 3, 4)
+```
+
+
+**Challenge**
+
+1.  What is the result of `2 + NA`
+1.  What is the result of `mean(foo)`
+1.  Look at the documentation of `mean` to change how that function handles missing values.
+1.  How does `median(foo)` work?
+1.  `foo > 2`. Are all the entries `TRUE` and `FALSE`?
+1.  What does `is.na(foo)` do? What about `! is.na(foo)` ?
+1.  What does `foo[! is.na(foo)]` do?
+
+The function `na.omit` is particularly useful.
+It removes any row in a dataset with a missing value in *any* column.
+For example,
+```{r}
+dfrm <- data.frame(x = c(NA, 2, NA, 4), y = c(NA, NA, 7, 8))
+na.omit(dfrm)
+```
+
+
+Now We will use the following libraries in this `dplyr` and `ggplot2` section so make sure to install and load those libraries:
+
+```{r, libraries, warning = FALSE, message = FALSE}
+library("dplyr")
+library("ggplot2")
+library("gapminder")
+```
+
+
+# Gapminder Data
+
+You will be using the gapminder data again.
+In the first lab, you loaded the data from a csv file to show how to load from a csv.
+In this lab, you will be using the same data, but as it is distributed in **gapminder** package.
+
+To load a dataset included with an R package, use the `data()` function.
+You can see which datasets are included in a package,
+```{r eval=FALSE}
+data(package = "gapminder")
+```
+
+
+**challenge**
+
+- Which dataset in the **gapminder** package is country data?
+- Load that data using the `data` function
+- Pull up the help page for the "gapminder" dataset
+
+Load the gapminder data
+```{r}
+data("gapminder")
+```
+
+# Introduction `dplyr`
+
+**dplyr** is a package for data manipulation.
+It provides a few core functions data manipulation.
+Most data manipulations can be done by combining these verbs together --- something which becomes even easier with the `%>%` operator.
+
+-  `filter()`: subset observations by logical conditions
+-  `slice()`: subset observations by row numbers
+-  `arrange()`: sort the data by variables
+-  `select()`: select a subset of variables
+-  `rename()`: rename variables
+-  `distinct()`: keep only distict rows
+-  `mutate()` and `transmute()`: adds new variables
+-  `group_by()`: group the data according to variables
+-  `summarise()`: summarize multiple values into a single value
+-  `sample_n()` and `sample_frac()`: select a random sample of rows
+
+**dplyr** also offers the function `glimpse` to quickly view the data
+```{r}
+glimpse(gapminder)
+```
+or `tbl_df` - which will print out the data frame more similarly to `head`
+```{r}
+tbl_df(gapminder)
+```
+
+## Exploring our Data
+
+We are ready to begin exploring our data set in more depth.
+
+We want to explore the relationship between life expectancy and GDP.
+Let's use some `dplyr` verbs to explore our data.
+For you Stata users missing "if statements" let's begin with `filter()`
+
+```{r results='hide'}
+filter(gapminder, lifeExp < 29)
+filter(gapminder, country == "Rwanda")
+```
+
+You can combine filter statements.
+Including multiple logical statements is equivalent to combining them with "and".
+This will give all observations in "Africa", before 1966, and which have
+a life expectancy less than 40.
+```{r results='hide'}
+filter(gapminder, continent == "Africa", year < 1966, lifeExp < 40)
+```
+That is equivalent to
+```{r results='hide'}
+filter(gapminder, continent == "Africa" & year < 1966 & lifeExp < 40)
+```
+To combine logical statements with "or" you need to explicitly use `|`.
+To find observations from Afghanistan or Albania,
+```{r results='hide'}
+filter(gapminder, country == "Afghanistan" | country == "Albania")
+```
+
+## %>%
+
+Before we go any further, we should exploit the new pipe operator that `dplyr` imports from the **magrittr** package.
+This is going to change your data analytical life.
+
+
+## Use `select()` to subset the data on variables or columns.
+
+Most of the times we don't need to see all the variables and are often interested in just a few of them. Here’s a conventional call:
+```{r results='hide'}
+select(gapminder, year, lifeExp)
+```
+
+**Challenge**
+
+Using a combination of `filter`, `select` and and `slice` show only year and life expectancy of Cambodia for the first two observations
+
+```{r, echo=FALSE}
+gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp) %>%
+  slice(1:2)
+
+```
+
+**Challenge** Use `mutate()` to add  new variables
+
+Imagine we wanted to recover each country’s GDP. We do have data for population and GDP per capita. what do we do?
+
+-  Yes we multiply, let's create a new variable called GDP that brings back the gross amount
+
+```{r, echo=FALSE}
+gapminder <- gapminder %>%
+mutate(gdp = pop * gdpPercap)
+
+gapminder %>% glimpse
+```
+
+So... GDP is almost useless because it doesn't give a base line and that is why we often use per capita, but a baseline is often more useful, how about comparing it to another country sat, USA? Yes USA, USA, USA!
+
+Let's  create first an object containing only US data, we use `filter` here
+```{r}
+just_usa <- gapminder %>%
+  filter(country == "United States") %>%
+  select(year, gdpPercap) %>%
+  rename(usa_gdpPercap = gdpPercap)
+```
+
+We can join (or merge) the dataset to the gapminder data using the `left_join` function.
+There are are several ways to merge datasets with **dplyr** (left join, right join, inner join, and outer join which differ in which oberservations it matches and keep).
+```{r}
+gapminder <- 
+  left_join(gapminder, just_usa, by = c("year")) %>%
+  mutate(gdpPercapRel = gdpPercap / usa_gdpPercap)
+```
+
+Now, summarize the relative GDP
+```{r}
+gapminder %>%
+  select(gdpPercapRel) %>%
+  summary
+
+```
+
+Nice, now we can do something like this:
+
+Look at the GDP per capita  of Mexico and Canada relative to US by year
+```{r}
+gapminder %>%
+  filter(country %in% c("United States", "Canada", "Mexico")) %>%
+  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) %>%
+  glimpse()
+```
+
+
+## `arrange`
+
+Because the world is not always ordered the way we want it
+```{r}
+gapminder %>%
+  arrange(year, country) %>%
+  glimpse()
+
+
+gapminder %>%
+  filter(year == 2007) %>%
+  arrange(- lifeExp) %>%
+  glimpse()
+
+```
+
+** Challenge
+
+What about life expectancy? Create a relative to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
+
+
+# Plotting with ggplot2
+
+We will be using the graphics package **ggplot2**, which is one of the most popular, but it is only one of several graphics packages in R.[^1]
+
+Unlike many other graphics systems, functions in **ggplot2** do not correspond to separate types of graphs.
+There are not scatterplot, histogram, or line chart functions per se.
+Instead plots are built up from component functions.
+
+1. Data
+2. Aesthetics: Maps variables in the data to visual properties: position, color, size, shape, line type ...
+3. Geometric objects: The specific shapes that are drawn: points, lines,
+4. scales: How variables values map to "computer" values.
+5. stat: summarize or transform the data. e.g. bin data and count in histogram; run a regression to get a line.
+5. facet: create mini-plots of data subsets
+
+Let's continue using the gapminder data, take another look at it
+```{r}
+glimpse(gapminder)
+```
+
+Great, let the plotting begin:
+
+```{r eval=FALSE}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
+```
+This gives an error message because there is nothing to plot yet!
+
+This just initializes the plot object, it is better if you assign it to an object, `p` is good enough
+```{r}
+p <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
+```
+
+No we can add `geoms`
+```{r}
+p + geom_point()
+```
+
+That look okay but it would probably look be better if we log transform
+```{r}
+p_l <- ggplot(gapminder, aes(x = log10(gdpPercap), y = lifeExp))
+p_l + geom_point()
+```
+
+A better way to log transform
+```{r}
+p + geom_point() + scale_x_log10()
+```
+
+Let's make that stick
+```{r}
+p <- p + scale_x_log10()
+
+```
+
+Common workflow: gradually build up the plot you want,  re-define the object 'p' as you develop "keeper" commands.
+Note that in the reassigning we excluded the `geom`.
+
+
+Now, let continent variable to aesthetic color
+```{r}
+p + geom_point(aes(color = continent))
+
+```
+
+In full detail, up to now:
+```{r}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point() +
+  scale_x_log10()
+```
+Let's address over-plotting: SET alpha transparency and size to a value
+```{r}
+p + geom_point(alpha = (1 / 3), size = 3)
+```
+Add now a fitted curve or line
+```{r}
+p + geom_point() + geom_smooth()
+p + geom_point() + geom_smooth(lwd = 2, se = FALSE)
+p + geom_smooth(lwd = 1, se = FALSE, method = "lm") + geom_point()
+```
+That's great but I actually want to revive our interest in continents!
+```{r}
+p + aes(color = continent) + geom_point() + geom_smooth(lwd = 3, se = FALSE)
+```
+Facetting: another way to exploit a factor
+```{r}
+p + geom_point(alpha = (1 / 3), size = 3) + facet_wrap(~ continent)
+```
+Still want lines? Let's add them
+```{r}
+p + geom_point(alpha = (1 / 3), size = 3) + facet_wrap(~ continent) +
+  geom_smooth(lwd = 2, se = FALSE)
+```
+
+**Challenge**
+
+* plot lifeExp against year
+* make mini-plots, split out by continent
+* add a fitted smooth and/or linear regression, w/ or w/o faceting
+
+<!--
+
+```{r}
+# plot lifeExp against year
+# y <- ggplot(gDat, aes(x = year, y = lifeExp)) + geom_point()
+
+# make mini-plots, split out by continent
+# y + facet_wrap(~ continent)
+
+# add a fitted smooth and/or linear regression, w/ or w/o facetting
+#y + geom_smooth(se = FALSE, lwd = 2) +
+#  geom_smooth(se = FALSE, method ="lm", color = "orange", lwd = 2)
+
+# y + geom_smooth(se = FALSE, lwd = 2) +
+#  facet_wrap(~ continent)
+```
+-->
+What if I am only interrested in the US?
+```{r}
+ggplot(filter(gapminder, country == "United States"),
+       aes(x = year, y = lifeExp)) +
+  geom_line() +
+  geom_point()
+
+```
+
+Let just look at five countries
+
+```{r}
+some_countries <- c("United States", "Canada", "Rwanda", "Cambodia", "Mexico")
+ggplot(filter(gapminder, country %in% some_countries),
+       aes(x = year, y = lifeExp, color = country)) +
+  geom_line() +
+  geom_point()
+```
+
+
+So what's up with Mexico?
+
+* Nafta? Higher GDP?
+
+Not really...
+```{r}
+ggplot(subset(gapminder, country %in% some_countries),
+       aes(x = year, y = lifeExp, color = country)) +
+  geom_line() +
+  geom_point(aes(size=gdpPercap))
+```
+
+You can change the way the plot looks overall using `theme`
+
+```{r}
+ggplot(subset(gapminder, country %in% some_countries),
+       aes(x = year, y = lifeExp, color = country)) +
+  geom_line() +
+  geom_point(aes(size=gdpPercap)) +
+  theme_minimal()
+```
+
+* * *
+
+Some text and the data set used in this are taken from Jenny Bryant, [R basics, workspace and working directory, RStudio projects](https://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html), licensed under [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/) 
+
+
+* * *
+
+
+

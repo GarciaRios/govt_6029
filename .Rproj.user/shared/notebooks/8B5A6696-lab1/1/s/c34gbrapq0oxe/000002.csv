@@ -1,0 +1,1 @@
+"0","filter(gapminder, continent == ""Africa"" & year < 1966 & lifeExp < 40)"

@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2054367272",
+    "hash" : "367578768",
     "id" : "22B903E7",
-    "lastKnownWriteTime" : 1517235888,
-    "last_content_update" : 1517235888,
+    "lastKnownWriteTime" : 1517840510,
+    "last_content_update" : 1517840510542,
     "path" : "C:/Users/sig35/Google Drive/Work/Teaching/Courses/Advanced Regression Analysis/web/govt_6029/govt_6029/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
+        "cursorPosition" : "109,0",
+        "scrollLine" : "92"
     },
     "relative_order" : 1,
     "source_on_save" : false,

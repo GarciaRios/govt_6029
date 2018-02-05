@@ -1,0 +1,2 @@
+"0","dfrm <- data.frame(x = c(NA, 2, NA, 4), y = c(NA, NA, 7, 8))"
+"0","na.omit(dfrm)"

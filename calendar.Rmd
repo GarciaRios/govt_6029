@@ -11,7 +11,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 
 
-## Topic 1: Introduction to 2029 and R, Math Review
+## Topic 1: Introduction to 6029 and R, Math Review
 
 ### Monday, Jan 29
 
