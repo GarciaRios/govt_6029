@@ -24,8 +24,8 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 ### Monday, February 5
 
-- Lab document: [.Rmd](labs/lab1.Rmd), [html](Labs/lab1/lab1.html)
-- Data: [gapminder.csv](labs/gapminder.csv)
+- Lab document: [.Rmd](Labs/lab1/lab1.Rmd), [html](Labs/lab1/lab1.html)
+- Data: [gapminder.csv](data/gapminder.csv)
 - Readings:
 
     - Data Camp "Introduction to R", <https://www.datacamp.com/courses/free-introduction-to-r>
