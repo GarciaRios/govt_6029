@@ -1,0 +1,15 @@
+---
+output: 
+  html_document:  
+    theme: simplex
+---
+***
+# Labs
+
+
+<ul class="fa-ul">
+<li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab0/lab0.html>0.-- Introduction to the Course</a>
+<li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab1/lab1.html>1. -- Introduction to R, RStudio and knitr </a>
+<li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab2/lab2.html>2. -- Graphing and Data Manipulation </a>
+</ul>
+

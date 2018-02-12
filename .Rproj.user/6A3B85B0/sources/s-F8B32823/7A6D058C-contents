@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: Introduction to R and RStudio, knitr"
+title: "Lab 1: Introduction to R, RStudio and knitr"
 output:
   html_document:
     theme: paper

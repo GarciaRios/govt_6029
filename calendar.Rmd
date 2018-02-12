@@ -33,14 +33,17 @@ In particular, the pace of the course will be adjusted so that we move as possib
 - Data: [gapminder.csv](data/gapminder.csv)
 - Readings:
 
-    - Data Camp "Introduction to R", <https://www.datacamp.com/courses/free-introduction-to-r>
-    - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3–28. <http://dx.doi.org/10.1198/jcgs.2009.07098>
+    - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)
+    - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3–28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
 
 ### February 12
 
 #### Lab 2
 
 - Lab document: [html](Labs/lab2/lab2.html)
+- Reading 
+  
+    - Github and R: [link here](http://happygitwithr.com/big-picture.html)
 
 <!--
 
