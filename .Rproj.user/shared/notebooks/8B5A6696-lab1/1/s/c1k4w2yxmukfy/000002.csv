@@ -1,0 +1,4 @@
+"0","ggplot(filter(gapminder, country == ""United States""),"
+"0","       aes(x = year, y = lifeExp)) +"
+"0","  geom_line() +"
+"0","  geom_point()"

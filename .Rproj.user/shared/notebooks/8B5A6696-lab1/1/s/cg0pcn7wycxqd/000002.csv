@@ -1,0 +1,2 @@
+"0","p_l <- ggplot(gapminder, aes(x = log10(gdpPercap), y = lifeExp))"
+"0","p_l + geom_point()"

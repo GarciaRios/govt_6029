@@ -1,0 +1,2 @@
+"0","knitr::opts_chunk$set(results = ""hide"", warning = FALSE, message = FALSE, echo = F,"
+"0","                      fig.show = ""hide"")"

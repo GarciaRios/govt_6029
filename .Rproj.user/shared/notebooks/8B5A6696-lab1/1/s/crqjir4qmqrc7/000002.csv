@@ -1,0 +1,4 @@
+"0","# plot lifeExp against year"
+"0"," y <- ggplot(gapminder, aes(x = year, y = lifeExp)) + geom_point()"
+"0","# make mini-plots, split out by continent"
+"0"," y + facet_wrap(~ continent)"

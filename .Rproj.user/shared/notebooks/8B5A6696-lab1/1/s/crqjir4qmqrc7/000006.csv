@@ -1,0 +1,2 @@
+"0"," y + geom_smooth(se = FALSE, lwd = 2) +"
+"0","  facet_wrap(~ continent)"

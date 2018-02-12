@@ -1,0 +1,1 @@
+"0","p + aes(color = continent) + geom_point() + geom_smooth(lwd = 3, se = FALSE)"
