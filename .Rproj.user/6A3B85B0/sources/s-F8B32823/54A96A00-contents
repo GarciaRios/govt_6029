@@ -37,7 +37,7 @@ reproducibility of your analysis and results. To help get you started we are
 providing a template for you. Use the following code to download this template:
 
 ```{r load-template}
-download.file("https://github.com/GarciaRios/govt_6029/raw/master/Labs/lab2/lab_2.Rmd", destfile = "lab_2.Rmd")
+download.file("https://github.com/GarciaRios/govt_6029/master/Labs/lab2/lab_2.Rmd", destfile = "lab_2.Rmd")
 ```
 
 
