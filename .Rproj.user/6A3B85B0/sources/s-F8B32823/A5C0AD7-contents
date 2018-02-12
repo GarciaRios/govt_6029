@@ -531,7 +531,7 @@ gapminder %>%
 
 ** Challenge
 
-What about life expectancy? Create  life expectancy variable relative to the US, compare the three NAFTA countries US, Canada and Mexico
+What about life expectancy? Create a  life expectancy variable relative to the US, compare the three NAFTA countries US, Canada and Mexico
 
 
 # Plotting with ggplot2

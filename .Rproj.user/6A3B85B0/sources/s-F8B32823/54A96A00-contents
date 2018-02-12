@@ -37,7 +37,7 @@ reproducibility of your analysis and results. To help get you started we are
 providing a template for you. Use the following code to download this template:
 
 ```{r load-template}
-download.file("https://github.com/GarciaRios/govt_6029/master/Labs/lab2/lab_2.Rmd", destfile = "lab_2.Rmd")
+download.file("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/Labs/lab2/lab_2.Rmd", destfile = "lab_2.Rmd")
 ```
 
 
@@ -201,7 +201,11 @@ gapminder %>%
 
 ** Challenge
 
-What about life expectancy? Create a relative a variable  to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
+** Challenge
+
+What about life expectancy? Create a  life expectancy variable relative to the US, compare the three NAFTA countries US, Canada and Mexico
+
+
 
 
 # Plotting with ggplot2
