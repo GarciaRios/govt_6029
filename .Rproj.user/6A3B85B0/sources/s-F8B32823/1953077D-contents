@@ -1,0 +1,128 @@
+---
+title: "GOVT 6029: Problem Set 1"
+author: Sergio I Garica-Rios
+date: April 10, 2015
+
+---
+
+**Due in lab**: Friday, April 17, 2015 at 3:30 pm
+
+## Instructions
+
+1. Create a new R project for this homework named `hw1` and load that project.
+2. Download the data file  [democracy.csv](https://raw.githubusercontent.com/POLS503/pols_503_sp15/master/data/democracy.csv) into the directory of that project.
+3. Do your analyses in an R markdown document.
+4. Submit a zipped file of the directory with your R project through Canvas. This should contain all the materials for another person to run your R Markdown fil  This should contain:
+
+    - The R project (`.Rproj`) file
+	- The R Markdown document (`.Rmd`) of your analyses
+	- An HTML document (`.html`) compiled from your R Markdown document.
+	- Any data or other files neede to run the analyses in your R Markdown doceument.
+
+5. Turn in a paper copy of the document compiled from the analyses at lab.
+6. You can work together on this but you should each turn in your own assignments and write up your work separately.
+   Include the names of your collaborators on your assignment.
+
+Some other guidance
+
+- Your R code should follow the [guidelines](http://pols503.github.io/pols_503_sp15/r_best_practices.html) for this course.
+- All problems should be answerable in *at most* a few lines of R code.
+  Questions which require looking up values should be answered using R code and not manually checking the value through the RStudio GUI.
+
+## Data
+
+The file [democracy.csv](https://raw.githubusercontent.com/POLS503/pols_503_sp15/master/data/democracy.csv) contains data from Przeworski et. al, *Demoracy and Deveolpment: Political Institutions and Well-Being in the Worlds, 1950-1990* [^1].
+The data have been slightly recoded, to make higher values indicate higher levels of political liberty and democracy.
+
+| Variable | Description |
+|:---|:---|
+| `COUNTRY` | numerical code for each country |
+| `CTYNAME` | name of each country |
+| `REGION` | name of region containing country |
+| `YEAR` | year of observation |
+| `GDPW`   |  GDP per capita in real international prices |
+| `EDT`    |  average years of education |
+| `ELF60`  |  ethnolinguistic fractionalization |
+| `MOSLEM` |  percentage of Muslims in country |
+| `CATH`   |  percentage of Catholics in country |
+| `OIL`    |  whether oil accounts for 50+\% of exports |
+| `STRA`   |  count of recent regime transitions |
+| `NEWC`   |  whether county was created after 1945 |
+| `BRITCOL` |  whether country was a British colony |
+| `POLLIB` | degree of political liberty (1--7 scale, rising in political liberty) |
+| `CIVLIB` | degree of civil liberties (1--7 scale, rising in civil liberties) |
+| `REG`    | presence of democracy (0=non-democracy, 1=democracy)|
+
+
+
+## Problem 1
+
+a. Load the Democracy dataset into memory as a dataframe. Use the
+   `read.csv` function, and the `stringsAsFactors = FALSE`
+   option. Note that missing values are indicated by "`.`" in the
+   data. Find the option in `read.csv` that controls the string used
+   to indicate missing values.
+
+b. Report summary statistics (means and medians, at least) for all variables.
+
+c. Report a correlation matrix of all the variables in the dataset.
+   You will need to find the function in R that calculates
+   correlation. You will need to exclude the identifier columns. Watch
+   out for missing values. Even though your input data containts
+   missing values, your correlation matrix should not have missing
+   values in any of its entries.
+
+d. Create a histogram for political liberties in which each unique
+value of the variable is in its own bin.
+
+e. Create a histogram for GDP per capita.
+
+f. Create a histogram for **log** GDP per capita. How is this histogram different than the one for GDP per capita when it was not logged.
+
+g. Create a scatterplot of political liberties against GDP per capita.
+
+h. When there is a lot of overlap in a scatter plot it is useful to
+   "jitter" the points (randomly move them up and down).  Make the
+   previous plot but jitter the points to mitigate the problem of
+   overplotting. (Only jitter the points vertically). You can use
+   `geom_jitter` in **ggplot2** for this.
+
+i. Create a scatterplot of political liberties against **log** GDP per
+   capita. Jitter the points.  How is the relationship different than
+   when GDP per capita was not logged.
+
+j. Create a boxplot of GDP per capita for oil producing and non-oil producing nations.
+
+k. Calculate the mean GDP per capita in countries with at least 40 percent Catholics.
+   How does it compare to mean GDP per captia for all countries?
+
+l. Calculate the average GDP per capita in countries with greater than
+   60% ethnolinguistic fractionalization, less than 60%, and missing
+   ethnolinguistic fractionalization.  Hint: you can calculate this
+   with the **dplyr** verbs: `mutate`, `group_by` and `summarise`.
+
+m. What was the median of the average years of education in 1985 for
+all countries?
+
+n. Which country was (or countries were) closest to the median years of education in 1985 among all countries?
+
+o. What was the median of the average years of education in 1985 for democracies?
+
+p. Which democracy was (or democracies were) closest to the median years of education in 1985 among all democracies?
+
+q. What were the 25th and 75th percentiles of ethnolinguistic fractionalization for new and old countries?
+
+
+## Problem 2
+
+a. What is the dependent variable for your final project?
+b. Will you be writing this yourself, or with collaborators? Do you plan on submitting this work for another course?
+c. How do you plan on obtaining the data you need for analysis? What are your sources?
+d. Take the opportunity to do some preliminary exploratory analysis if you already have the data.
+
+[^1]: Przeworski, Adam, Michael E. Alvarez, Jose Antonio Cheibub, and Fernando Limongi. 2000. *Democracy and Development: Political Institutions and Well-Being in the World, 1950-1990*. Cambridge University Press.
+
+* * *
+
+Derived from of Christopher Adolph, "Problem Set 1", *POLS/CSSS 503*, University of Washington, Spring 2014. <http://faculty.washington.edu/cadolph/503/503hw1.pdf>; "Problem Set 2", *POLS/CSSS 503*, University of Washington, Spring 2014 <http://faculty.washington.edu/cadolph/503/503hw2.pdf>. Used with permission.
+

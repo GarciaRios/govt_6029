@@ -1,0 +1,7 @@
+"0","gapminder <-
+  left_join(gapminder, just_usa, by = c(""year"")) %>% 
+  mutate(gdpPercapRel = gdpPerCap / usa_gdpPercap)
+"
+"2","Error in mutate_impl(.data, dots) : 
+  Evaluation error: object 'gdpPerCap' not found.
+"
