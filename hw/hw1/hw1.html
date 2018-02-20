@@ -257,14 +257,15 @@ $(document).ready(function () {
 <ul>
 <li>Create a scatterplot of political liberties against GDP per capita.</li>
 <li>When there is a lot of overlap in a scatter plot it is useful to “jitter” the points (randomly move them up and down). Make the previous plot but jitter the points to mitigate the problem of overplotting. (Only jitter the points vertically). You can use <code>geom_jitter</code> in <strong>ggplot2</strong> for this.</li>
-<li>Create a scatterplot of political liberties against <strong>log</strong> GDP per capita. Jitter the points. How is the relationship different than when GDP per capita was not logged. -Create a boxplot of GDP per capita for oil producing and non-oil producing nations.</li>
+<li>Create a scatterplot of political liberties against <strong>log</strong> GDP per capita. Jitter the points. How is the relationship different than when GDP per capita was not logged.</li>
+<li>Create a boxplot of GDP per capita for oil producing and non-oil producing nations.</li>
 </ul>
 <ol start="4" style="list-style-type: lower-alpha">
 <li><strong>Transform data and analyse</strong></li>
 </ol>
 <ul>
 <li>Calculate the mean GDP per capita in countries with at least 40 percent Catholics. How does it compare to mean GDP per capita for all countries?</li>
-<li>Calculate the average GDP per capita in countries with greater than 60% ethnolinguistic fractionalization, less than 60%, and missing ethnolinguistic fractionalization. Hint: you can calculate this with the <strong>dplyr</strong> verbs: <code>mutate</code>, <code>group_by</code> and <code>summarise</code>.</li>
+<li>Calculate the average GDP per capita in countries with greater than 60% ethnolinguistic fractionalization, less than 60%, and missing ethnolinguistic fractionalization. Hint: you can calculate this with the <strong>dplyr</strong> verbs: <code>filter</code>,<code>mutate</code>, <code>group_by</code> and/or <code>summarise</code>. Like everything else there are multiple ways to do this; some more simple (require only one or two verbs) other more complex where you might need to combine multiple verbs and perhaps might need to do some googling.</li>
 <li>What was the median of the average years of education in 1985 for all countries?</li>
 <li>Which country was (or countries were) closest to the median years of education in 1985 among all countries?</li>
 <li>What was the median of the average years of education in 1985 for democracies?</li>

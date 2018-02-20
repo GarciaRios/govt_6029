@@ -1,0 +1,183 @@
+### Homework 1 Solution
+### Sergio Garcia/ Claire Leavitt
+
+
+
+### Load libraries
+
+library(tidyverse)
+
+### Read data
+
+### SECTION 1 ###
+
+## Two ways
+
+# Read from web
+
+df <- read.csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/democracy.csv", na.strings = ".")
+
+#after download
+df <- read.csv("democracy.csv", na.strings = ".")
+
+
+# Report summary statistics (means and medians, at least) for all variables.
+
+summary(df)
+
+#Create a histogram for political liberties in which each unique value of the variable is in its own bin.
+
+ggplot(df, aes(POLLIB)) + 
+  geom_histogram() +
+  facet_wrap(~POLLIB)
+
+#Create a histogram for GDP per capita.
+
+ggplot(df, aes(GDPW)) +
+  geom_histogram()
+
+#Create a histogram for log GDP per-capita. How is this histogram different than the one for GDP per capita when it was not logged.
+
+ggplot(df, aes(log10(GDPW))) +
+  geom_histogram() 
+
+
+ggplot(df, aes(GDPW)) +
+  geom_histogram() +
+  scale_x_log10()
+
+
+
+### SECTION 2 ###
+
+
+# Create a scatterplot of political liberties against GDP per capita.
+
+ggplot(df, aes(GDPW,  POLLIB )) +
+  geom_point()
+
+# When there is a lot of overlap in a scatter plot it is useful to “jitter” the points (randomly move them up and down). Make the previous plot but jitter the points to mitigate the problem of overplotting. (Only jitter the points vertically). You can use geom_jitter in ggplot2 for this.
+
+
+ggplot(df, aes(GDPW,  POLLIB )) +
+  geom_jitter()
+
+ggplot(df, aes(GDPW,  POLLIB )) +
+  geom_point(position = position_jitter())
+
+
+
+# Create a scatterplot of political liberties against log GDP per capita. Jitter the points. How is the relationship different than when GDP per capita was not logged. 
+
+
+ggplot(df, aes(log10(GDPW), POLLIB)) +
+  geom_jitter() 
+
+# Create a boxplot of GDP per capita for oil producing and non-oil producing nations.
+  
+ggplot(df, aes(y = GDPW, factor(OIL))) +
+  geom_boxplot()
+  
+
+### SECTION 3 ###
+
+
+# Calculate the mean GDP per capita in countries with at least 40 percent Catholics. How does it compare to mean GDP per capita for all countries?
+
+df %>% 
+  filter(CATH < 40) %>% 
+  summarise(Pct40Cath_GDP_mean = mean(GDPW))
+
+df %>% 
+  summarise(All_rel_GDP_mean = mean(GDPW))
+
+summarise(df %>% filter(CATH < 40), All_rel_GDP_mean = mean(GDPW))
+
+
+
+#  Calculate the average GDP per capita in countries with greater than 60% ethnolinguistic fractionalization, less than 60%, and missing ethnolinguistic fractionalization. Hint: you can calculate this with the dplyr verbs: mutate, group_by and summarise.
+
+# Easiest
+
+df %>% filter(ELF60 < .60) %>% 
+  summarise(mean(GDPW))
+
+df %>% filter(ELF60 > .60) %>% 
+  summarise(mean(GDPW))
+
+
+df %>% filter(is.na(ELF60)) %>% 
+  summarise(mean(GDPW))
+
+
+# harder requires some googling
+
+df %>% 
+  mutate(elf3cat = ifelse(ELF60 < .60, "less", 
+                          "more")) %>% 
+  group_by(elf3cat) %>% 
+  summarise(mean(GDPW))
+
+
+# Requires even more googling
+
+
+df %>% 
+  mutate(elf3cat = case_when(ELF60 < .60 ~ "less",
+                             ELF60 > .60 ~ "more")) %>% 
+  group_by(elf3cat) %>% 
+  summarise(mean(GDPW))
+
+
+
+df %>% 
+  mutate(elf3cat = case_when(ELF60 < .60 ~ "less",
+                             ELF60 > .60 ~ "more",
+                             is.na(ELF60) ~ "missing")) %>% 
+  group_by(elf3cat) %>% 
+  summarise(mean(GDPW))
+
+
+
+#  What was the median of the average years of education in 1985 for all countries?
+
+summary(df$EDT)
+
+
+df %>% 
+  summarise(AvgEDT= mean(EDT, na.rm = T))
+
+#  Which country was (or countries were) closest to the median years of education in 1985 among all countries?
+
+df %>% 
+  filter(YEAR == 1985) %>% 
+  select(EDT, CTYNAME) %>% 
+  arrange(EDT)
+
+
+
+df %>% 
+  filter(YEAR == 1985, EDT>4&EDT<6) %>% 
+  select(EDT, CTYNAME) %>% 
+  arrange(EDT)
+
+
+#  What was the median of the average years of education in 1985 for democracies?
+
+df %>% 
+  filter(YEAR == 1985, REG == 1) %>% 
+  summarise(medianEDT = median(EDT, na.rm = T))
+
+#  Which democracy was (or democracies were) closest to the median years of education in 1985 among all democracies?
+
+df %>% 
+  filter(YEAR == 1985, REG == 1, EDT>7&EDT<9) %>% 
+  select(EDT, CTYNAME) %>% 
+  arrange(EDT)
+
+  #  What were the 25th and 75th percentiles of ethnolinguistic fractionalization for new and old countries?
+  
+
+df %>% group_by(NEWC) %>% 
+  summarise(Pct25 = quantile(EDT, probs = 0.25, na.rm = T),
+            Pct75 = quantile(EDT, probs = 0.75, na.rm = T))

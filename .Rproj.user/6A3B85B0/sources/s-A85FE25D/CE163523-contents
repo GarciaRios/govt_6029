@@ -1,0 +1,103 @@
+---
+title: "Advanced Regression Analysis - GOVT 6029: Problem Set 1"
+author: Sergio I Garica-Rios
+date:  Feb 10, 2018
+
+---
+
+****
+
+**Due via Blackboard**: Fri, Feb 23 
+
+**Due via GitHub**: Mon, Feb 26 
+
+## Instructions
+
+- Create a new R markdown called `hw1_lastname` (where `lastname` should be your actual last name of course.
+- Do all your analyses in the R markdown document.
+- Compile an html document
+- Submit only the R markdown through Blackboard. This should contain all necessary code and materials for another person to run your R Markdown file.
+- Upload to GitHub, on Monday - Feb 26, both the .html and the .Rmarkdown files
+
+Some other guidance
+
+- All problems should be answerable in *at most* a few lines of R code.
+  Questions which require looking up values should be answered using R code and not manually checking the value through the RStudio GUI.
+- Problems are thematically divided but each bullet point should be seen as a separate exercise  
+  
+
+## Data
+
+The file [democracy.csv](https://github.com/GarciaRios/govt_6029/raw/master/data/democracy.csv) contains data from Przeworski et. al, *Demoracy and Deveolpment: Political Institutions and Well-Being in the Worlds, 1950-1990*<sup>1</sup>.
+The data have been slightly recoded, to make higher values indicate higher levels of political liberty and democracy.
+
+| Variable | Description |
+|:---|:--------------------------------------|
+| `COUNTRY` | numerical code for each country |
+| `CTYNAME` | name of each country |
+| `REGION` | name of region containing country |
+| `YEAR` | year of observation |
+| `GDPW`   |  GDP per capita in real international prices |
+| `EDT`    |  average years of education |
+| `ELF60`  |  ethnolinguistic fractionalization |
+| `MOSLEM` |  percentage of Muslims in country |
+| `CATH`   |  percentage of Catholics in country |
+| `OIL`    |  whether oil accounts for 50+\% of exports |
+| `STRA`   |  count of recent regime transitions |
+| `NEWC`   |  whether county was created after 1945 |
+| `BRITCOL` |  whether country was a British colony |
+| `POLLIB` | degree of political liberty (1--7 scale, rising in political liberty) |
+| `CIVLIB` | degree of civil liberties (1--7 scale, rising in civil liberties) |
+| `REG`    | presence of democracy (0=non-democracy, 1=democracy)|
+
+
+
+## Problems
+
+a. **Initial set up**
+   - Load the Democracy dataset into memory as a dataframe. Use the
+   `read.csv` function, and the `stringsAsFactors = FALSE`
+   option. Note that missing values are indicated by "`.`" in the
+   data. Find the option in `read.csv` that controls the string used
+   to indicate missing values.
+
+b. **Initial data exploration** 
+   - Report summary statistics (means and medians, at least) for all variables.
+   - Create a histogram for political liberties in which each unique value of the variable is in its own bin.
+   - Create a histogram for GDP per capita.
+   - Create a histogram for **log** GDP per-capita. How is this histogram different than the one for GDP per capita when it was not logged.
+
+c. **Explore relationships** 
+   - Create a scatterplot of political liberties against GDP per capita.
+   - When there is a lot of overlap in a scatter plot it is useful to
+   "jitter" the points (randomly move them up and down).  Make the
+   previous plot but jitter the points to mitigate the problem of
+   overplotting. (Only jitter the points vertically). You can use
+   `geom_jitter` in **ggplot2** for this.
+   - Create a scatterplot of political liberties against **log** GDP per
+   capita. Jitter the points.  How is the relationship different than
+   when GDP per capita was not logged.
+   - Create a boxplot of GDP per capita for oil producing and non-oil producing nations.
+
+d. **Transform data and analyse**
+   - Calculate the mean GDP per capita in countries with at least 40 percent Catholics.
+   How does it compare to mean GDP per capita for all countries?
+   - Calculate the average GDP per capita in countries with greater than
+   60% ethnolinguistic fractionalization, less than 60%, and missing
+   ethnolinguistic fractionalization.  Hint: you can calculate this
+   with the **dplyr** verbs: `filter`,`mutate`, `group_by` and/or `summarise`. Like everything else there are multiple ways to do this; some more simple (require only one or two verbs)  other more complex where you might need to combine multiple verbs and perhaps might need to do some googling. 
+   - What was the median of the average years of education in 1985 for
+all countries?
+   - Which country was (or countries were) closest to the median years of education in 1985 among all countries?
+   - What was the median of the average years of education in 1985 for democracies?
+   - Which democracy was (or democracies were) closest to the median years of education in 1985 among all democracies?
+   - What were the 25th and 75th percentiles of ethnolinguistic fractionalization for new and old countries?
+
+
+
+* * *
+Notes:
+
+<sup>1</sup> Przeworski, Adam, Michael E. Alvarez, Jose Antonio Cheibub, and Fernando Limongi. 2000. *Democracy and Development: Political Institutions and Well-Being in the World, 1950-1990*. Cambridge University Press.
+
+
