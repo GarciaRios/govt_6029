@@ -25,11 +25,17 @@ df <- read.csv("democracy.csv", na.strings = ".")
 
 summary(df)
 
+
+summary(df$REG)
+
+
 #Create a histogram for political liberties in which each unique value of the variable is in its own bin.
 
 ggplot(df, aes(POLLIB)) + 
   geom_histogram() +
   facet_wrap(~POLLIB)
+
+
 
 #Create a histogram for GDP per capita.
 
@@ -42,7 +48,7 @@ ggplot(df, aes(log10(GDPW))) +
   geom_histogram() 
 
 
-ggplot(df, aes(GDPW)) +
+ggplot(df, aes( x = GDPW)) +
   geom_histogram() +
   scale_x_log10()
 
@@ -56,11 +62,6 @@ ggplot(df, aes(GDPW)) +
 ggplot(df, aes(GDPW,  POLLIB )) +
   geom_point()
 
-
-ggplot(democracy, aes(y = POLLIB, x = GDPW)) +
-  geom_jitter(width = 0, height = .3) +
-  ylab("GDP per Capita") +
-  xlab("Political Liberty")
 # When there is a lot of overlap in a scatter plot it is useful to “jitter” the points (randomly move them up and down). Make the previous plot but jitter the points to mitigate the problem of overplotting. (Only jitter the points vertically). You can use geom_jitter in ggplot2 for this.
 
 
@@ -68,6 +69,7 @@ ggplot(df, aes(GDPW,  POLLIB )) +
   geom_jitter(height = .20, alpha = .5)
 
 ggplot(df, aes(GDPW,  POLLIB )) +
+  geom_point() +
   geom_jitter()
 
 ggplot(df, aes(GDPW,  POLLIB )) +
@@ -87,6 +89,10 @@ ggplot(df, aes(y = GDPW, factor(OIL))) +
   geom_boxplot()
   
 
+ggplot(df, aes(y = GDPW, factor(OIL))) +
+  geom_boxplot()
+
+
 ### SECTION 3 ###
 
 
@@ -99,12 +105,6 @@ df %>%
 df %>% 
   summarise(All_rel_GDP_mean = mean(GDPW))
 
-df %>% 
-  summarise(df %>% filter(CATH < 40), All_rel_GDP_mean = mean(GDPW))
-
-df %>% 
-  summarise_if(.,df$CATH <40, "GDPW", mean)    
-    
 
 #  Calculate the average GDP per capita in countries with greater than 60% ethnolinguistic fractionalization, less than 60%, and missing ethnolinguistic fractionalization. Hint: you can calculate this with the dplyr verbs: mutate, group_by and summarise.
 
@@ -120,9 +120,6 @@ df %>% filter(ELF60 > .60) %>%
 df %>% filter(is.na(ELF60)) %>% 
   summarise(mean(GDPW))
 
-library(magrittr)
-
-                                                                                                                                 na.rm = TRUE)) %.% filter(arr > 30 | dep > 30)
 
 
 
@@ -154,6 +151,14 @@ df %>%
   summarise(mean(GDPW))
 
 
+df2<- 
+  df %>% 
+  mutate(elf3cat = case_when(ELF60 < .60 ~ "less",
+                             ELF60 > .60 ~ "more",
+                             is.na(ELF60) ~ "missing")) 
+
+
+
 
 #  What was the median of the average years of education in 1985 for all countries?
 
@@ -161,6 +166,7 @@ summary(df$EDT)
 
 
 df %>% 
+  filter(YEAR == 1985) %>% 
   summarise(AvgEDT= mean(EDT, na.rm = T))
 
 #  Which country was (or countries were) closest to the median years of education in 1985 among all countries?
@@ -197,3 +203,11 @@ df %>%
 df %>% group_by(NEWC) %>% 
   summarise(Pct25 = quantile(EDT, probs = 0.25, na.rm = T),
             Pct75 = quantile(EDT, probs = 0.75, na.rm = T))
+
+
+df %>% group_by(NEWC) %>% 
+  summarise(quantile(EDT, probs = 0.25, na.rm = T),
+            quantile(EDT, probs = 0.75, na.rm = T))
+
+
+

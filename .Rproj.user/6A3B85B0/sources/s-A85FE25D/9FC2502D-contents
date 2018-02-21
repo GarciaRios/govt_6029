@@ -1,0 +1,39 @@
+library(haven)
+library(margins)
+
+summary(mtcars)
+
+df<- read_dta
+
+
+mod.data <- mtcars %>% select(am, wt, drat, mpg)
+model <- lm(mpg ~ am*wt + drat, data = mod.data)
+
+
+
+preds<-margins(model, at = 
+          list(
+            am = c(0,1), 
+            wt = seq(1.5 ,5.4, by = .5)
+            ))
+pred.plot <-summary(preds)
+
+
+
+ggplot(pred.plot %>% filter(factor == "am"), aes(x = wt, y = AME, 
+                  color = factor(am),
+                  fill  = factor(am),
+                  ymin = lower,
+                  ymax = upper)) +
+  geom_ribbon(alpha = .5) +
+  geom_line() 
+  
+democracy<-df
+
+ggplot(democracy, aes(x = POLLIB, y = GDPW)) +
+  geom_point()
+#Same scatterplot, but jittered. 
+ggplot(democracy, aes(y = POLLIB, x = GDPW)) +
+  geom_jitter(width = 0, height = .5) +
+  ylab("GDP per Capita") +
+  xlab("Political Liberty")
