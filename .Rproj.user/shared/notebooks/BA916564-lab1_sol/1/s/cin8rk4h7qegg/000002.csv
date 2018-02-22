@@ -1,4 +1,0 @@
-"0","just_usa <- gapminder %>%"
-"0","  filter(country == ""United States"") %>%"
-"0","  select(year, gdpPercap) %>%"
-"0","  rename(usa_gdpPercap = gdpPercap)"

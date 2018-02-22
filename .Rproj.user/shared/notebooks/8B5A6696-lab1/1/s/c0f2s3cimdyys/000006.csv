@@ -1,1 +1,0 @@
-"0","p + geom_smooth(lwd = 1, se = FALSE, method = ""lm"") + geom_point()"

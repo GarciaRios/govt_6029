@@ -1,3 +1,0 @@
-"0","gapminder <- "
-"0","  left_join(gapminder, just_usa, by = c(""year"")) %>%"
-"0","  mutate(gdpPercapRel = gdpPercap / usa_gdpPercap)"

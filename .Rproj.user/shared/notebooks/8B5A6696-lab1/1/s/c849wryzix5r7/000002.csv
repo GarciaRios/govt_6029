@@ -1,4 +1,0 @@
-"0","ggplot(subset(gapminder, country %in% some_countries),"
-"0","       aes(x = year, y = lifeExp, color = country)) +"
-"0","  geom_line() +"
-"0","  geom_point(aes(size=gdpPercap))"

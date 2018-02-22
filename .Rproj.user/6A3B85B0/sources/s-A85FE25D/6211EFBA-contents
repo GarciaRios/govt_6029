@@ -1,1 +1,0 @@
-download.file("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/Labs/lab2/lab_2.Rmd", destfile = "lab_2.Rmd")

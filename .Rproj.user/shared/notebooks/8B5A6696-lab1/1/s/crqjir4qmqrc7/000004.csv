@@ -1,3 +1,0 @@
-"0","# add a fitted smooth and/or linear regression, w/ or w/o facetting"
-"0","y + geom_smooth(se = FALSE, lwd = 2) +"
-"0","  geom_smooth(se = FALSE, method =""lm"", color = ""orange"", lwd = 2)"

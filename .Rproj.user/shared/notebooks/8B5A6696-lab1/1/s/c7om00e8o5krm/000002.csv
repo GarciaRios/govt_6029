@@ -1,5 +1,0 @@
-"0","some_countries <- c(""United States"", ""Canada"", ""Rwanda"", ""Cambodia"", ""Mexico"")"
-"0","ggplot(filter(gapminder, country %in% some_countries),"
-"0","       aes(x = year, y = lifeExp, color = country)) +"
-"0","  geom_line() +"
-"0","  geom_point()"

@@ -1,4 +1,0 @@
-"0","gapminder %>%"
-"0","  filter(country == ""Cambodia"") %>%"
-"0","  select(year, lifeExp) %>%"
-"0","  slice(1:2)"

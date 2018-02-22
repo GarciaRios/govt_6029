@@ -1,1 +1,0 @@
-"0","p <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))"
