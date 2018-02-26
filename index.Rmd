@@ -42,7 +42,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <tr>
 <td>Sergio Garcia-Rios</td>
 <td><a href="bookme.html"> <img src= "./images/ycbme.png" style="width: 70px;"/> [Click here to find available office
-hours](bookme.html)</td>
+hours](http://www.sergiogarciarios.com/office_hours/)</td>
 <td> White Hall 308 </td>
 </tr>
 <tr>

@@ -1,13 +1,13 @@
 {
-    "path" : "C:/Users/sig35/Google Drive/Work/Teaching/Courses/Advanced Regression Analysis/govt_6029",
+    "path" : "C:/Users/sig35/Google Drive/Work/Teaching/Courses/Advanced Regression Analysis/lectures/minimal",
     "sortOrder" : [
-        {
-            "ascending" : true,
-            "columnIndex" : 2
-        },
         {
             "ascending" : false,
             "columnIndex" : 4
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
         }
     ]
 }
