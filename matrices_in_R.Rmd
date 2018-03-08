@@ -2,6 +2,8 @@
 .. title: Brief Introduction to Matrices and Matrix Algebra R
 -->
 
+*****
+
 ## Creating Matrices
 
 You can create matrices with the `matrix` function.
