@@ -10,7 +10,7 @@ output:
 
 ```{r setup, include=FALSE}
 # DO NOT ALTER CODE IN THIS CHUNK
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = F)
 library(dplyr)
 library(ggplot2)
 ```

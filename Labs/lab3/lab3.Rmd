@@ -4,11 +4,11 @@ author: "Sergio Garcia-Rios/ Claire Leavitt"
 output: 
   html_document: 
     highlight: pygments
-    theme: cosmo
+    theme: simplex
     toc: yes
 ---
 ```{r echo = FALSE, results = 'hide'}
-knitr::opts_chunk$set(warning = FALSE, message = TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = TRUE, eval = F)
 ```
 
 
@@ -304,10 +304,10 @@ ggplot(pred_plot, aes(x = lnenp, y = fit,
 ```
 
 
-## Formating regression labels
+## Formating regression tables.
 
 
-There are mutiple package that could help with the prese ntaiton fo your regression tables. 
+There are mutiple package that could help with the prese ntaiton for your regression tables. 
 
 
 ```{r results='asis'}

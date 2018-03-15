@@ -2,7 +2,7 @@
 title: "Lab 1: Introduction to R, RStudio and knitr"
 output:
   html_document:
-    theme: paper
+    theme: simplex
     highlight: haddock
 
 ---

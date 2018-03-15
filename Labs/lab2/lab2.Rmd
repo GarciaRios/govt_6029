@@ -4,7 +4,7 @@ author: "Sergio Garcia-Rios"
 date: "Feb 12 2018"
 output: 
   html_document: 
-    theme: cosmo
+    theme: simplex
     toc: yes
 ---
 
