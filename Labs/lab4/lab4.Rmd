@@ -1,5 +1,5 @@
 ---
-title: "Lab 4: Multivariate Linear Regrassion, and Predicted Values"
+title: "Lab 4: Multivariate Linear Regression, and Predicted Values"
 author: "Sergio Garcia-Rios"
 output: 
   html_document: 
