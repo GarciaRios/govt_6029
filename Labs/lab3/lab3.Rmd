@@ -1,5 +1,5 @@
 ---
-title: "Lab 3: Linear Regrassion, Matrices, and predicted Values"
+title: "Lab 3: Linear Regression, Matrices, and predicted Values"
 author: "Sergio Garcia-Rios/ Claire Leavitt"
 output: 
   html_document: 
