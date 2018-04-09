@@ -8,7 +8,7 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r echo = FALSE, results = 'hide'}
-knitr::opts_chunk$set(warning = FALSE, message = TRUE, eval = F)
+knitr::opts_chunk$set(warning = FALSE, message = TRUE, eval = T)
 ```
 
 For this lab we will use the replication [data]( https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/17976) from [Michael Ross](http://www.sscnet.ucla.edu/polisci/faculty/ross/)'s "The Oil Curse: How Petroleum Wealth Shapes the Development of Nations."
@@ -32,12 +32,14 @@ library(coefplot)
 Read in the Ross data
 
 ```{r, results='hide'}
-rossdata <- read.csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/ross_2012.csv",
-                     stringsAsFactors = FALSE)
+rossdata <- read.csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/ross_2012.csv",   stringsAsFactors = FALSE)
 
 head (rossdata)
 glimpse(rossdata)
 ```
+
+
+
 
 This is a pretty big data-set, we do not need all the variables let's subset our data to include only the variables we will use.
 
@@ -55,7 +57,7 @@ Create a new data-set containing only:
 Call this new data-frame `data`
 
 ```{r}
-data<-rossdata %>% 
+data <- rossdata %>% 
   select(cty, year, polity, logoil_gdpcap2000_sup_Q_1, logGDPcap, oecd)
 ```
 
@@ -67,8 +69,8 @@ data<-rossdata %>%
 Some of those names are too long, we should change it to something meaningful and short. This can be done easily using `dplyr` and `rename`.
 
 ```{r}
-data<-data %>%
-  rename(oil=logoil_gdpcap2000_sup_Q_1, gdp=logGDPcap)
+data <- data %>%
+  rename(oil = logoil_gdpcap2000_sup_Q_1, gdp = logGDPcap)
 ```
 
 This data-frame is way easier to glimpse at:
@@ -79,8 +81,11 @@ glimpse(data)
 
 A lot of missing values here. Let's omit them and then look at a summary of the data set
 ```{r}
-data<-data %>% 
+data <- data %>% 
   na.omit()
+
+
+
 data %>%
   summary()
 ```
@@ -100,6 +105,8 @@ Create a plot that explores the relationship between democracy level and at leas
 
 We begin simple... 
 ```{r}
+
+
 ggplot(data, aes(x = gdp, y = polity)) +
   geom_point() + 
   theme_bw() 
@@ -113,13 +120,15 @@ ggplot(data, aes(x = gdp, y = polity,
                  color = oil, shape=factor(oecd))) +
   geom_jitter(height = .08,  size = 3, alpha = .5) + 
   theme_bw() 
+
+
+
 ```
 
 ```{r}
-ggplot(data, aes(x = gdp, y = polity, 
-                 color = oil, shape = factor(oecd))) +
-  geom_jitter(height = .08,  size = 3, alpha = .5) + 
-  theme_bw() 
+
+hi_oil<-data %>% filter(oil>10) 
+  
 
 ggplot(data, aes(x = gdp, y = polity, 
                  colour = factor(oecd), size=(oil))) +
