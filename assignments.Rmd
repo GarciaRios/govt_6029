@@ -11,7 +11,7 @@
 <li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw2/hw1.html> 2.-- Problem Set 2</a>
 <li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw3/hw3.pdf> 3.-- Problem Set 3</a>
   <ul class="fa-ul">
-  <li><i class="fa-li fa file-code"></i><a target="_blank" href=./hw/hw3/lab_functions>Lab Functions</a>
+  <li><i class="fa-li fa fa-code"></i><a target="_blank" href=./hw/hw3/ps_functions/>HW3 Functions</a>
   </ul>
 <li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html> 4.-- Problem Set 4</a>
 </ul>
