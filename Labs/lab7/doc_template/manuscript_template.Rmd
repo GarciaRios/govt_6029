@@ -69,31 +69,29 @@ $$ \frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu_i)^2/(2\sigma^2)} $$
 
 ## Tables
 
+
+
+
 ```{r kable, echo=FALSE, warning=F}
 library(knitr)
 
 x <- rnorm(100)
 y <- 2*x + rnorm(100)
 out <- lm(y ~ x)
-kable(summary(out)$coef, digits=2, caption="This is a GLM summary table.")
-```
-
-```{r xtable, results="asis", echo=FALSE, eval=TRUE, message=FALSE}
-library(xtable)
-tab <- xtable(summary(out)$coef, digits=c(0, 2, 2, 1, 2), 
-              caption="This is a GLM summary table.")
-print(tab, type="latex")
 ```
 
 
 ```{r, echo=FALSE, results="asis"}
-stargazer(mtcars)
+stargazer(out, title ="This is a GLM summary table with stargazer", header = F)
 ```
+
+
+
 
 
 ## Plots
 
-You can  embed code for class material. And for the Figures and captions notice that in the code  I use  `\\label{fig:plot}` in the title which add .tex code to which can latter be called inside the caption of another Figure.
+You can  embed code to produce your figures and then print them. And for the Figures and captions notice that in the code  I use  `\\label{fig:plot}` in the title which adds .tex code to which I can later call inside the caption of another Figure.
 
 ```{r carDataPlot, fig.cap="Relationship between displ and hwy. The shaded line is the 95% confidecne interval \\label{fig:plot}", fig.width=4, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
 library(ggplot2)
