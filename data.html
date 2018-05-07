@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="custom_style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-file-pdf-o fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="fa fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+<li>
+  <a href="labs.html">
+    <span class="fa fa-file-code-o fa-2x"></span>
+     
+    Labs
+  </a>
+</li>
+<li>
+  <a href="assignments.html">
+    <span class="fa fa-pencil-square-o fa-2x"></span>
+     
+    Assignments
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<!--
+.. title: Datasets
+-->
+<p>Datasets used in this course</p>
+<ul>
+<li><a href="data/iver.csv">iver.csv</a>: Data from Iversen, Torben, and David Soskice. 2006. âElectoral Institutions and the Politics of Coalitions: Why Some Democracies Redistribute More Than Others.â <em>American Political Science Review</em> 100(02): 165â“81. <a href="http://journals.cambridge.org/article_S0003055406062083" class="uri">http://journals.cambridge.org/article_S0003055406062083</a>. democracies redistribute more than others?”. csv file from <a href="http://faculty.washington.edu/cadolph/503/iver.csv" class="uri">http://faculty.washington.edu/cadolph/503/iver.csv</a></li>
+<li><a href="data/democracy.csv">democracy.csv</a>: Data on democracies from Przeworski, Adam, Michael E. Alvarez, Jose Antonio Cheibub, and Fernando Limongi. 2000. <em>Democracy and Development: Political Institutions and Well-Being in the World, 1950-1990</em>. Cambridge University Press. csv file from <a href="http://faculty.washington.edu/cadolph/503/democracy.csv" class="uri">http://faculty.washington.edu/cadolph/503/democracy.csv</a></li>
+<li><a href="data/sprinters.csv">sprinters.csv</a>: Data from Tatem, Andrew J., Carlos A. Guerra, Peter M. Atkinson, and Simon I. Hay. 2004. âAthletics: Momentous Sprint at the 2156 Olympics?â <em>Nature</em> 431(7008): 525â“525. <a href="http://www.nature.com/nature/journal/v431/n7008/full/431525a.html" class="uri">http://www.nature.com/nature/journal/v431/n7008/full/431525a.html</a>. csv file from <a href="http://faculty.washington.edu/cadolph/503/sprinters.csv" class="uri">http://faculty.washington.edu/cadolph/503/sprinters.csv</a></li>
+<li><a href="data/gapminder.csv">gapminder.csv</a>: csv version of the <code>gapminder</code> dataset included in the <a href="https://cran.r-project.org/web/packages/gapminder/index.html">gapminder</a> R package. The <code>gapminder</code> dataset is an excerpt from the <a href="http://gapminder.org">Gapminder</a>. Gapminder’s data is released under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported</a> license. See their <a href="https://docs.google.com/document/u/0/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM">terms of use</a>. Csv file from <a href="http://staff.washington.edu/csjohns/503/rossoildata.csv" class="uri">http://staff.washington.edu/csjohns/503/rossoildata.csv</a>.</li>
+<li><a href="data/nes00a.csv">nes00a.csv</a>: Subset of data from the American National Election Studies (<a href="http://www.electionstudies.org/">ANES</a>) 2000 survey. Csv file from <a href="http://staff.washington.edu/csjohns/503/nes00a.csv" class="uri">http://staff.washington.edu/csjohns/503/nes00a.csv</a>.</li>
+<li><a href="data/ross_2012.csv">ross_2012.csv</a>: csv file derived from: Michael L. Ross, 2012, “Replication data for:”The Oil Curse“”, <a href="http://hdl.handle.net/1902.1/17976" class="uri">http://hdl.handle.net/1902.1/17976</a>, Harvard Dataverse, V1</li>
+<li><a href="data/rossoildata.csv">ross_2012.csv</a>: csv file derived from, Michael L. Ross, 2001, “Does Oil Hinder Democracy”, <em>World Politics</em>. <a href="http://dx.doi.org/10.1353/wp.2001.0011" class="uri">http://dx.doi.org/10.1353/wp.2001.0011</a>. csv file from <a href="http://staff.washington.edu/csjohns/503/rossoildata.csv" class="uri">http://staff.washington.edu/csjohns/503/rossoildata.csv</a>.</li>
+<li><a href="data/garrett1998.csv">garrett1998.csv</a>: Economic and political data for OECD countries 1966-1990 from Garrett, Geoffrey. 1998. Partisan Politics in the Global Economy. Cambridge University Press. Data is a slightly processed version of that distributed with: Beck, Nathaniel; Katz, Jonathan N., 2014, “Replication data for: Modeling Dynamics in Time-Series-Cross-Section Political Economy Data”, <a href="http://dx.doi.org/10.7910/DVN/27269" class="uri">http://dx.doi.org/10.7910/DVN/27269</a>, Harvard Dataverse, V1</li>
+</ul>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

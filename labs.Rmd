@@ -14,6 +14,9 @@ output:
 <li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab3/lab3.html>3. -- Linear Regression, Matrices, and predicted Values </a>
 <li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab4/lab4.html>4. -- Multivariate Linear Regression, and Predicted Values </a>
 <li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab5/lab5.html>5. -- Loops and simulation </a>
+<li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab6/BbinaryModelsAndDataWrangling>6. -- Bianary Models
+and  Data wrangling </a>
+
 </ul>
 
 
