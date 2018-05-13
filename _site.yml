@@ -13,7 +13,7 @@ navbar:
       text: "Labs"
       href: labs.html
     - icon: fa-pencil-square-o fa-2x
-      text: "Assignments"
+      text: "Problem-Sets & Assignments"
       href: assignments.html
 output_dir: "."
 output: 

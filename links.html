@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="custom_style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-file-pdf-o fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="fa fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+<li>
+  <a href="labs.html">
+    <span class="fa fa-file-code-o fa-2x"></span>
+     
+    Labs
+  </a>
+</li>
+<li>
+  <a href="assignments.html">
+    <span class="fa fa-pencil-square-o fa-2x"></span>
+     
+    Probelm Sets and Assignments
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<!--
+.. title: Links
+.. slug: links
+.. date: 2015-03-26 00:16:00 UTC-07:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+-->
+<div id="r" class="section level1">
+<h1>R</h1>
+<div id="ggplot2" class="section level2">
+<h2>ggplot2</h2>
+<ul>
+<li>Wickham, Hadley. 2010. “A Layered Grammar of Graphics.” Journal of Computational and Graphical Statistics 19(1): 3–28. <a href="http://dx.doi.org/10.1198/jcgs.2009.07098" class="uri">http://dx.doi.org/10.1198/jcgs.2009.07098</a> (March 23, 2015).</li>
+<li>The ggplot2 book.</li>
+<li>The ggplot2 documentation <a href="http://docs.ggplot2.org/current/" class="uri">http://docs.ggplot2.org/current/</a>. If you don’t know the function you want click on something with a picture that looks like what you are looking for.</li>
+<li>Cookbook for R <a href="http://www.cookbook-r.com/Graphs/">graphs</a>. The author now works for Rstudio, infer from that what you will. It is organized by specific task so it may be easier to find what you are looking for than the documentation. This contains some of what is in the book, <a href="http://shop.oreilly.com/product/0636920023135.do">R Graphics Cookbook</a>.</li>
+<li><a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">Beautiful plotting in R: A ggplot2 cheatsheet</a></li>
+<li><a href="http://shinyapps.stat.ubc.ca/r-graph-catalog/">R Graph Catalog</a></li>
+<li>Karthik Ram, “A Quick introduction to ggplot2” tutorial, <a href="http://inundata.org/2013/04/10/a-quick-introduction-to-ggplot2/">link</a></li>
+<li>jennybc, <a href="https://github.com/jennybc/ggplot2-tutorial">ggplot2-tutorial</a></li>
+<li>Stat 545, <a href="https://stat545-ubc.github.io/graph00_index.html">All the graph things</a> links</li>
+</ul>
+</div>
+<div id="data-wrangling-tidyr-dplyr" class="section level2">
+<h2>Data wrangling (tidyr / dplyr)</h2>
+<ul>
+<li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pd">Data Wrangling Cheatsheet</a>f</li>
+<li><strong>Dplyr</strong> <a href="http://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html">Introduction</a> vignette</li>
+<li><strong>Tidyr</strong> <a href="http://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">vignette</a></li>
+<li>Wickham, Hadley. 2014. “Tidy Data.” Journal of Statistical Software 59(10). <a href="http://www.jstatsoft.org/v59/i10/" class="uri">http://www.jstatsoft.org/v59/i10/</a>.</li>
+<li>Hadley Wickham’s tutorials from useR 2014: Video <a href="https://www.youtube.com/watch?v=8SGif63VW6E">Part I</a>, <a href="https://www.youtube.com/watch?v=Ue08LVuk790">Part II</a>, <a href="https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a">Slides and Tutorial</a>.</li>
+<li>Stat 545, <a href="https://stat545-ubc.github.io/bit001_dplyr-cheatsheet.html">Cheatsheet for dplyr join functions</a></li>
+<li>Stat 545, <a href="https://stat545-ubc.github.io/block009_dplyr-intro.html">Introduction to dplyr</a></li>
+<li>Stat 545, <a href="https://stat545-ubc.github.io/block010_dplyr-end-single-table.html">dplyr functions for a single dataset</a></li>
+</ul>
+</div>
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<ul>
+<li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet</a></li>
+<li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Reference Guide</a></li>
+<li><a href="http://rmarkdown.rstudio.com/">R Markdown website</a></li>
+<li><a href="http://yihui.name/knitr/">knitr</a> site. <strong>knitr</strong> is the package that weaves together the R code and document.</li>
+<li>Yihui Xie, <em>Dynamic Documents with R and knitr</em>, <a href="http://www.amazon.com/Dynamic-Documents-knitr-Chapman-Series/dp/1482203537">amazon</a></li>
+<li>Christopher Gandrud, <em>Reproducible Research with R and R Studio</em>, <a href="http://www.amazon.com/Reproducible-Research-RStudio-Chapman-Series/dp/1466572841">amazon</a></li>
+</ul>
+</div>
+<div id="r-programming" class="section level2">
+<h2>R Programming</h2>
+<ul>
+<li>Hadley Wickham, <em>Advanced R</em>. If you really want to know what R as a <em>language</em> is doing, this is now the place to start. Available free as in beer and freedom at <a href="http://adv-r.had.co.nz/" class="uri">http://adv-r.had.co.nz/</a>, and as a physical copy published by <a href="http://www.amazon.com/dp/1466586966/">CRC</a>.</li>
+<li>Hadley Wickham, <em>R packages</em>. If you want to write your own R package (and you should), start here. Available for free at <a href="http://r-pkgs.had.co.nz/" class="uri">http://r-pkgs.had.co.nz/</a>.</li>
+<li>Norman Matloff, <a href="http://www.amazon.com/The-Art-Programming-Statistical-Software/dp/1593273843">The Art of R Programming</a></li>
+<li>Garrett Grolemund, <a href="http://shop.oreilly.com/product/0636920028574.do">Hands-On Programming with R</a></li>
+<li>Like Dante? Frustrated with R? <a href="http://www.burns-stat.com/documents/books/the-r-inferno/">The R Inferno</a></li>
+</ul>
+</div>
+<div id="general" class="section level2">
+<h2>General</h2>
+<ul>
+<li><a href="https://github.com/qinwf/awesome-R">awesome-R</a> a curated list of R frameworks, packages and software.</li>
+<li><a href="http://www.statmethods.net/">Quick-R</a></li>
+<li>Jared Lander, <a href="http://www.amazon.com/Everyone-Advanced-Analytics-Graphics-Addison-Wesley/dp/0321888030">R for Everyone</a> Teaches R assuming neither a programming or statistics background. One that I have considered and may consider in the future.</li>
+<li>Peter Daalgard, <em>Introductory Statistics with R</em></li>
+<li>Robert Muenchen, <em>R for Stata Users</em></li>
+<li>Venables and Ripley, <em>Modern Applied Statistics with S</em>. A good reference book for both a variety of statistical models and how to implement them in R.</li>
+</ul>
+</div>
+</div>
+<div id="latex" class="section level1">
+<h1>LaTeX</h1>
+<ul>
+<li><a href="https://tobi.oetiker.ch/lshort/lshort.pdf">Not So Short Introduction to LaTeX</a></li>
+<li><a href="http://en.wikibooks.org/wiki/LaTeX">LaTeX Wikibook</a></li>
+<li><a href="https://www.sharelatex.com/learn/">ShareLaTeX</a> documentation. Although geared towards the ShareLaTeX online editor, it is also good user-friendly introduction to LaTeX if the ShareLaTeX specific stuff is ignored.</li>
+<li>Carolina Johnson’s excellent LaTeX intro <a href="http://staff.washington.edu/csjohns/503/WorkshopTemplate.pdf">pdf</a>, <a href="http://staff.washington.edu/csjohns/503/WorkshopTemplate.tex">tex</a></li>
+<li>Using LaTeX. You should find a good LaTeX friendly
+<ul>
+<li><a href="https://www.sharelatex.com/about">ShareLaTeX</a>: a not free, online editor for collaboration.</li>
+<li>See <a href="http://en.wikipedia.org/wiki/Comparison_of_TeX_editors" class="uri">http://en.wikipedia.org/wiki/Comparison_of_TeX_editors</a></li>
+<li>Emacs or Vim. If you have to ask, you are not ready.</li>
+</ul></li>
+<li>Need to lookup a LaTeX symbol? Just draw it here: <a href="http://detexify.kirelabs.org/classify.html" class="uri">http://detexify.kirelabs.org/classify.html</a></li>
+<li>Here’s a couple of online LaTeX math equation editors: <a href="http://www.sciweavers.org/free-online-latex-equation-editor" class="uri">http://www.sciweavers.org/free-online-latex-equation-editor</a>, <a href="http://www.codecogs.com/latex/eqneditor.php" class="uri">http://www.codecogs.com/latex/eqneditor.php</a> They seem fine, but a good LaTeX friendly text editor will have better capabilities</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

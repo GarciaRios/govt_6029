@@ -22,7 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -204,7 +203,7 @@ $(document).ready(function () {
   <a href="assignments.html">
     <span class="fa fa-pencil-square-o fa-2x"></span>
      
-    Problem-Sets &amp; Assignments
+    Probelm Sets and Assignments
   </a>
 </li>
       </ul>
@@ -223,35 +222,37 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<div id="problem-sets" class="section level3">
-<h3>Problem Sets</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html>1.– Problem Set 1</a>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa fa-check-circle-o"></i><a target="_blank" href=./hw/hw1/hw1_sol.html>1.– Problem Set 1 Sol</a>
+<!--
+title: Loading Data in R
+-->
+<p>Getting your data into R is</p>
+<ul>
+<li><p>Comma separated value (<code>.csv</code>) files</p>
+<ul>
+<li><code>read.csv</code> is the standard function included in R. However, it can be slow for very large datasets.</li>
+<li>The <a href="https://github.com/hadley/readr">readr</a> package is very new, but provides much faster reading of csv files.</li>
+</ul></li>
+<li><p>Stata (<code>.dta</code>):</p>
+<ul>
+<li><code>foreign</code> package function <code>read.dta</code> is the standard way to do this. But this <strong>does not</strong> work with datasets created by Stata 13.</li>
+<li>The package <a href="https://github.com/hadley/haven/">haven</a> reads Stata <code>.dta</code> files from all versions (in addition to SAS and SPSS files).</li>
+</ul></li>
+<li>SPSS (<code>.por</code>, <code>.sav</code>). The function <code>read.spss</code> in the <code>foreign</code> library.</li>
+<li>Excel (<code>.xls</code>, <code>.xlsx</code> files). There are several packages that can read these. However, the newest and best is the <a href="https://github.com/hadley/readxl">readxl</a> package. It is very new (not on CRAN), but provides fast reading <em>and</em> writing of xls fils. However, try to avoid dealing with Excel files if at all possible; while you may need to read data from one, you should not save your own data in them.</li>
+<li>PDF … abandon all hope, nothing can save you.</li>
+<li><p>Increasingly data is available on the web through <a href="http://en.wikipedia.org/wiki/Application_programming_interface">APIs</a>. See the CRAN task view <a href="https://cran.r-project.org/web/views/WebTechnologies.html">Web Technologies</a> for a list of packages that provide interfaces to web data. For example,</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/WDI/index.html">WDI</a> World Bank’s World Development Indicators.</li>
+<li>The <a href="http://ropengov.github.io/">rOpenGov</a> project maintains many government data related R packages.</li>
+</ul></li>
+<li><p>R has functions and packages to handle many more types of data and documents (json, HTML, XML, databases, …) but you will probably not encounter them in this course. If you do, try finding it up yourself, and if you cannot, ask one of us and we’ll point you to the right means to load it.</p></li>
 </ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw2/hw1.html> 2.– Problem Set 2</a>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw3/hw3.pdf> 3.– Problem Set 3</a>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-code"></i><a target="_blank" href=https://github.com/GarciaRios/govt_6029/tree/master/hw/hw3/ps_functions/>HW3 Functions</a>
-</ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html> 4.– Problem Set 4</a>
-</ul>
-</div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-map-o"></i><a target="_blank" href=posters.html> Poster Peesentation</a>
-<li>
-<i class="fa-li fa fa-file-pdf-o"></i><a target="_blank" href=> Final Paper</a>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>A few other articles on this. They may suggest other functions (there are often many ways to do the same thing in R) or cover other types of files:</p>
+<ul>
+<li>Quick-R <a href="http://www.statmethods.net/input/importingdata.html">Importing Data</a></li>
+<li><a href="http://www.r-tutor.com/r-introduction/data-frame/data-import" class="uri">http://www.r-tutor.com/r-introduction/data-frame/data-import</a></li>
 </ul>
 </div>
 

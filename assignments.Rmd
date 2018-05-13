@@ -1,5 +1,5 @@
 ***
-## Assignments
+### Problem Sets
 
 
 <ul class="fa-ul">
@@ -14,5 +14,13 @@
   <li><i class="fa-li fa fa-code"></i><a target="_blank" href=https://github.com/GarciaRios/govt_6029/tree/master/hw/hw3/ps_functions/>HW3 Functions</a>
   </ul>
 <li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html> 4.-- Problem Set 4</a>
+</ul>
+
+### Assignments
+
+
+<ul class="fa-ul">
+<li><i class="fa-li fa fa-map-o"></i><a target="_blank" href=posters.html> Poster Peesentation</a>
+<li><i class="fa-li fa fa-file-pdf-o"></i><a target="_blank" href=> Final Paper</a>
 </ul>
 

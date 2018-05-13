@@ -6,23 +6,20 @@ output:
   pdf_document:
     toc: yes
     toc_depth: '6'
+  word_document:
+    toc: yes
+    toc_depth: '6'
   html_document:
     highlight: haddock
     theme: readable
     toc: yes
     toc_depth: 6
-  word_document:
-    toc: yes
-    toc_depth: '6'
 subtitle: Latinos and Discrimination
 editor_options:
   chunk_output_type: console
 ---
 
 ## Preliminary set up
-
-
-
 
 
 Let's load the data. We are going to use the Latino National Survey for this workshop. This particular version of the LNS comes in `.dta` format which is the extension used for a statistical package called `Stata`
@@ -34,7 +31,7 @@ The good thing is that R allows you to read in many different files, yes there's
 ### Load Libraries/Packages
 
 We are going to use the following packages, make sure you have them installed
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo = F}
 library(haven)
 library(labelled)
 library(tidyverse)
@@ -86,7 +83,7 @@ ggplot(lns, aes(x = natprob)) +
 
 WOW... That looks pretty bad, let's try to improve it  by flipping the axes with `coord_flip`
 
-```{r}
+```{r, echo=FALSE}
 ggplot(lns, aes(x = natprob)) +
   geom_bar() + 
   coord_flip()
@@ -100,7 +97,7 @@ That's better but we can make it much better if we do some recoding to the `natp
 
 ```{r}
 lns <- lns %>% mutate(natprob_r = 
-                        haven::as_factor(natprob) %>% 
+                        natprob %>% 
                         fct_infreq() %>% 
                         fct_rev())
 ```
@@ -115,9 +112,9 @@ ggplot(lns, aes(x = natprob %>%
                         fct_rev()
                 )) + 
   geom_bar( fill = "blue") +  # added blue as the color for the bars
-  coord_flip() + # still wnat teh coordinted flipped
+  coord_flip() + # still wnat the coordinted flipped
   labs(x = "",
-       y = "Main Issue",
+       y = "Frq. Main Issue",
        title= "What is the main problem facing the country") +  # here I can specify labels and titles 
   theme_minimal()
 ```
@@ -218,7 +215,8 @@ poor_can
 Now we are ready to create a graph using those proportions, that is, the  `poor_can` mini data set that we created.
 
 ```{r}
-ggplot(poor_can, aes(x=factor(newgen), y = prop, fill = poord_r)) +
+ggplot(poor_can, aes(x=factor(newgen), 
+                     y = prop, fill = poord_r)) +
   geom_bar(stat= "identity")
 ```  
 
@@ -236,7 +234,7 @@ ggplot(poor_can, aes(x = factor(newgen), y = prop,
        y = "Proportion",
        title= "Poor people can get ahead if they work hard",
        fill =  "Support") + 
-  scale_fill_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "BrBG") +
   theme_minimal()
 ```
 
@@ -270,7 +268,7 @@ ggplot(latinos_can, aes(x = factor(newgen), y = prop,
        y = "Proportion",
        title= "Latinos can get ahead if they work hard",
        fill = "Support") + 
-  scale_fill_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "PiYG") +
   scale_x_discrete(labels = c("First", "1.5ers", "Second", "Third", "Fourth"))
 
 ```
@@ -304,7 +302,7 @@ lns<- lns %>% mutate(whydisc_r = recode(whydisc, "dk/na" = NA_character_))
 Now look at the proportion table
 ```{r}
 
-prop.table(table(lns$whydisc_r,lns$newgen), 2)
+prop.table(table(lns$whydisc_r,lns$newgen), 2) %>% pander()
 
 ```
 You can see interesting patterns:
