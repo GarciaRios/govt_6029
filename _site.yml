@@ -1,28 +1,24 @@
-name: "Cornell-GOVT 6029 ARA"
+name: Cornell-GOVT 6029 ARA
 navbar:
-  title: "Cornell-GOVT 6029 ARA"
-  #type: inverse
+  title: Cornell-GOVT 6029 ARA
   left:
-    - icon: fa-file-pdf-o fa-2x
-      href: index.html
-      text: "Syllabus"
-    - icon: fa-calendar fa-2x
-      text: "Calendar"
-      href: calendar.html
-    - icon: fa-file-code-o fa-2x
-      text: "Labs"
-      href: labs.html
-    - icon: fa-pencil-square-o fa-2x
-      text: "Problem-Sets & Assignments"
-      href: assignments.html
-output_dir: "."
-output: 
-  html_document:  
+  - icon: fa-file-pdf-o fa-2x
+    href: index.html
+    text: Syllabus
+  - icon: fa-calendar fa-2x
+    text: Calendar
+    href: calendar.html
+  - icon: fa-file-code-o fa-2x
+    text: Labs
+    href: labs.html
+  - icon: fa-pencil-square-o fa-2x
+    text: Problem-Sets & Assignments
+    href: assignments.html
+output_dir: '.'
+output:
+  html_document:
     theme: simplex
     css: custom_style.css
+    lib_dir: site_libs
+    self_contained: no
 
-    
-
-     
-     
-  
