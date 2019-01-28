@@ -3,8 +3,6 @@
 ### Final Paper
 
 
-I have moved the deadline for the final paper to  **Monday, May  20, 11:59 pm**.
-
 Submit a copy of the paper and all associated code and data necessary to produce the results of the paper (see rule 7) via Balckboard
 
 As in any graduate courses, strive to write, draft, or work on research that could turn into a publishable article.

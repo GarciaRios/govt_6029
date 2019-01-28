@@ -11,11 +11,11 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 
 
-## Topic 1: Introduction to 6029 and R, Math Review
+###  Introduction to 6029 and R, Math Review
 
-###  Jan 29
+####  Jan 28
 
-#### Lecture
+##### Lecture
 
 - [Deck 1](lectures/Lecture_01_handout.pdf
 )
@@ -24,9 +24,9 @@ In particular, the pace of the course will be adjusted so that we move as possib
     - Gelman and Hill, Ch 2
 
 
-### February 5
+#### February 4
 
-#### Lab 1
+##### Lab 1
 
 
 - Lab document: [html](Labs/lab1/lab1.html)
@@ -36,14 +36,49 @@ In particular, the pace of the course will be adjusted so that we move as possib
     - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)
     - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3–28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
 
-### February 12
-
-#### Lab 2
+#### February 11
+##### Lab 2
 
 - Lab document: [html](Labs/lab2/lab2.html)
-- Reading 
-  
-    - Github and R: [link here](http://happygitwithr.com/big-picture.html)
+
+#### February 18
+
+- [Deck 2](lectures/Lecture_02_handout.pdf)
+- Readings: 
+    - Matrix algebra readings. Read **any** of the following
+        - Moore, Will H., and David A. Siegel. 2013. *A Mathematics Course for Political and Social Research*. 1st edition. Princeton, NJ: Princeton University Press, Chapter 12 (on Canvas).
+        - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
+
+
+
+#### February 25    
+##### Feb Break 
+- No  Class
+
+
+### Assumptions & Properties of the Linear Regression Model, Part II
+
+
+#### March 4 
+##### Lab 3
+- Lab document: [html](Labs/lab3/lab3.html)
+
+
+#### March 11
+##### Lecture
+- [Deck 3](lectures/Lecture_03_handout.pdf)
+- [Sampling Distribution of linear regression example]()
+- [Multiple regression coefficient anatomy]()
+
+### March 18
+#### Lab 4
+- Lab document: [html](Labs/lab4/lab3.html)
+
+### March 25
+
+### April 1 
+#### Sprnig break
+- No class
 
 <!--
 
