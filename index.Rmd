@@ -28,7 +28,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <table class = "table table-striped table-hover">
 <td>Class </td>
 <td> Monday </td>
-<td> 10:10 am -12:05 pm </td>
+<td> 12:20PM - 2:15PM </td>
 <td> White Hall 106</td>
 </tr>
 
@@ -41,7 +41,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <table class = "table table-striped table-hover">
 <tr>
 <td>Sergio Garcia-Rios</td>
-<td><a href="bookme.html"> <img src= "./images/ycbme.png" style="width: 70px;"/> [Click here to find available office
+<td><a href="bookme.html"> [Click here to find available office
 hours](http://www.sergiogarciarios.com/office_hours/)</td>
 <td> White Hall 308 </td>
 </tr>
@@ -83,13 +83,16 @@ Assignments will be submitted digitally through blackboard  at the due date.
 
 You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presetation session. We will invite other faculty, our chance to show off!
 
+Tentative date for poster presetation session:  **May 13, 2019 1:30 pm EST**
+
+
 #### Final Paper
 
 A 15--20 page original report on an original quantitative analysis or replication-and-extension of a published article.
 The quantitative analysis should be conducted in R and reproducible.
 
 
-The final paper is due on **May  20, 2015 11:59 pm EST**.
+The final paper is due on **May  20, 2019 11:59 pm EST**.
 
 Further details on the projects will be provided as due dates approach
 
@@ -107,8 +110,11 @@ All of your assignments will be submitted through Blackboard. You have to submit
 #### Required
 
 
-- Gelman, Andrew, and Jennifer Hill. 2006. *Data Analysis Using Regression and Multilevel/Hierarchical Models*. 1st edition. Cambridge ; New York: Cambridge University Press.
-- Angrist, Joshua D., and Jörn-Steffen Pischke. 2009. *Mostly Harmless Econometrics: An Empiricist’s Companion*. 1st edition. Princeton: Princeton University Press. 
+- Sheather, Simon. A modern approach to regression with R. Springer Science & Business Media, 2009.
+
+#### Optional 
+
+- Martin, John Levi. Thinking through statistics. University of Chicago Press, 2018.
 
 
 

@@ -57,7 +57,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 - No  Class
 
 
-### Assumptions & Properties of the Linear Regression Model, Part II
+### Assumptions & Properties of the Linear Regression Model, Part I
 
 
 #### March 4 
@@ -74,6 +74,11 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ### March 18
 #### Lab 4
 - Lab document: [html](Labs/lab4/lab3.html)
+
+
+
+### Assumptions & Properties of the Linear Regression Model, Part II
+
 
 ### March 25
 
