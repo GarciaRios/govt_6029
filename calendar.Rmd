@@ -40,6 +40,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ##### Lab 2
 
 - Lab document: [html](Labs/lab2/lab2.html)
+- Probelm Set 1 Assigned, Due Feb 23
 
 #### February 18
 
@@ -62,7 +63,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 #### March 4 
 ##### Lab 3
 - Lab document: [html](Labs/lab3/lab3.html)
-
+- Probelm Set 2 Assigned, Due March 15
 
 #### March 11
 ##### Lecture
