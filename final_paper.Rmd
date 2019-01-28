@@ -3,7 +3,7 @@
 ### Final Paper
 
 
-I have moved the deadline for the final paper to  **Monday, May  21, 11:59 pm**.
+I have moved the deadline for the final paper to  **Monday, May  20, 11:59 pm**.
 
 Submit a copy of the paper and all associated code and data necessary to produce the results of the paper (see rule 7) via Balckboard
 
@@ -28,10 +28,7 @@ There are several rules and recommendations for this assignment.
    Justify your modeling choices with reference to the data and present your findings in terms any intelligent person could understand, regardless of their statistical knowledge.
    This should not limit the sophistication of your methods: just think hard about how to explain results from complicated models in approachable terms.
 
-6. Don’t spend too much time on literature reviews or theory but don’t neglect hypothesis building, either. (Note, however, that hypotheses often can be clearly
-   explicated without recourse to numbered lists.) By the time I reach the results of
-   your paper, I should have some idea what you expect, what would be surprising,
-   and why. I should also know why this matters.
+6. Don’t spend too much time on literature reviews or theory but don’t neglect hypothesis building, either. (Note, however, that hypotheses often can be clearly explicated without recourse to numbered lists.) By the time I reach the results of your paper, I should have some idea what you expect, what would be surprising,    and why. I should also know why this matters.
 
 7. **Students must provide the code and data necessary to produce the results in the paper.**
    Replication policies similar to this are already present in most top journals, and it is likely to be the standard everywhere soon.
