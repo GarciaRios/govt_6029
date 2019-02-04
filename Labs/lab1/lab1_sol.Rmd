@@ -177,7 +177,7 @@ from Gapminder.[^2]
       The dataset in that package is an excerpt from the [Gapminder](http://www.gapminder.org/data/) data. Gapminder data is released under the Creative Commons Attribution 3.0 Unported license. See their [terms of use](https://docs.google.com/document/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM).
 
 
-Download the csv ("[comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values)")" <https://github.com/POLS503/pols_503_sp15/blob/master/labs/gapminder.csv>.
+Download the csv ("[comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values)")" [here](https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv).
 
 Then load the file
 ```{r results='hide',echo=FALSE}

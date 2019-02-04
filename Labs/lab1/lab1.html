@@ -111,6 +111,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -261,7 +264,7 @@ foo <span class="op">/</span><span class="st"> </span><span class="dv">2</span> 
 <div id="loading-data-into-r" class="section level1">
 <h1>Loading Data into R</h1>
 <p>For the remainder of this lab you will be using a dataset of GDP per capita and fertility from Gapminder.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
-<p>Download the csv (“<a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated values</a>”)&quot; <a href="https://github.com/POLS503/pols_503_sp15/blob/master/labs/gapminder.csv" class="uri">https://github.com/POLS503/pols_503_sp15/blob/master/labs/gapminder.csv</a>.</p>
+<p>Download the csv (“<a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated values</a>”)&quot; <a href="https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv">here</a>.</p>
 <p>Then load the file</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;gapminder.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>This creates a <em>data frame</em>. A <em>data frame</em> is a type of R object that corresponds to what you usually think of as a dataset or a spreadsheet — rows are observations and columns are variables.</p>
