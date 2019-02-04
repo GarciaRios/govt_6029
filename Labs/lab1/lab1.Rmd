@@ -257,14 +257,16 @@ sd(gapminder$lifeExp)
 min(gapminder$lifeExp)
 max(gapminder$lifeExp)
 quantile(gapminder$lifeExp)
+
 ```
 
 **Challenge**
+
 1. What are the mean and median of GDP per capita?
 2. Find the 30th percentile of GDP per capita?
-3. The function `length()` calculates the length of a vector.
-   The function `unique()` returns the number of unique values in a vector.
-   How many countries in the data are there? How many years?
+3. How many countries in the data are there? How many years?
+    a. The function `length()` calculates the length of a vector.
+    b. The function `unique()` returns the number of unique values in a vector.
 
 
 
