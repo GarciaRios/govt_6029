@@ -29,7 +29,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ##### Lab 1
 
 
-- Lab document: [html](Labs/lab1/lab1.html)
+- Lab document: [html](Labs/lab1/lab1*.html)
 - Data: [gapminder.csv](data/gapminder.csv)
 - Readings:
 
@@ -39,7 +39,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 #### February 11
 ##### Lab 2
 
-- Lab document: [html](Labs/lab2/lab2.html)
+- Lab document: [html](Labs/lab2/lab2*.html)
 - Probelm Set 1 Assigned, Due Feb 23
 
 #### February 18
