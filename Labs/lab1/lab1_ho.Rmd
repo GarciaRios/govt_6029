@@ -14,6 +14,11 @@ knitr::opts_chunk$set(results = "hide", warning = FALSE, message = FALSE,
 ```
 
 
+```{r}
+library(tidyverse)
+```
+
+
 
 # Learning Objectives
 
@@ -191,13 +196,10 @@ Then load the file
 ```{r results='hide',echo=FALSE}
 gapminder <- read.csv("../../data/gapminder.csv", stringsAsFactors = FALSE)
 ```
+
+
 ```{r eval=FALSE}
-
-
-
 gapminder <- read.csv("gapminder.csv", stringsAsFactors = FALSE)
-
-
 ```
 
 This creates a *data frame*.
@@ -220,8 +222,6 @@ names(gapminder)
 head(gapminder)
 tail(gapminder)
 summary(gapminder)
-
-glimpse(gapminder)
 
 ```
 
@@ -316,8 +316,6 @@ It removes any row in a dataset with a missing value in *any* column.
 For example,
 ```{r}
 dfrm <- data.frame(x = c(NA, 2, NA, 4), y = c(NA, NA, 7, 8))
-
-
 na.omit(dfrm)
 ```
 
@@ -325,8 +323,6 @@ na.omit(dfrm)
 Now We will use the following libraries in this `dplyr` and `ggplot2` section so make sure to install and load those libraries:
 
 ```{r, libraries, warning = FALSE, message = FALSE}
-
-
 library(tidyverse)
 library(gapminder)
 ```
@@ -339,7 +335,7 @@ In the first lab, you loaded the data from a csv file to show how to load from a
 In this lab, you will be using the same data, but as it is distributed in **gapminder** package.
 
 To load a dataset included with an R package, use the `data()` function.
-You can see which datasets are included in a package,
+You can see which datasets are included in a package. gapminder is not the only one most packages have some data set whithin the package. See also for instance `ggplot2`
 ```{r eval=FALSE}
 data(package = "gapminder")
 data(package = "ggplot2")
@@ -357,9 +353,7 @@ data(package = "ggplot2")
 Load the gapminder data
 ```{r}
 data("gapminder")
-data("diamonds")
-head
-head(diamonds)
+head(gapminder)
 ```
 
 # Introduction `dplyr`
@@ -383,10 +377,6 @@ Most data manipulations can be done by combining these verbs together --- someth
 ```{r}
 glimpse(gapminder)
 ```
-or `tbl_df` - which will print out the data frame more similarly to `head`
-```{r}
-tbl_df(gapminder)
-```
 
 ## Exploring our Data
 
@@ -405,13 +395,18 @@ You can combine filter statements.
 Including multiple logical statements is equivalent to combining them with "and".
 This will give all observations in "Africa", before 1966, and which have
 a life expectancy less than 40.
+
+
 ```{r results='hide'}
 filter(gapminder, continent == "Africa", year < 1966, lifeExp < 40)
 ```
+
 That is equivalent to
 ```{r results='hide'}
 filter(gapminder, continent == "Africa" & year < 1966 & lifeExp < 40)
 ```
+
+
 To combine logical statements with "or" you need to explicitly use `|`.
 To find observations from Afghanistan or Albania,
 ```{r results='hide'}
@@ -430,7 +425,6 @@ Most of the times we don't need to see all the variables and are often intereste
 ```{r results='hide'}
 select(gapminder, year, lifeExp)
 
-
 ```
 
 **Challenge**
@@ -438,10 +432,6 @@ select(gapminder, year, lifeExp)
 Using a combination of `filter`, `select` and and `slice` show only year and life expectancy of Cambodia for the first two observations
 
 ```{r, echo=FALSE}
-
-
-
-
 
 gapminder %>%
   filter(., country == "Cambodia") %>%
@@ -461,18 +451,18 @@ gapminder <-
   gapminder %>%
   mutate(gdp = pop * gdpPercap)
 
-gapminder %>% glimpse
+gapminder
 ```
 
 So... GDP is almost useless because it doesn't give a base line and that is why we often use per capita, but a baseline is often more useful, how about comparing it to another country sat, USA? Yes USA, USA, USA!
 
 Let's  create first an object containing only US data, we use `filter` here
+
 ```{r}
 just_usa <- gapminder %>%
   filter(country == "United States") %>%
-  select(year, gdpPercap, lifeExp) %>%
-  rename(usa_gdpPercap = gdpPercap,
-         usa_lifeExp = lifeExp)
+  select(year, gdpPercap) %>%
+  rename(usa_gdpPercap = gdpPercap)
 ```
 
 We can join (or merge) the dataset to the gapminder data using the `left_join` function.
@@ -481,16 +471,16 @@ There are are several ways to merge datasets with **dplyr** (left join, right jo
 gapminder <- 
   left_join(gapminder, just_usa, by = c("year")) 
 
+gapminder <- 
 gapminder %>% 
-  mutate(gdpPercapRel = gdpPercap / usa_gdpPercap,
-         lifeExpRel = lifeExp / usa_lifeExp)
+  mutate(gdpPercapRel = gdpPercap / usa_gdpPercap)
 ```
 
 Now, summarize the relative GDP
 ```{r}
 gapminder %>%
   select(gdpPercapRel) %>%
-  summary
+  summary()
 
 ```
 
@@ -498,10 +488,23 @@ Nice, now we can do something like this:
 
 Look at the GDP per capita  of Mexico and Canada relative to US by year
 ```{r}
+
 gapminder %>%
-  filter(country == c("Canada")) %>%
-  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) %>%
-  glimpse()
+  filter(country == "Canada") %>%
+  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
+
+
+
+gapminder %>%
+  filter(country == "Mexico") %>%
+  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
+
+
+df_NAFTA<-
+gapminder %>%
+  filter(country == "Mexico" | country == "Canada" ) %>%
+  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
+
 ```
 
 
@@ -510,20 +513,49 @@ gapminder %>%
 Because the world is not always ordered the way we want it
 ```{r}
 gapminder %>%
-  arrange(year, country) %>%
-  glimpse()
-
+  arrange(year, country) 
 
 gapminder %>%
   filter(year == 2007) %>%
-  arrange(- lifeExp) %>%
-  glimpse()
+  arrange(- lifeExp)
 
 ```
 
 ** Challenge
 
 What about life expectancy? Create a relative to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
+
+
+
+
+
+
+```{r}
+
+
+
+just_usa_life <- gapminder %>%
+  filter(country == "United States") %>%
+  select(year, lifeExp) %>%
+  rename(usa_lifeExp = lifeExp)
+
+
+gapminder <- 
+  left_join(gapminder, just_usa_life, by = c("year")) 
+
+gapminder <- 
+gapminder %>% 
+  mutate(lifeExpRel = lifeExp / usa_lifeExp)
+
+
+gapminder %>%
+  select(lifeExpRel) %>%
+  summary()
+
+```
+
+
+
 
 
 # Plotting with ggplot2
@@ -596,29 +628,72 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   geom_point() +
   scale_x_log10()
 ```
+
+
+
 Let's address over-plotting: SET alpha transparency and size to a value
+
+
+
+
+
 ```{r}
 p + geom_point(alpha = (1 / 3), size = 3)
 ```
+
+
 Add now a fitted curve or line
 ```{r}
 p + geom_point() + geom_smooth()
+
+
+
 p + geom_point() + geom_smooth(lwd = 2, se = FALSE)
+
+
+
 p + geom_smooth(lwd = 1, se = FALSE, method = "lm") + geom_point()
+
+
 ```
 That's great but I actually want to revive our interest in continents!
 ```{r}
 p + aes(color = continent) + geom_point() + geom_smooth(lwd = 3, se = FALSE)
+
 ```
 Facetting: another way to exploit a factor
 ```{r}
 p + geom_point(alpha = (1 / 3), size = 3) + facet_wrap(~ continent)
+
 ```
 Still want lines? Let's add them
 ```{r}
 p + geom_point(alpha = (1 / 3), size = 3) + facet_wrap(~ continent) +
   geom_smooth(lwd = 2, se = FALSE)
 ```
+
+
+```{r} 
+library(gganimate)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~ continent) +
+  transition_time(year) +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  theme_bw() 
+
+
+
+
+  # Here comes the gganimate specific bits
+  
+```
+
+
 
 **Challenge**
 
@@ -656,6 +731,7 @@ Let just look at five countries
 
 ```{r}
 some_countries <- c("United States", "Canada", "Rwanda", "Cambodia", "Mexico")
+
 ggplot(filter(gapminder, country %in% some_countries),
        aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
@@ -701,8 +777,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
   theme_bw() 
   # Here comes the gganimate specific bits
   labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
- 
-  ```
+```
 
 
 

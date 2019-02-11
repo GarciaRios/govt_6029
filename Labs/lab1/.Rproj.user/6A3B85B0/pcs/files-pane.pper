@@ -1,6 +1,10 @@
 {
-    "path" : "C:/Users/sig35/Google Drive/Work/Teaching/Courses/Advanced Regression Analysis/web/govt_6029/govt_6029/Labs/lab1",
+    "path" : "G:/My Drive/Work/Teaching/Courses/Advanced Regression Analysis/govt_6029/Labs/lab1",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
