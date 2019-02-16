@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: Introduction to R and RStudio, knitr, and tidyverse"
+title: "Lab 1: Introduction RStudio, knitr, and tidyverse"
 output:
   html_document:
     theme: simplex
@@ -13,11 +13,11 @@ editor_options:
 knitr::opts_chunk$set( warning = FALSE, message = FALSE,
                       fig.show = "hide", eval = F)
 ```
+***
 
 
 
-
-# Learning Objectives
+## Learning Objectives
 
 1. Install R and RStudio
 2. Load data from a csv into R
@@ -28,12 +28,12 @@ knitr::opts_chunk$set( warning = FALSE, message = FALSE,
 
 
 
-# Installing R
+## Installing R
 
 Install R and RStudio
 
 
-# Orientation with RStudio
+## Orientation with RStudio
 
 R is the name of the programming language, and RStudio is a convenient and widely used interface to that language.
 
@@ -80,12 +80,10 @@ There are some technical reasons to use `<-` instead of `=`, but the primary rea
 
 
 
-# Working Directory and R Projects
-
-## Working Directory
+## Working Directory and R Projects
 
 
-## R Projects
+### R Projects
 
 Keeping all the files associated with a project organized together -input data, R scripts, analytical results, figures- is such a wise and common practice that RStudio has built-in support for this via its projects.  Read [this](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for more information about RStudio projects.
 
@@ -102,7 +100,7 @@ Create a RStudio project that you will use for all your labs.
 
 
 
-# Creating your first R Markdown Document
+## Creating your first R Markdown Document
 
 For this course, you will be we using R Markdown documents for homeworks.
 Create your firs
@@ -120,7 +118,7 @@ Cheat sheets and additional resources about R Markdown are available at <http://
 
 
 
-# Using R as a calculator
+## Using R as a calculator
 
 Although it is so much more, you can use R as a calculator.
 For example, to add, subtract, multiply or divide:
@@ -152,7 +150,7 @@ sqrt(2 * 2)
 
 
 
-# Variables and Assignment
+## Variables and Assignment
 
 In R, you can save the results of calculations into objects that you can use later.
 This is done using the special symbol, ``<-``.
@@ -178,7 +176,7 @@ foo / 2 * 8 + foo
 Then multiply it by 4.
 2. Create a variable with a really long name and assign it a value. Start typing its name
 
-# Comments
+## Comments
 
 Any R code following a hash (``#``) is not executed.
 These are called comments, and can and **should** be used to annotate and explain your code.
@@ -229,7 +227,7 @@ na.omit(dfrm)
 ```
 
 
-# Loading Data into R
+## Loading Data into R
 
 For the remainder of this lab you will be using a dataset of GDP per capita and fertility
 from Gapminder.[^2]
@@ -285,7 +283,7 @@ summary(gapminder)
 4. What is the range of years in the data?
 5. What are the mean and median life expectancy?
 
-# Working with variables in Data Frames
+## Working with variables in Data Frames
 
 You can extract single variables (or columns) and perform different operations on them.
 To extract a variable, we use the dollar sign (`$`) extraction operator.
@@ -305,16 +303,18 @@ quantile(gapminder$lifeExp)
 ```
 
 **Challenge**
+
 1. What are the mean and median of GDP per capita?
 2. Find the 30th percentile of GDP per capita?
 3. How many countries in the data are there? How many years?
     The function `length()` calculates the length of a vector.
    The function `unique()` returns the number of unique values in a vector.
    
+#### On your own
 
-On your own, make sure your lab compiles neatly.Make sure that you are not printing unnecessary output. 
+Make sure your lab compiles neatly.Make sure that you are not printing unnecessary output. 
 
-On the class website, you can find the RMarkdown code that use to create this document. Download it and check the code that use to keep it nice and clean as well and the Markdown code that use through the text (e.g to create lists and other styling)
+You can find  the RMarkdown code that use to create this document on the class website. Download it and check the code that use to keep it nice and clean as well and the Markdown code that use through the text (e.g to create lists and other styling)
 
 
 * * *
