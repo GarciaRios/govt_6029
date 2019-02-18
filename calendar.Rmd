@@ -44,9 +44,13 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 - [Deck 2](lectures/Lecture_02_handout.pdf)
 - Readings: 
+    - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
+
+<!--    
     - Matrix algebra readings. Read **any** of the following
         - Moore, Will H., and David A. Siegel. 2013. *A Mathematics Course for Political and Social Research*. 1st edition. Princeton, NJ: Princeton University Press, Chapter 12 (on Canvas).
-        - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
+-->        
+
 
 
 
