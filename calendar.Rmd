@@ -20,8 +20,6 @@ In particular, the pace of the course will be adjusted so that we move as possib
 - [Deck 1](lectures/Lecture_01_handout.pdf
 )
 - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
-- Readings
-    - Gelman and Hill, Ch 2
 
 
 #### February 4
@@ -39,7 +37,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 #### February 11
 ##### Lab 2
 
-- Lab document: [html](Labs/lab2/lab2*.html)
+- Lab document: [html](Labs/lab2/lab2.html)
 - Probelm Set 1 Assigned, Due Feb 23
 
 #### February 18
