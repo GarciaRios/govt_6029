@@ -27,7 +27,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ##### Lab 1
 
 
-- Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.rmd)
+- Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
 - Data: [gapminder.csv](data/gapminder.csv)
 - Readings:
 
