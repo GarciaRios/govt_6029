@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Sergio Garcia-Rios/ Claire Leavitt" />
+<meta name="author" content="Sergio Garcia-Rios/ Julie George" />
 
 
 <title>Lab 3: Linear Regression, Matrices, and predicted Values</title>
@@ -117,6 +117,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -145,15 +148,12 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Lab 3: Linear Regression, Matrices, and predicted Values</h1>
-<h4 class="author"><em>Sergio Garcia-Rios/ Claire Leavitt</em></h4>
+<h4 class="author"><em>Sergio Garcia-Rios/ Julie George</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#house-keeping">House keeping</a><ul>
-<li><a href="#check-in">Check in:</a></li>
-</ul></li>
 <li><a href="#initial-set-up-reading-in-data-and-initial-data-exploration">Initial set up, reading in data and initial data exploration</a><ul>
 <li><a href="#load-libraries">Load libraries</a></li>
 <li><a href="#data">Data</a></li>
@@ -168,18 +168,6 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<div id="house-keeping" class="section level2">
-<h2>House keeping</h2>
-<div id="check-in" class="section level3">
-<h3>Check in:</h3>
-<ul>
-<li>Questions,<br />
-</li>
-<li>Homework 1, Homework 2,</li>
-<li>Other lingering confusion</li>
-</ul>
-</div>
-</div>
 <div id="initial-set-up-reading-in-data-and-initial-data-exploration" class="section level2">
 <h2>Initial set up, reading in data and initial data exploration</h2>
 <div id="load-libraries" class="section level3">
@@ -236,12 +224,13 @@ $(document).ready(function () {
 <p>Let’s run a regression using the Iverson and Soskice data. We save the regression as an object and then print the summary of the results:</p>
 <p><strong>A simple bivariate model:</strong> Here let’s use <code>povred</code> as the outcoem variable and <code>lnenp</code> as our only covariate</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_bivar &lt;-<span class="st"> </span><span class="kw">lm</span>(povred <span class="op">~</span><span class="st"> </span>lnenp, <span class="dt">data =</span> iver)
+
 <span class="kw">summary</span>(lm_bivar)</code></pre></div>
-<p><em>Challenge:</em></p>
+<p><strong>Challenge:</strong></p>
 <ul>
 <li>How do we interpret this output?</li>
-<li>What happens if you just type <code>lm_bivar</code>?</li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.</code></pre></div>
 <p><strong>A multivariate model:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iver)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_multi &lt;-<span class="st"> </span><span class="kw">lm</span>(povred <span class="op">~</span><span class="st"> </span>lnenp <span class="op">+</span><span class="st"> </span>maj <span class="op">+</span><span class="st"> </span>pr, <span class="dt">data =</span> iver)
@@ -250,12 +239,14 @@ $(document).ready(function () {
 <h3>Aside on the formula</h3>
 <p>Note: the first argument to the function is an R formula. Formulas appear throughout many R functions, and have some special features of their syntax, some of which are illustrated below.</p>
 <p>In <code>lm</code>, the formula is used to generate the exact <span class="math inline">\(X\)</span> matrix that will be used to estimate the model. To see the matrix being generated internally by <code>lm</code>, add the argument <code>x = TRUE</code> to the <code>lm()</code> call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_cat &lt;-<span class="st"> </span><span class="kw">lm</span>(povred <span class="op">~</span><span class="st"> </span>lnenp <span class="op">+</span><span class="st"> </span>elec_sys, <span class="dt">data =</span> iver, <span class="dt">x =</span> <span class="ot">TRUE</span>)
-lm_cat<span class="op">$</span>x</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_cat &lt;-<span class="st"> </span><span class="kw">lm</span>(povred <span class="op">~</span><span class="st"> </span>lnenp <span class="op">+</span><span class="st"> </span>elec_sys, <span class="dt">data =</span> iver, <span class="dt">x =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_cat<span class="op">$</span>x</code></pre></div>
 <p>Take a look at the help page for <code>formula</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?formula</code></pre></div>
 <p>To better understand what the formula is doing, let’s look at the model matrix one of the more complex formulas above generates, note the inteeraction term and the base terms of this interaction:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_multi_interact &lt;-<span class="st"> </span><span class="kw">lm</span>(povred <span class="op">~</span><span class="st"> </span>lnenp <span class="op">*</span><span class="st"> </span>elec_sys, <span class="dt">data =</span> iver, <span class="dt">x =</span> <span class="ot">TRUE</span>)
+
+
 lm_multi_interact<span class="op">$</span>x</code></pre></div>
 </div>
 <div id="another-aside-now-on-matrices" class="section level3">
@@ -263,6 +254,7 @@ lm_multi_interact<span class="op">$</span>x</code></pre></div>
 <p>Matrices are collections of equal-length vectors in row and column arrangement. Matrices store information in a rectangular format, so look like data frames, but are less flexible as all data must be the same type (you can’t mix character and numeric data, for example). At first when you start working in R, matrices will be in use behind the scenes more than something you work with much.</p>
 <p>As an example, see what happens when we convert our <code>iver</code> data frame into a matrix:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iver_matrix &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(iver)
+
 iver_matrix</code></pre></div>
 <p>Why is everything in quotation marks now?</p>
 <p>You can index a matrix using square brackets, indicating first the row you want, then the column. This is the same way that you could directly extract specific values from a data frame</p>
@@ -271,9 +263,9 @@ iver_matrix</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iver_matrix[<span class="dv">4</span>, <span class="dv">3</span>]</code></pre></div>
 <p>If we leave out the character vectors and convert the data frame to a matrix, then the matrix will be numeric,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.matrix</span>(<span class="kw">select</span>(iver, <span class="op">-</span><span class="st"> </span>cty, <span class="op">-</span><span class="st"> </span>elec_sys))</code></pre></div>
-<p><em>Challenge:</em></p>
+<p><strong>Challenge:</strong></p>
 <ol style="list-style-type: decimal">
-<li>Use <code>names()</code> and <code>str()</code> to explore the contents of one of the lm objects you’ve created. (Look at the help file for <code>lm</code> for further details)</li>
+<li>Use <code>names()</code> and <code>glimpse</code> (or <code>str()</code> it will do the same as <code>glimpse</code> in tbis case) to explore the contents of one of the lm objects you’ve created. (Look at the help file for <code>lm</code> for further details)</li>
 <li>Extract and save as separate objects:
 <ol style="list-style-type: lower-alpha">
 <li>The coefficients</li>
@@ -281,28 +273,8 @@ iver_matrix</code></pre></div>
 <li>The fitted values (what are the fitted values?)</li>
 </ol></li>
 </ol>
-<p>To extract the coefficients,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coefficients_multi &lt;-<span class="st"> </span>lm_multi<span class="op">$</span>coefficients
-coefficients_multi
-
-<span class="co"># or</span>
-
-<span class="kw">coef</span>(lm_multi)</code></pre></div>
-<p>To extract the residuals,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">residuals_multi &lt;-<span class="st"> </span>lm_multi<span class="op">$</span>residuals
-residuals_multi
-
-<span class="co"># or</span>
-<span class="kw">resid</span>(lm_multi)</code></pre></div>
-<p>Now fitted values</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitted_multi &lt;-<span class="st"> </span>lm_multi<span class="op">$</span>fitted.values
-fitted_multi
-<span class="co">#or</span>
-<span class="kw">fitted</span>(lm_multi)</code></pre></div>
-<ol style="list-style-type: decimal">
-<li>What important information is missing from the <code>lm()</code> list?</li>
-</ol>
-<p>To extract standard errors of the estimates:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.</code></pre></div>
+<p>If you notice the standard errors are missing from the <code>lm()</code> list. Let’s calcualte it</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se_multi &lt;-<span class="st"> </span>lm_multi <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">vcov</span>() <span class="op">%&gt;%</span><span class="st"> </span>diag <span class="op">%&gt;%</span><span class="st"> </span>sqrt
 se_multi</code></pre></div>
 <p>This calculates the standard errors by calculating the square root of the diagonal of the variance-covariance matrix of the parameters of the model object. <code>vcov()</code> is an example of a function that has a specific “method” for different types of objects: it knows we have an <code>lm</code> object and acts accordingly.</p>
@@ -310,30 +282,31 @@ se_multi</code></pre></div>
 </div>
 <div id="fitted-values-and-predictions" class="section level2">
 <h2>Fitted values and predictions</h2>
-<p>hypothetical data Another way to get the fitted values is with <code>predict()</code>:</p>
+<p>Another way to get the fitted values is with <code>predict()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(lm_multi)</code></pre></div>
 <p>The nice thing about predict is that it will actually let us calculate the expected values from our model for any set of real or hypothetical data with the same X variables:</p>
 <p>Here’s the general form of a call to predict, giving 95% confidence intervals:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(object, <span class="co">#lm object</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(object, <span class="co"># lm object</span>
         newdata, <span class="co"># a data frame with same x vars as data, but new or specific values</span>
         <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>,
         <span class="dt">level =</span> <span class="fl">0.95</span> <span class="co">#the default</span>
 )</code></pre></div>
 <p>Let’s try this with our model.</p>
-<p><em>Challenge:</em></p>
+<p><strong>Challenge:</strong></p>
 <ol style="list-style-type: decimal">
 <li>What would we expect the level of poverty reduction to be for a majoritarian country with 2 parties?</li>
 <li>What would we expect the level of poverty reduction to be for a PR country as it goes from 1 to 5 parties?</li>
 </ol>
 <p><em>hint (refer to data frame info above for how to create a new dataframe for newdata argument)</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(lm_cat, <span class="dt">newdata =</span> <span class="kw">data_frame</span>(<span class="dt">lnenp =</span> <span class="dv">2</span>, 
-                                     <span class="dt">elec_sys =</span> <span class="st">&quot;maj&quot;</span>),
-        <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.</code></pre></div>
 <p>Of course, we can use more than one value of interest</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(lm_cat, <span class="dt">newdata =</span> <span class="kw">data_frame</span>(<span class="dt">lnenp =</span> <span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">elec_sys =</span> <span class="st">&quot;maj&quot;</span>),
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(lm_cat, 
+        <span class="dt">newdata =</span> <span class="kw">data_frame</span>(<span class="dt">lnenp =</span> <span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),  
+                             <span class="dt">elec_sys =</span> <span class="st">&quot;maj&quot;</span>),
         <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</code></pre></div>
-<p>Same thing as just reating the new hypothetical data and then just insert it into the predict function</p>
+<p>Same thing as just creating the new hypothetical data and then just insert it into the predict function</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hypx &lt;-<span class="st">  </span><span class="kw">data_frame</span>(<span class="dt">lnenp =</span> <span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">elec_sys =</span> <span class="st">&quot;maj&quot;</span>)
+
 hypx</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(lm_cat, <span class="dt">newdata =</span> hypx, <span class="dt">interval=</span><span class="st">&quot;confidence&quot;</span>)</code></pre></div>
 </div>
@@ -341,16 +314,19 @@ hypx</code></pre></div>
 <h2>Plotting regression results</h2>
 <p>Plotting regression results can be even more informative. Information dense, and more intuitive than regression tables!</p>
 <p>To plot a regression line (not just using the <code>lm</code> smoother in <strong>ggplot2</strong>), you can either fit a line to the observed values of X and the fitted values and CIs from <code>predict</code>, or fit a line to hypothetical data to illustrate the estimated relationship (the latter can help you to have smoother confidence intervals where you have fewer observations).</p>
-<p>We willuse the</p>
+<p>We willuse the hypothetical data</p>
 <p>Let’s now calculate expected values of <code>povred</code> for each observed level of <code>lnenp</code>, setting the covariates to an fixed level, illustrating the effect of a change in <code>lnenp</code>, all else equal (for a “typical” respondent, use the mean of the covariates you are keeping fixed). Remember to keep variable names identical to those in the model!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xhyp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">lnenp =</span> iver<span class="op">$</span>lnenp, <span class="dt">maj =</span> <span class="kw">mean</span>(iver<span class="op">$</span>maj),
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xhyp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">lnenp =</span> iver<span class="op">$</span>lnenp, 
+                   <span class="dt">maj =</span> <span class="kw">mean</span>(iver<span class="op">$</span>maj),
                    <span class="dt">pr =</span> <span class="kw">mean</span>(iver<span class="op">$</span>pr)) 
 xhyp</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">preds &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_multi, <span class="dt">newdata =</span> xhyp , <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">preds &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_multi, 
+                 <span class="dt">newdata =</span> xhyp ,
+                 <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)
 
 preds</code></pre></div>
-<p>Great! let’s now merge (bind) our hypothetical data and these prediciotns it will amke tings easier when we graph</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pred_plot &lt;-<span class="st"> </span><span class="kw">cbind</span>(preds, xhyp)
+<p>Great! let’s now merge (bind) our hypothetical data and these prediciotns. It will make things easier when we graph</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pred_plot &lt;-<span class="st"> </span><span class="kw">cbind</span>(xhyp, preds)
 pred_plot</code></pre></div>
 <p>Now we can graph it</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pred_plot, <span class="kw">aes</span>(<span class="dt">x =</span> lnenp, <span class="dt">y =</span> fit,
@@ -366,9 +342,302 @@ pred_plot</code></pre></div>
                 <span class="dt">head.tag =</span> <span class="ot">FALSE</span>,
                 <span class="dt">body.tag =</span> <span class="ot">FALSE</span>,
                 <span class="dt">doctype =</span> <span class="ot">FALSE</span>))</code></pre></div>
+<table cellspacing="0" align="center" style="border: none;">
+<caption align="bottom" style="margin-top:0.3em;">
+Statistical models
+</caption>
+<tr>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b></b>
+</th>
+<th style="text-align: left; border-top: 2px solid black; border-bottom: 1px solid black; padding-right: 12px;">
+<b>Model 1</b>
+</th>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+(Intercept)
+</td>
+<td style="padding-right: 12px; border: none;">
+17.66
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(12.69)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+lnenp
+</td>
+<td style="padding-right: 12px; border: none;">
+26.69
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(14.15)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+elec_syspr
+</td>
+<td style="padding-right: 12px; border: none;">
+9.22
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(11.34)
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+elec_sysunam
+</td>
+<td style="padding-right: 12px; border: none;">
+-48.95<sup style="vertical-align: 0px;">*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+</td>
+<td style="padding-right: 12px; border: none;">
+(17.86)
+</td>
+</tr>
+<tr>
+<td style="border-top: 1px solid black;">
+R<sup style="vertical-align: 0px;">2</sup>
+</td>
+<td style="border-top: 1px solid black;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Adj. R<sup style="vertical-align: 0px;">2</sup>
+</td>
+<td style="padding-right: 12px; border: none;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;">
+Num. obs.
+</td>
+<td style="padding-right: 12px; border: none;">
+14
+</td>
+</tr>
+<tr>
+<td style="border-bottom: 2px solid black;">
+RMSE
+</td>
+<td style="border-bottom: 2px solid black;">
+12.37
+</td>
+</tr>
+<tr>
+<td style="padding-right: 12px; border: none;" colspan="3">
+<span style="font-size:0.8em"><sup style="vertical-align: 0px;"><em><strong></sup>p &lt; 0.001, <sup style="vertical-align: 0px;"></strong></sup>p &lt; 0.01, <sup style="vertical-align: 0px;"></em></sup>p &lt; 0.05</span>
+</td>
+</tr>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stargazer<span class="op">::</span><span class="kw">stargazer</span>(lm_cat, <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>)</code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+povred
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+lnenp
+</td>
+<td>
+26.693<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(14.154)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+elec_syspr
+</td>
+<td>
+9.221
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(11.341)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+elec_sysunam
+</td>
+<td>
+-48.952<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(17.864)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+17.658
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(12.686)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.738
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.659
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+12.367 (df = 10)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+9.381<sup>***</sup> (df = 3; 10)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
 <hr />
-<p>I use stargazer most of the time but there many of these. Use whateve works for you.</p>
+<p>I use stargazer most of the time but there many others like these. Here is a list of some of these packages</p>
+<ul>
+<li><code>stargazer</code></li>
+<li><code>xtable</code></li>
+<li><code>kable</code></li>
+<li><code>pander</code></li>
+<li><code>texreg</code></li>
+</ul>
+<p>Like always, use whatever works for you.</p>
+<hr />
+<div class="alert alert-danger" role="alert">
+<p>Science should be open! Here at Cornell and everywhere, this lab is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>.</p>
+</div>
+<hr />
 <hr />
 </div>
 

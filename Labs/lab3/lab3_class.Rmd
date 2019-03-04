@@ -10,7 +10,7 @@ editor_options:
   chunk_output_type: console
 ---
 ```{r echo = FALSE, results = 'hide'}
-knitr::opts_chunk$set(warning = FALSE, message = F, eval = F)
+knitr::opts_chunk$set(warning = FALSE, message = TRUE, eval = F)
 ```
 
 
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(warning = FALSE, message = F, eval = F)
 
 We will use the following libraries so let's make sure you install them
 
-```{r, message = FALSE, eval=T}
+```{r, message = FALSE}
 library(tidyverse)
 library(texreg)
 library(stargazer)
@@ -46,7 +46,7 @@ Source of data and model Torben Iversen and David Soskice, 2002, ``Why do some d
 
 You can download it and load it (again, most of the time you will not be able to load it directly from the web)
 
-```{r, eval=T}
+```{r}
 iver <- read_csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/iver.csv")
 ```
 
@@ -83,14 +83,10 @@ lm_bivar <- lm(povred ~ lnenp, data = iver)
 summary(lm_bivar)
 ```
 
-**Challenge:**
+*Challenge:*
 
 * How do we interpret this output?
 
-```{r}
-.
-
-```
 
 **A multivariate model:**
 
@@ -111,10 +107,8 @@ summary(lm_multi)
 Note: the first argument to the function is an R formula.  Formulas appear throughout many R functions, and have some special features of their syntax, some of which are illustrated below.
 
 In `lm`, the formula is used to generate the exact $X$ matrix that will be used to estimate the model.  To see the matrix being generated internally by `lm`, add the argument `x = TRUE` to the `lm()` call:
-```{r, eval=T}
-lm_cat <- lm(povred ~ lnenp + elec_sys, data = iver, x = TRUE)
-```
 ```{r}
+lm_cat <- lm(povred ~ lnenp + elec_sys, data = iver, x = TRUE)
 lm_cat$x
 ```
 
@@ -135,6 +129,8 @@ lm_multi_interact <- lm(povred ~ lnenp * elec_sys, data = iver, x = TRUE)
 
 lm_multi_interact$x
 ```
+
+
 
 
 
@@ -172,7 +168,7 @@ as.matrix(select(iver, - cty, - elec_sys))
 
 
 
-**Challenge:**
+*Challenge:*
 
 1. Use `names()` and `glimpse` (or  `str()` it will do the same as `glimpse` in tbis case) to explore the contents of one of the lm objects you've created. (Look at the help file for `lm` for further details)
 2. Extract and save as separate objects:
@@ -180,11 +176,8 @@ as.matrix(select(iver, - cty, - elec_sys))
     b. The residuals (what are the residuals?)
     c. The fitted values (what are the fitted values?)
 
-```{r}
-.
-```
-
-```{r,  echo = F}
+To extract the coefficients,
+```{r, echo=}
 coefficients_multi <- lm_multi$coefficients
 coefficients_multi
 
@@ -192,8 +185,8 @@ coefficients_multi
 
 coef(lm_multi)
 ```
-
-```{r, echo = F}
+To extract the residuals,
+```{r}
 residuals_multi <- lm_multi$residuals
 residuals_multi
 
@@ -202,18 +195,20 @@ resid(lm_multi)
 ```
 
 
+Now fitted values
 
 
-```{r, echo = F}
+```{r}
 fitted_multi <- lm_multi$fitted.values
 fitted_multi
 #or
 fitted(lm_multi)
 ```
 
-If you notice the standard errors are missing from the `lm()` list. Let's calcualte it    
 
+1. What important information is missing from the `lm()` list?
 
+To extract standard errors of the estimates:
 ```{r}
 se_multi <- lm_multi %>% vcov() %>% diag %>% sqrt
 se_multi
@@ -222,6 +217,7 @@ This calculates the standard errors by calculating the square root of the diagon
 
 ## Fitted values and predictions
 
+hypothetical data
 Another way to get the fitted values is with `predict()`:
 ```{r}
 predict(lm_multi)
@@ -231,8 +227,7 @@ The nice thing about predict is that it will actually let us calculate the expec
 
 Here's the general form of a call to predict, giving 95% confidence intervals:
 ```{r eval=FALSE}
-
-predict(object, # lm object
+predict(object, #lm object
         newdata, # a data frame with same x vars as data, but new or specific values
         interval = "confidence",
         level = 0.95 #the default
@@ -241,20 +236,13 @@ predict(object, # lm object
 
 Let's try this with our model.
 
-**Challenge:**
+*Challenge:*
 
 1. What would we expect the level of poverty reduction to be for a majoritarian country with 2 parties?
 2. What would we expect the level of poverty reduction to be for a PR country as it goes from 1 to 5 parties?
 
 *hint (refer to data frame info above for how to create a new dataframe for newdata argument)*
-
 ```{r}
-.
-
-```
-
-
-```{r, echo=F}
 predict(lm_cat, newdata = data_frame(lnenp = 2, 
                                      elec_sys = "maj"),
         interval = "confidence")
@@ -262,16 +250,13 @@ predict(lm_cat, newdata = data_frame(lnenp = 2,
 
 Of course, we can use more than one value of interest
 ```{r}
-predict(lm_cat, 
-        newdata = data_frame(lnenp = seq(1:5),  
-                             elec_sys = "maj"),
+predict(lm_cat, newdata = data_frame(lnenp = seq(1:5), elec_sys = "maj"),
         interval = "confidence")
 ```
 
-Same thing as just creating the new hypothetical data and then just insert it into the predict function
+Same thing as just reating the new hypothetical data and then just insert it into the predict function
 ```{r}
 hypx <-  data_frame(lnenp = seq(1:5), elec_sys = "maj")
-
 hypx
 ```
 
@@ -286,7 +271,7 @@ Plotting regression results can be even more informative. Information dense, and
 
 To plot a regression line (not just using the `lm` smoother in **ggplot2**), you can either fit a line to the observed values of X and the fitted values and CIs from `predict`, or fit a line to hypothetical data to illustrate the estimated relationship (the latter can help you to have smoother confidence intervals where you have fewer observations).
 
-We willuse the hypothetical data
+We willuse the 
 
 
 
@@ -295,25 +280,22 @@ Let's now calculate expected values of `povred` for each observed level of `lnen
 
 
 ```{r}
-xhyp <- data.frame(lnenp = iver$lnenp, 
-                   maj = mean(iver$maj),
+xhyp <- data.frame(lnenp = iver$lnenp, maj = mean(iver$maj),
                    pr = mean(iver$pr)) 
 xhyp
 ```
 
 
 ```{r}
-preds <- predict(lm_multi, 
-                 newdata = xhyp ,
-                 interval = "confidence")
+preds <- predict(lm_multi, newdata = xhyp , interval = "confidence")
 
 preds
 ```
 
-Great! let's now merge (bind) our hypothetical data and these prediciotns. It will make things easier when we graph
+Great! let's now merge (bind) our hypothetical data and these prediciotns it will amke tings easier when we graph
 
 ```{r}
-pred_plot <- cbind(xhyp, preds)
+pred_plot <- cbind(preds, xhyp)
 pred_plot
 ```
 
@@ -335,9 +317,7 @@ ggplot(pred_plot, aes(x = lnenp, y = fit,
 There are mutiple package that could help with the prese ntaiton for your regression tables. 
 
 
-
-
-```{r results='asis', eval=T}
+```{r results='asis'}
 cat(texreg::htmlreg(list(lm_cat),
                 html.tag = FALSE,
                 head.tag = FALSE,
@@ -345,34 +325,13 @@ cat(texreg::htmlreg(list(lm_cat),
                 doctype = FALSE))
 ```
 
-```{r results='asis', eval = T}
+```{r results='asis'}
 stargazer::stargazer(lm_cat, type = "html")
 ```
 
 
 ***
 
-I  use stargazer most of the time but there many others like these.  Here is a list of some of these packages
+I  use stargazer most of the time but there many of these. Use whateve works for you.
 
-
-- `stargazer`
-- `xtable`
-- `kable`
-- `pander`
-- `texreg`
-
-
-Like always, use whatever works for you.
-
-
-***
-
-<div class="alert alert-danger" role="alert">
-Science should be open! Here at Cornell and everywhere, this lab is released under a 
-[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
-
-</div>
-
-
-***
 ***
