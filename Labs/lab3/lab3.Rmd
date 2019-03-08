@@ -1,6 +1,6 @@
 ---
-title: "Lab 3: Linear Regression, Matrices, and predicted Values"
-author: "Sergio Garcia-Rios/ Julie George"
+title: "Lab 3: Linear Regression, Matrices, and Predicted Values"
+author: "Sergio Garcia-Rios / Julie George"
 output: 
   html_document: 
     highlight: pygments
@@ -13,7 +13,7 @@ editor_options:
 knitr::opts_chunk$set(warning = FALSE, message = F, eval = F)
 ```
 
-
+***
 
 ## Initial set up, reading in data and initial data exploration
 
@@ -35,7 +35,7 @@ This dataset is cross sectional data on industrial democracies. Containing:
 
 --------- ----------------------------------------------------------------
 `povred`  Percent of citizens lifted out of poverty by taxes and transfers
-`enp`     Natural log of effective number of parties
+`enp`     Effective number of parties
 `lnenp`   Natural log of effective number of parties
 `maj`     Majoritarian election system dummy
 `pr`      Proportional representation dummy
@@ -75,7 +75,7 @@ res <- lm(y ~ x1 + x2 + x3, data = your.dataframe)
 Let's run a regression using the Iverson and Soskice data.  We save the regression as an object and then print the summary of the results:
 
 **A simple bivariate model:**
-Here let's use `povred` as the outcoem variable and `lnenp` as our only covariate
+Here let's use `povred` as the outcome variable and `lnenp` as our only covariate
 
 ```{r}
 lm_bivar <- lm(povred ~ lnenp, data = iver)
@@ -100,7 +100,7 @@ head(iver)
 
 
 ```{r}
-lm_multi <- lm(povred ~ lnenp + maj + pr, data = iver)
+lm_multi <- lm(povred ~ lnenp +  pr + maj, data = iver)
 summary(lm_multi)
 ```
 
@@ -113,6 +113,7 @@ Note: the first argument to the function is an R formula.  Formulas appear throu
 In `lm`, the formula is used to generate the exact $X$ matrix that will be used to estimate the model.  To see the matrix being generated internally by `lm`, add the argument `x = TRUE` to the `lm()` call:
 ```{r, eval=T}
 lm_cat <- lm(povred ~ lnenp + elec_sys, data = iver, x = TRUE)
+
 ```
 ```{r}
 lm_cat$x
@@ -174,7 +175,7 @@ as.matrix(select(iver, - cty, - elec_sys))
 
 **Challenge:**
 
-1. Use `names()` and `glimpse` (or  `str()` it will do the same as `glimpse` in tbis case) to explore the contents of one of the lm objects you've created. (Look at the help file for `lm` for further details)
+1. Use `names()` and `glimpse()` (or  `str()` it will do the same as `glimpse` in tbis case) to explore the contents of one of the lm objects you've created. (Look at the help file for `lm` for further details)
 2. Extract and save as separate objects:
     a. The coefficients
     b. The residuals (what are the residuals?)
@@ -191,6 +192,7 @@ coefficients_multi
 # or
 
 coef(lm_multi)
+
 ```
 
 ```{r, echo = F}
@@ -215,14 +217,21 @@ If you notice the standard errors are missing from the `lm()` list. Let's calcua
 
 
 ```{r}
-se_multi <- lm_multi %>% vcov() %>% diag %>% sqrt
+se_multi <- 
+  lm_multi %>% 
+  vcov() %>% 
+  diag %>% 
+  sqrt
+
 se_multi
 ```
+
 This calculates the standard errors by calculating the square root of the diagonal of the variance-covariance matrix of the parameters of the model object.  `vcov()` is an example of a function that has a specific "method" for different types of objects: it knows we have an  `lm` object and acts accordingly.
 
 ## Fitted values and predictions
 
 Another way to get the fitted values is with `predict()`:
+
 ```{r}
 predict(lm_multi)
 ```
@@ -270,7 +279,8 @@ predict(lm_cat,
 
 Same thing as just creating the new hypothetical data and then just insert it into the predict function
 ```{r}
-hypx <-  data_frame(lnenp = seq(1:5), elec_sys = "maj")
+hypx <-  data_frame(lnenp = seq(1:5), 
+                    elec_sys = "maj")
 
 hypx
 ```
@@ -295,6 +305,7 @@ Let's now calculate expected values of `povred` for each observed level of `lnen
 
 
 ```{r}
+
 xhyp <- data.frame(lnenp = iver$lnenp, 
                    maj = mean(iver$maj),
                    pr = mean(iver$pr)) 
@@ -346,7 +357,7 @@ cat(texreg::htmlreg(list(lm_cat),
 ```
 
 ```{r results='asis', eval = T}
-stargazer::stargazer(lm_cat, type = "html")
+stargazer(lm_cat, type = "html")
 ```
 
 
