@@ -10,76 +10,63 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ***
 
 
-
-###  Introduction to 6029 and R, Math Review
-
-####  Jan 28
-
-##### Lecture
-
-- [Deck 1](lectures/Lecture_01_handout.pdf
-)
-- In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
+***
 
 
-#### February 4
+####  **Introduction to 6029 and R**
 
-##### Lab 1
+- **January 28**  Intro to the course  [Deck 1](lectures/Lecture_01_handout.pdf)
+    - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
+    -  Readings:
+        - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)
+        - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3-28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
 
-
-- Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
-- Data: [gapminder.csv](data/gapminder.csv)
-- Readings:
-
-    - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)
-    - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3-28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
-
-#### February 11
-##### Lab 2
-
-- Lab document: [html](Labs/lab2/lab2.html)
-- Probelm Set 1 Assigned, Due Feb 23
-
-#### February 18
-
-- [Deck 2](lectures/Lecture_02_handout.pdf)
-- Readings: 
-    - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
-
-<!--    
-    - Matrix algebra readings. Read **any** of the following
-        - Moore, Will H., and David A. Siegel. 2013. *A Mathematics Course for Political and Social Research*. 1st edition. Princeton, NJ: Princeton University Press, Chapter 12 (on Canvas).
--->        
+- **February 4** Lab 1: Introduction to R, RStudio and knitr
+    - Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
+    - Data: [gapminder.csv](data/gapminder.csv)
+- **February 11** Lab 2: Graphing and Data Manipulation
+    - Lab document: [html](Labs/lab2/lab2.html)
+    - Probelm Set 1 Assigned, Due Feb 23
 
 
 
 
-#### February 25    
-##### Feb Break 
-- No  Class
+#### **Foundations of Linear Regression**
+
+- **February 18**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02_handout.pdf)
+    - Readings: 
+        - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
 
 
-### Assumptions & Properties of the Linear Regression Model, Part I
+- **February 25**  February Break 
+    - No  Class
+- **March 4**  Lab 3:  Linear Regression, Matrices, and predicted Values
+    - Lab document: [html](Labs/lab3/lab3.html)
+    - Probelm Set 2 Assigned, Due March 15
+
+#### Assumptions & Properties of the Linear Regression Model, Part I
 
 
-#### March 4 
-##### Lab 3
-- Lab document: [html](Labs/lab3/lab3.html)
-- Probelm Set 2 Assigned, Due March 15
 
-#### March 11
-##### Lecture
-- [Deck 3](lectures/Lecture_03_handout.pdf)
+- **March 11**  Lecture  [Deck 3](lectures/Lecture_03_handout.pdf)
 - [Sampling Distribution of linear regression example]()
 - [Multiple regression coefficient anatomy]()
 
-### March 18
-#### Lab 4
-- Lab document: [html](Labs/lab4/lab3.html)
+
+- **March 18** Lab 4 Multivariate Linear Regression, and Predicted Values
+    - Lab document: [html](Labs/lab4/lab3.html)
 
 
 
 ### Assumptions & Properties of the Linear Regression Model, Part II
+
+
+### March 25 
+
+### April 1 
+#### Sprnig break
+- No class
+
 
 
 ### March 25
@@ -87,6 +74,16 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ### April 1 
 #### Sprnig break
 - No class
+
+
+### April 8 
+#### 
+
+
+### April 15 
+#### Lecture
+
+-  Inference and Interpretation of Linear Regression
 
 <!--
 
