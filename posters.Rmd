@@ -30,7 +30,9 @@ Some of the basic elements of successful traditional presentation apply here:
 - Make sure to have useful labels and titles in your graphs
 - Apply efficient and  useful colors
 - Use space wisely. Put your most important elements towards the center
-- You can create bautiful poster using PowerPoint but I encourage you to use <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>. You can find a template here
+- You can create bautiful poster using PowerPoint but I encourage you to use <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>. You can find a template [here](https://github.com/GarciaRios/govt_6029/tree/master/Labs/lab7/poster). 
+    - Download all the files and run it to create a poster like [this](https://garciarios.github.io/govt_6029/Labs/lab7/poster/govt6029_poster.pdf)
+    - This is just a template, you do not have to create one exaclty like this one. Feel free to move things around
 
 
 #### Submition guidelines and logistics
