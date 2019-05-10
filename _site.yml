@@ -4,7 +4,7 @@ navbar:
   left:
   - icon: fa-file-pdf-o fa-2x
     href: index.html
-    text: Syllabus
+    text: Syllabus 
   - icon: fa-calendar fa-2x
     text: Calendar
     href: calendar.html
@@ -21,4 +21,3 @@ output:
     css: custom_style.css
     lib_dir: site_libs
     self_contained: no
-

@@ -1,6 +1,3 @@
----
----
-
 ***
 
 <i class="fa fa-warning"></i> **Warning:**  The following schedule is a *tentative* guideline and will be evolving to meet course needs up to and during the semester. The uncertainty on this schedule is high.
@@ -13,7 +10,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ***
 
 
-###  **Introduction to 6029 and R**
+####  **Introduction to 6029 and R**
 
 - **January 28**  Intro to the course  [Deck 1](lectures/Lecture_01_handout.pdf)
     - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
@@ -31,7 +28,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 ***
 
 
-### **Foundations of Linear Regression**
+#### **Foundations of Linear Regression**
 
 - **February 18**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02_handout.pdf)
     - Readings: 
@@ -47,7 +44,7 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 ***
 
-### **Assumptions & Properties of the Linear Regression Model, Part I**
+#### **Assumptions & Properties of the Linear Regression Model, Part I**
 
 
 
@@ -61,22 +58,19 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 
 
-### Assumptions & Properties of the Linear Regression Model, Part II
+#### Assumptions & Properties of the Linear Regression Model, Part II
 
 
-### March 25 
+- **March 25** 
 
-### April 1 
-#### Sprnig break
-- No class
+-  **April 1**  Sprnig break
+    - No class
 
 
 
 ### March 25
 
-### April 1 
-#### Sprnig break
-- No class
+
 
 
 ### April 8 
