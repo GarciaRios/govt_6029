@@ -30,9 +30,9 @@ Some of the basic elements of successful traditional presentation apply here:
 - Make sure to have useful labels and titles in your graphs
 - Apply efficient and  useful colors
 - Use space wisely. Put your most important elements towards the center
-- You can create bautiful poster using PowerPoint but I encourage you to use <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>. You can find a template [here](https://github.com/GarciaRios/govt_6029/tree/master/Labs/lab7/poster). 
+- You can create beautiful posters using PowerPoint but I encourage you to use <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>. You can find a template [here](https://github.com/GarciaRios/govt_6029/raw/master/Labs/lab7/poster/ARA_poster_template.rar). 
     - Download all the files and run it to create a poster like [this](https://garciarios.github.io/govt_6029/Labs/lab7/poster/govt6029_poster.pdf)
-    - This is just a template, you do not have to create one exaclty like this one. Feel free to move things around
+    - This is just a template, you do not have to create one exactly like this one. Feel free to move things around
 
 
 #### Submition guidelines and logistics
@@ -40,5 +40,5 @@ Some of the basic elements of successful traditional presentation apply here:
 - We will formally begin with the poster presentations at 10:00 am on May 15
 - Try to come a few minutes early so we can set up your poster
 - I will bring some of those mounting adhesives. 
-- Submit your poster (pdf or powerpoint only, no code) via Blackboard by midnight on Wednesday
+- Submit your poster (pdf or PowerPoint only, no code) via Blackboard by midnight on Wednesday
 
