@@ -68,19 +68,25 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 
 
-### March 25
+- **March 25**
 
 
 
 
-### April 8 
-#### 
+- **April 8** 
 
 
-### April 15 
-#### Lecture
 
--  Inference and Interpretation of Linear Regression
+- **April 15** 
+    -  Inference and Interpretation of Linear Regression
+
+
+#### Poster Presentation and Final Paper
+
+- **May 15** Poster Presentation: 10 am
+    - More info [here](poster.html)
+- **MAy 20** Final Paper Due
+    - More info [here](final_paper.html)
 
 <!--
 
