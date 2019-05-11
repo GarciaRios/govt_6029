@@ -53,42 +53,46 @@ In particular, the pace of the course will be adjusted so that we move as possib
     - [Multiple regression coefficient anatomy]()
 
 
-- **March 18** Lab 4 Multivariate Linear Regression, and Predicted Values
-    - Lab document: [html](Labs/lab4/lab3.html)
+- **March 18** Lab 4: Multivariate Linear Regression, and Predicted Values
+    - Lab document: [html](Labs/lab4/lab4.html)
 
 ***
 
 #### **Assumptions & Properties of the Linear Regression Model, Part II**
 
 
-- **March 25** 
+- **March 25** Lecture  [Deck 4](lectures/Lecture_03_handout.pdf)
 
 -  **April 1**  Sprnig break
     - No class
 
 
 
-- **March 25**
+- **March 25** Lecture  [Deck 4](lectures/Lecture_05_handout.pdf)
 
 
-- **April 8** 
+- **April 8**   Lab 5  Loops and simulation
+    - Lab document: [html](Labs/lab5/lab5.html)
 
 
 ***
 
 #### **Inference and Interpretation of Linear Regression**
 
-- **April 15** 
+- **April 15** Lecture  [Deck 5](lectures/Lecture_05_handout.pdf)
 
-- **April 22**
+- **April 22** Lab 6: Binary Models and Data Wrangling
+    - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
 
-- **April 29**
+- **April 29** Lab 7: Case Study
+    - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
+
 
 ***
 
 
 #### **Poster Presentation and Final Paper**
-- **May 6** One on One Consultation for Final Porjects
+- **May 6** One-on-One Consultation for Final Projects
 - **May 15** Poster Presentation: 10:00 am
     - More info [here](posters.html)
 - **May 20** Final Paper Due
