@@ -49,16 +49,16 @@ In particular, the pace of the course will be adjusted so that we move as possib
 
 
 - **March 11**  Lecture  [Deck 3](lectures/Lecture_03_handout.pdf)
-- [Sampling Distribution of linear regression example]()
-- [Multiple regression coefficient anatomy]()
+    - [Sampling Distribution of linear regression example]()
+    - [Multiple regression coefficient anatomy]()
 
 
 - **March 18** Lab 4 Multivariate Linear Regression, and Predicted Values
     - Lab document: [html](Labs/lab4/lab3.html)
 
+***
 
-
-#### Assumptions & Properties of the Linear Regression Model, Part II
+#### **Assumptions & Properties of the Linear Regression Model, Part II**
 
 
 - **March 25** 
@@ -71,21 +71,27 @@ In particular, the pace of the course will be adjusted so that we move as possib
 - **March 25**
 
 
-
-
 - **April 8** 
 
 
+***
+
+#### **Inference and Interpretation of Linear Regression**
 
 - **April 15** 
-    -  Inference and Interpretation of Linear Regression
+
+- **April 22**
+
+- **April 29**
+
+***
 
 
-#### Poster Presentation and Final Paper
-
-- **May 15** Poster Presentation: 10 am
-    - More info [here](poster.html)
-- **MAy 20** Final Paper Due
+#### **Poster Presentation and Final Paper**
+- **May 6** One on One Consultation for Final Porjects
+- **May 15** Poster Presentation: 10:00 am
+    - More info [here](posters.html)
+- **May 20** Final Paper Due
     - More info [here](final_paper.html)
 
 <!--
