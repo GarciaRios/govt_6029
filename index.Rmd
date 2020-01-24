@@ -29,7 +29,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <td>Class </td>
 <td> Monday </td>
 <td> 12:20PM - 2:15PM </td>
-<td> White Hall 106</td>
+<td> Morrill Hall 110</td>
 </tr>
 
 </table>
@@ -47,14 +47,13 @@ hours](http://www.sergiogarciarios.com/office_hours/)</td>
 </tr>
 <tr>
 <td>Julie George</td>
-<td>Thursdays 2:30 PM to 4:30 PM </td>
+<td>Monday  3:00 PM to 5:00 PM </td>
 <td> White Hall -- B12  </td>
 </tr>
 
 </table>
 
 ### Overview and Class Goals
-
 
 
 This course continues the graduate sequence in quantitative political methodology, focused particularly on fitting, interpreting, and refining the linear regression model.
@@ -65,7 +64,7 @@ Our agenda includes gaining familiarity with statistical programming via the pop
 ### Prerequisites
 
 
-It is desirable for students to have taken the introductory course in the sequence (Governemnt 6019), but any prior course on basic social statistics and linear regression should suffice.
+It is desirable for students to have taken the introductory course in the sequence (Government 6019), but any prior course on basic social statistics and linear regression should suffice.
 
 
 ### Assessment and Evaluation
@@ -77,13 +76,13 @@ Problem sets assigned weekly or bi-weekly. These problem sets will include progr
 The assignments and due dates will be distributed during the semester
 
 
-Assignments will be submitted digitally through blackboard  at the due date.
+Assignments will be submitted digitally through canvas  at the due date.
 
 #### Poster Presentation
 
-You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presetation session. We will invite other faculty, our chance to show off!
+You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session. We will invite other faculty, our chance to show off!
 
-Tentative date for poster presetation session:  **May 15, 2019 10:00 am EST**
+Tentative date for poster presentation session:  **May 13, 2019 10:00 am EST**
 
 
 #### Final Paper
@@ -92,29 +91,25 @@ A 15--20 page original report on an original quantitative analysis or replicatio
 The quantitative analysis should be conducted in R and reproducible.
 
 
-The final paper is due on **May  20, 2019 11:59 pm EST**.
+The final paper is due on **May  16, 2019 11:59 pm EST**.
 
 Further details on the projects will be provided as due dates approach
 
-### Email & Blackboard: 
+### Email, Canvas, and Slack: 
 
-The teaching team will send announcements regularly by email.
+You can find all the relevant information for this course on this website. 
+
+Canvas will be be primarily used as a dropbox for assignments submissions. All of your assignments will be submitted through Canvas. You have to submit a HTML document and RMarkdown file. Canvas has trust issues with html files so you might have to submit a zipped folder with  both files. More on this later.
 
 
-It is often more efficient to answer questions in person, so try to ask them in class or attend office hours.
 
-All of your assignments will be submitted through Blackboard. You have to submit a HTML document and RMarkdown file. Blackboard has trust issues with html files so you will have to sbmit a zipped folder with  both files. More on this later.
+It is often more efficient to answer questions in person, so try to ask them in class. However, if you want to reach the teaching team outside of class time the preferred method of communication will through Slack. If you run into coding issues you can send direct messages to us but I encourage you use the _#general_ channel where we will try to trobouleshoot the issues collectively (class and teachig team). My experice is that if you have a quesiton or are  running into  coding issues at least someone else the class might have the same question. 
+
+Of course you can always email us but try to limit poreblem-set and coding quesitons to Slack
 
 ### Texts
 
-#### Required
-
-
-- Sheather, Simon. A modern approach to regression with R. Springer Science & Business Media, 2009.
-
-#### Optional 
-
-- Martin, John Levi. Thinking through statistics. University of Chicago Press, 2018.
+We will be using a selection of readings available online through this website
 
 
 
@@ -125,7 +120,7 @@ All of your assignments will be submitted through Blackboard. You have to submit
 
 <a rel="license" href="httpso://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a>
 
-Science should be open, here at Corenll and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+Science should be open, here at Cornell and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 The source for the materials of this course including the source for this website is on GitHub at <https://github.com/GarciaRios/govt_6029>.
 
@@ -135,5 +130,4 @@ The source for the materials of this course including the source for this websit
 #### References
 
 This course has benefited from numerous open materials, which are listed [here](). 
-
 

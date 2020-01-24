@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -22,9 +22,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -73,9 +72,7 @@ h6 {
 
 <link rel="stylesheet" href="custom_style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -89,7 +86,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -99,6 +95,9 @@ img {
 }
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -114,7 +113,6 @@ body {
   padding-top: 46px;
   margin-top: -46px;
 }
-
 .section h2 {
   padding-top: 46px;
   margin-top: -46px;
@@ -134,6 +132,43 @@ body {
 .section h6 {
   padding-top: 46px;
   margin-top: -46px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -155,19 +190,74 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -275,7 +365,7 @@ Monday
 12:20PM - 2:15PM
 </td>
 <td>
-White Hall 106
+Morrill Hall 110
 </td>
 </tr>
 </table>
@@ -299,7 +389,7 @@ White Hall 308
 Julie George
 </td>
 <td>
-Thursdays 2:30 PM to 4:30 PM
+Monday 3:00 PM to 5:00 PM
 </td>
 <td>
 White Hall – B12
@@ -314,7 +404,7 @@ White Hall – B12
 </div>
 <div id="prerequisites" class="section level3">
 <h3>Prerequisites</h3>
-<p>It is desirable for students to have taken the introductory course in the sequence (Governemnt 6019), but any prior course on basic social statistics and linear regression should suffice.</p>
+<p>It is desirable for students to have taken the introductory course in the sequence (Government 6019), but any prior course on basic social statistics and linear regression should suffice.</p>
 </div>
 <div id="assessment-and-evaluation" class="section level3">
 <h3>Assessment and Evaluation</h3>
@@ -322,45 +412,35 @@ White Hall – B12
 <h4>Problem Sets</h4>
 <p>Problem sets assigned weekly or bi-weekly. These problem sets will include programming problems with an emphasis on writing understandable, reproducible code.</p>
 <p>The assignments and due dates will be distributed during the semester</p>
-<p>Assignments will be submitted digitally through blackboard at the due date.</p>
+<p>Assignments will be submitted digitally through canvas at the due date.</p>
 </div>
 <div id="poster-presentation" class="section level4">
 <h4>Poster Presentation</h4>
-<p>You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presetation session. We will invite other faculty, our chance to show off!</p>
-<p>Tentative date for poster presetation session: <strong>May 15, 2019 10:00 am EST</strong></p>
+<p>You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session. We will invite other faculty, our chance to show off!</p>
+<p>Tentative date for poster presentation session: <strong>May 13, 2019 10:00 am EST</strong></p>
 </div>
 <div id="final-paper" class="section level4">
 <h4>Final Paper</h4>
 <p>A 15–20 page original report on an original quantitative analysis or replication-and-extension of a published article. The quantitative analysis should be conducted in R and reproducible.</p>
-<p>The final paper is due on <strong>May 20, 2019 11:59 pm EST</strong>.</p>
+<p>The final paper is due on <strong>May 16, 2019 11:59 pm EST</strong>.</p>
 <p>Further details on the projects will be provided as due dates approach</p>
 </div>
 </div>
-<div id="email-blackboard" class="section level3">
-<h3>Email &amp; Blackboard:</h3>
-<p>The teaching team will send announcements regularly by email.</p>
-<p>It is often more efficient to answer questions in person, so try to ask them in class or attend office hours.</p>
-<p>All of your assignments will be submitted through Blackboard. You have to submit a HTML document and RMarkdown file. Blackboard has trust issues with html files so you will have to sbmit a zipped folder with both files. More on this later.</p>
+<div id="email-canvas-and-slack" class="section level3">
+<h3>Email, Canvas, and Slack:</h3>
+<p>You can find all the relevant information for this course on this website.</p>
+<p>Canvas will be be primarily used as a dropbox for assignments submissions. All of your assignments will be submitted through Canvas. You have to submit a HTML document and RMarkdown file. Canvas has trust issues with html files so you might have to submit a zipped folder with both files. More on this later.</p>
+<p>It is often more efficient to answer questions in person, so try to ask them in class. However, if you want to reach the teaching team outside of class time the preferred method of communication will through Slack. If you run into coding issues you can send direct messages to us but I encourage you use the <em>#general</em> channel where we will try to trobouleshoot the issues collectively (class and teachig team). My experice is that if you have a quesiton or are running into coding issues at least someone else the class might have the same question.</p>
+<p>Of course you can always email us but try to limit poreblem-set and coding quesitons to Slack</p>
 </div>
 <div id="texts" class="section level3">
 <h3>Texts</h3>
-<div id="required" class="section level4">
-<h4>Required</h4>
-<ul>
-<li>Sheather, Simon. A modern approach to regression with R. Springer Science &amp; Business Media, 2009.</li>
-</ul>
-</div>
-<div id="optional" class="section level4">
-<h4>Optional</h4>
-<ul>
-<li>Martin, John Levi. Thinking through statistics. University of Chicago Press, 2018.</li>
-</ul>
+<p>We will be using a selection of readings available online through this website</p>
 <hr />
-</div>
 <div id="license" class="section level4">
 <h4>License</h4>
 <p><a rel="license" href="httpso://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></p>
-<p>Science should be open, here at Corenll and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>Science should be open, here at Cornell and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 <p>The source for the materials of this course including the source for this website is on GitHub at <a href="https://github.com/GarciaRios/govt_6029" class="uri">https://github.com/GarciaRios/govt_6029</a>.</p>
 </div>
 <div id="references" class="section level4">
@@ -386,6 +466,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
