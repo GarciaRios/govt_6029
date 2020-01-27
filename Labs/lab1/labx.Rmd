@@ -1,7 +1,7 @@
 ---
 title: "lab1x"
 author: "SGR"
-date: "February 5, 2018"
+date: "Jan 27, 2019"
 output: html_document
 ---
 
