@@ -10,10 +10,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r echo=FALSE ,results='hide'}
-knitr::opts_chunk$set(results = "hide", warning = FALSE, message = FALSE, echo = T, eval = F,
-                      fig.show = "hide")
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = F)
+library(dplyr)
+library(ggplot2)
+library(gapminder)
 ```
+
+
 
 The objectives of this lab are:
 
@@ -27,21 +32,19 @@ The objectives of this lab are:
 
 
 
-For this lab we will use the following libraries `dplyr` and `ggplot2`. We can load those individually or use `tidyverse` which is not really a package but a collection of packages. Lately, I only load `tidyverse` since it contains all the packages that I frequently use. Rmember, make sure you have installed these packages before you loand load them.
+For this lab we will use the following libraries `dplyr` and `ggplot2`. We can load those individually or use `tidyverse` which is not really a package but a collection of packages. Lately, I only load `tidyverse` since it contains all the packages that I frequently use. Remember, make sure you have installed these packages before you load them.
 
-```{r, libraries, warning = FALSE, message = FALSE}
-library(tidyverse)
-```
 
 
 ## Gapminder Data
 
 You will be using the gapminder data again.
+
 In the first lab, you loaded the data from a .csv file. In this lab, you will be using the same data, but as it is distributed in **gapminder** package.
 
-To load a dataset included with an R package, use the `data()` function.
+To load a data set included with an R package, use the `data()` function.
 
-You can see which datasets are included in a package. gapminder is not the only one most packages have some data set within the package. See also for instance `ggplot2`
+You can see which data sets are included in a package. gapminder is not the only one most packages have some data set within the package. See also for instance `ggplot2`
 ```{r eval=FALSE}
 data(package = "gapminder")
 data(package = "ggplot2")
@@ -49,26 +52,32 @@ data(package = "ggplot2")
 ```
 
 
-**challenge**
+**Challenge**
 
-- Which dataset in the **gapminder** package is country data?
+- Which data set in the `gapminde` package is country data?
 - Load that data using the `data` function
-- Pull up the help page for the "gapminder" dataset
+- Explore the dimensions of the data and it's variables
+
+
+```
+
+
+
+
+```
+
+
 
 Load the gapminder data
-```{r}
-library(gapminder)
-library(tidyverse)
+```{r, echo = F}
 
 data("gapminder")
 head(gapminder)
 ```
 
-## Introduction `dplyr`
+## Introduction to `dplyr`
 
-**dplyr** is a package for data manipulation.
-It provides a few core functions data manipulation.
-Most data manipulations can be done by combining these verbs together --- something which becomes even easier with the `%>%` operator.
+**dplyr** is a package for data manipulation. It provides a few core *verbs* and most data manipulations can be done by combining these verbs together --- something which becomes even easier with the `%>%` operator.
 
 -  `filter()`: subset observations by logical conditions
 -  `slice()`: subset observations by row numbers
@@ -88,9 +97,9 @@ glimpse(gapminder)
 
 ### Exploring our Data
 
-We are ready to begin exploring our data set in more depth.
+We are ready to begin exploring our data-set in more depth.
 
-We want to explore the relationship between life expectancy and GDP.
+For this lab we want to explore the relationship between life expectancy and GDP.
 Let's use some `dplyr` verbs to explore our data.
 For you Stata users missing "if statements" let's begin with `filter()`
 
@@ -129,13 +138,9 @@ filter(gapminder, country == "Afghanistan" | country == "Albania")
 
 Because the world is not always ordered the way we want it
 ```{r}
-gapminder %>%
-  arrange(year, country) 
+arrange(gapminder, pop) 
 
-gapminder %>%
-  filter(year == 2007) %>%
-  arrange(lifeExp)
-
+arrange(gapminder, -pop) 
 ```
 
 
@@ -143,15 +148,21 @@ gapminder %>%
 ### Use `select()` to subset the data on variables or columns.
 
 Most of the times we don't need to see all the variables and are often interested in just a few of them. Here's a conventional call:
-```{r results='hide'}
-select(gapminder, year, lifeExp)
-
+```{r}
+select(gapminder, year, lifeExp) 
 ```
 
 
 **Challenge**
 
-Using a combination of `filter`, `select` and and `slice` show only year and life expectancy of Cambodia for the first two observations
+Using a combination of `filter`, `select`, and `slice` to create data frames to show only year and life expectancy of Cambodia for the first two observations
+
+```
+
+
+
+
+```
 
 ```{r, echo=FALSE}
 df1 <- filter(gapminder,country == "Cambodia")
@@ -163,7 +174,7 @@ df3 <- slice(df2, 1:2)
 
 Before we go any further, we should introduce  the pipe operator that `dplyr` imports from the **magrittr** package.
 
-This is going to change your data analytical life.
+This is going to change your (data) analytical life.
 
 
 Notice we can do the same computation as above but without having to create new objects. We are basically passing down the result from the previous line into the following. 
@@ -180,7 +191,7 @@ We think of the `%>%` operator as a _then_ statement. So in the previous line we
 
 - Called the gapminder data, _then_
 - Filtered rows to those where country was Cambodia,  *then*
-- We selced only `year` and `lifeExp` columns, _then_
+- We selected only `year` and `lifeExp` columns, _then_
 - Sliced the data to see only the first two observations
 
 
@@ -202,7 +213,7 @@ So... GDP is almost useless because it doesn't give a base line and that is why 
 
 Yes USA, USA, USA!
 
-Let's  create first an object containing only US data, we use `filter` here
+Let's  create first a data frame containing only US data, we use `filter` here. We are also need to change one of the variable name
 
 ```{r}
 just_usa <- gapminder %>%
@@ -211,10 +222,10 @@ just_usa <- gapminder %>%
   rename(usa_gdpPercap = gdpPercap)
 ```
 
-We can join (or merge) the dataset to the gapminder data using the `left_join` function.
+We can join (or merge) the data set to the gapminder data using the `left_join` function.
 
 
-There are are several ways to merge datasets with **dplyr** (left join, right join, inner join, and outer join which differ in which observations it matches and keep).
+There are are several ways to merge data sets with **dplyr** (left join, right join, inner join, and outer join). They serve different purposes here we use `left_join()`
 
 
 ```{r}
@@ -223,7 +234,7 @@ gapminder <-
 ```
 
 
-No we can take `gdpPercap` and divide it by  `usa_gdpPercap to obtrain a relative to the US figure.
+No we can take `gdpPercap` and divide it by  `usa_gdpPercap to obtain a relative to the US figure.
 
 ```{r}
 gapminder <- 
@@ -243,41 +254,46 @@ Nice, now we can do something like this:
 
 Look at the GDP per capita  of Mexico and Canada relative to US by year
 ```{r}
-
 gapminder %>%
   filter(country == "Canada") %>%
   select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
+
+
+gapminder %>%
+  filter(country == "Mexico") %>%
+  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
+
 ```
 
 
 Or this:
 
-```{r}
-gapminder %>%
-  filter(country == "Mexico") %>%
-  select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
-```
-
-ORe ven this:
 
 ```{r}
 df_NAFTA<-
 gapminder %>%
-  filter(country == "Mexico" | country == "Canada" & year == 1970) %>%
+  filter(country %in% c("Mexico", "Canada")) %>%
   select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
 
 ```
 
 
 
-** Challenge
+**Challenge**
 
 What about life expectancy? Create a relative to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
 
 
+```
+
+
+
+
+```
+
+
+
 ```{r, echo = FALSE}
-
-
 
 just_usa_life <- gapminder %>%
   filter(country == "United States") %>%
@@ -305,15 +321,22 @@ gapminder %>%
 
 ## Plotting with ggplot2
 
-For the most part, to vizualize results in this course we will be using the graphics package **ggplot2**, which is one of the most popular, but it is only one of several graphics packages in R.[^1]
+For the most part, to visualize results in this course we will be using the graphics package **ggplot2**, which is one of the most popular, but it is only one of several graphics packages in R.[^1]
 
 Unlike many other graphics systems, functions in **ggplot2** do not correspond to separate types of graphs.
-There are not scatterplot, histogram, or line chart functions per se.
+There are not scatterplot, histogram, or line chart functions _per se_.
 Instead plots are built up from component functions.
+
+Main components:
+
 
 1. Data
 2. Aesthetics: Maps variables in the data to visual properties: position, color, size, shape, line type ...
 3. Geometric objects: The specific shapes that are drawn: points, lines,
+
+
+Other:
+
 4. scales: How variables values map to "computer" values.
 5. stat: summarize or transform the data. e.g. bin data and count in histogram; run a regression to get a line.
 5. facet: create mini-plots of data subsets
@@ -330,7 +353,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
 ```
 
 
-This just initializes the plot with  the basic mapping. We still need to tell `ggplot` the geometric object (or `geoms`) that we will to repsent the data in this mapping.
+This just initializes the plot with  the basic mapping. We still need to tell `ggplot` the geometric object (or `geoms`) that we will use to represent the data in this mapping.
 
 
 Seems like points would be a good representation, let's use `geom_point`
@@ -340,7 +363,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-That looks okay but it would probably look be better if we log transform.  Notice that we don't have to create a new variable we can just  do the transformation inside the aestethics.
+That looks okay but it would probably look be better if we log transform.  Notice that we don't have to create a new variable we can just  do the transformation inside the aesthetics.
 
 ```{r}
 ggplot(gapminder, aes(x = log10(gdpPercap), y = lifeExp)) +
@@ -356,10 +379,10 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ```
 
 
-Note the common workflow: gradually build up the plot you want,  re-define the plot by adding (litterally) new elemets.
+Note the common workflow: gradually build up the plot you want,  re-define the plot by adding (literally) new elements.
 
 
-Now, let's vary add another variable by having those points be reprebnted by different col continent variable to aesthetic color according to the continent they belong. 
+Now, let's vary add another variable by having those points be represented by different colors according to the continent they belong. 
 
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
@@ -367,7 +390,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   scale_x_log10()
 ```
 
-Let's address over-plotting: Set alpha transparency and size to a value
+Let's try address over-plotting: Set alpha transparency and size to a value. There is a even better way to do it but this is ok for now. 
 
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
@@ -376,7 +399,9 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 ```
 
 
-Add now a fitted curve or line, let's forget about continent for now
+
+
+Now, add a fitted curve or line, let's forget about continent for now
 
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -385,7 +410,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10()
 ```
 
-Let's remove the confidece band
+Let's remove the confidence band
 
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + 
@@ -394,7 +419,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10()
 ```
 
-The dafult of `geom_smooth` follows a  local polynomial tegression fitting (aka LOESS) but we can force any toher type of fitting. Let's try a linear model `lm`
+The default of `geom_smooth` follows a  local polynomial regression fitting (aka LOESS) but we can force any other type of fitting. Let's try a linear model `lm`
 
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + 
@@ -414,7 +439,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   scale_x_log10() 
 ```
 
-That's a lot of info. Let's try something else called facceting. Thiscreates various panels or subplots by a given variable.
+That's a lot of info. Let's try something else called faceting. This creates various panels or subplots by a given variable.
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_point() + 
@@ -422,7 +447,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   facet_wrap(~ continent)
 
 ```
-Still want lines? Let's add them
+Still want best fit lines? Let's add them
 ```{r}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_point(alpha = .2) + 
@@ -452,9 +477,18 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 * Make mini-plots, split out by continent
 * Add a fitted smooth and/or linear regression, w/ or w/o faceting
 
+
+```
+
+
+
+
+```
+
+
 ***
 
-Great! So we need to account for time. Let's use some of the cool capabilites of the extentions in the `ggplot`verse with the `gganimate` package
+Great! So we need to account for time. Let's use some of the cool capabilities of the extensions in the `ggplot`verse with the `gganimate` package
 
 
 ```{r, eval =F}
@@ -472,7 +506,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
 
 ```
 
-Ok, back to the anbalysis. What if I am only interrested in the US?
+Ok, back to the analysis. What if I am only interested in the US?
 ```{r}
 ggplot(filter(gapminder, country == "United States"),
        aes(x = year, y = lifeExp)) +
@@ -496,7 +530,7 @@ ggplot(filter(gapminder, country %in% some_countries),
 
 So what's up with Mexico?
 
-* Nafta? Higher GDP?
+* NAFTA? Higher GDP?
 
 Not really... Let's add yet another variable, GDP
 ```{r}
