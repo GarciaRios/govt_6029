@@ -11,7 +11,7 @@
 
 
 
-<title>assignments.utf8</title>
+<title>install_r.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,8 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -318,36 +316,44 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<div id="problem-sets" class="section level3">
-<h3>Problem Sets</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html>1.– Problem Set 1</a>
-<ul class="fa-ul">
 <!--
-  <li><i class="fa-li fa fa fa-check-circle-o"></i><a target="_blank" href=./hw/hw1/hw1_sol.html>1.-- Problem Set 1 Sol</a>
+.. title: Installing R and RStudio
 -->
-</ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw2/hw2.html> 2.– Problem Set 2</a>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw3/hw3.pdf> 3.– Problem Set 3</a>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-code"></i><a target="_blank" href=https://github.com/GarciaRios/govt_6029/tree/master/hw/hw3/ps_functions/>HW3 Functions</a>
-</ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw4.html> 4.– Problem Set 4</a>
+<p>This course will require the following software:</p>
+<ol style="list-style-type: decimal">
+<li>R. The programming language and interpreter that actually runs the code</li>
+<li>RStudio. An <a href="http://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>, i.e. a nice interface that makes working with R much easier.</li>
+<li>Some tools to build R packages from source since we may be installing some bleeding edge packages.</li>
+<li>LaTeX (optional). Needed to compile PDFs from R Markdown</li>
+</ol>
+<div id="installing-r" class="section level1">
+<h1>Installing R</h1>
+<p>The R website is … special. Since you probably don’t know or care what a mirror is, here are links to the</p>
+<ul>
+<li>Ubuntu: <code>sudo apt-get install r-base-dev</code> (in order to be able to install other packages from source).</li>
 </ul>
 </div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-map-o"></i><a target="_blank" href=posters.html> Poster Peesentation</a>
-<li>
-<i class="fa-li fa fa-file-pdf-o"></i><a target="_blank" href=final_paper.html> Final Paper</a>
+<div id="installing-rstudio" class="section level1">
+<h1>Installing RStudio</h1>
+<p>You want to download the RStudio Desktop version. Download it from <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a></p>
+</div>
+<div id="installing-tools-to-build-r-packages-from-scratch" class="section level1">
+<h1>Installing Tools to Build R Packages from Scratch</h1>
+<p>Mature R packages are distributed over CRAN and installable in R using <code>install.packages</code> without any other assistance. However, we may use some bleeding-edge R packages that require the packages to be built from source and installed using the <a href="http://www.rstudio.com/products/rpackages/devtools/">devtools</a> package. This requires some extra tools (unless you are using Linux, which is why you should be using Linux).</p>
+<ul>
+<li>Windows: Install the newest version of <code>Rtools*.exe</code> from <a href="http://cran.r-project.org/bin/windows/Rtools/" class="uri">http://cran.r-project.org/bin/windows/Rtools/</a></li>
+<li>Mac: Install Xcode from the Mac App Store.</li>
+<li>Ubuntu: The tools to build packages from source should have been installed with <code>r-base-dev</code>.</li>
+</ul>
+<p>Or follow the instructions <a href="http://www.rstudio.com/products/rpackages/devtools/">here</a>.</p>
+</div>
+<div id="installing-latex" class="section level1">
+<h1>Installing LaTeX</h1>
+<p>LaTeX is needed to create PDFs from R Markdown files. Follow the instructions below:</p>
+<ul>
+<li>Windows: <a href="http://miktex.org/download" class="uri">http://miktex.org/download</a></li>
+<li>OSX: <a href="https://tug.org/mactex/" class="uri">https://tug.org/mactex/</a></li>
+<li>Ubuntu: <code>apt-get install texlive</code> . This should have been installed with <code>r-base-dev</code>.</li>
 </ul>
 </div>
 

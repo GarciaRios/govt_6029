@@ -1,6 +1,6 @@
 ---
 title: "Lab 2 - Intro to R and RStudio"
-author: "Sergio G-R"
+author: "Sergio Garcia-Rios"
 date: "Feb 12 2018"
 output:
   html_document:
@@ -81,7 +81,7 @@ gapminder %>% filter(country == "Cambodia") %>%
 Now, imagine we wanted to recover each country’s GDP. We do have data for population and GDP per capita. what do we do?
 
 
-```{}
+```{r}
 gapminder <-
 gapminder %>% 
 mutate(pop_1000 = pop/1000)

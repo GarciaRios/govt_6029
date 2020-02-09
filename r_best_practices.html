@@ -11,7 +11,7 @@
 
 
 
-<title>assignments.utf8</title>
+<title>r_best_practices.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,8 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -318,37 +316,67 @@ $(document).ready(function () {
 </div>
 
 
-<hr />
-<div id="problem-sets" class="section level3">
-<h3>Problem Sets</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html>1.– Problem Set 1</a>
-<ul class="fa-ul">
-<!--
-  <li><i class="fa-li fa fa fa-check-circle-o"></i><a target="_blank" href=./hw/hw1/hw1_sol.html>1.-- Problem Set 1 Sol</a>
+<!-- 
+.. title: Best practices for using R
 -->
-</ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw2/hw2.html> 2.– Problem Set 2</a>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw3/hw3.pdf> 3.– Problem Set 3</a>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-code"></i><a target="_blank" href=https://github.com/GarciaRios/govt_6029/tree/master/hw/hw3/ps_functions/>HW3 Functions</a>
-</ul>
-<li>
-<i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw4.html> 4.– Problem Set 4</a>
-</ul>
+<div id="style" class="section level2">
+<h2>Style Guide</h2>
+<p>It is important to follow a consistent and clear style when writing R.</p>
+<p>Follow the Hadley Wickham’s <em>Advanced R</em> <a href="http://adv-r.had.co.nz/Style.html">Style guide</a>.</p>
+<p>Writing code in a consistent (and good) style will make is easier for others and you to read your code. It will also result fewer bugs.</p>
+<p>For, example, if you do not put spaces around the assignment operator (<code>&lt;-</code>),</p>
+<pre class="r"><code>x&lt;-1</code></pre>
+<p>do you mean</p>
+<pre class="r"><code>x &lt;- 1</code></pre>
+<p>or</p>
+<pre class="r"><code>x &lt; -1</code></pre>
+<p>Off the top of your head, do you know which one R is going to do? Yes, I’ve seen bugs due to this in real life.</p>
 </div>
-<div id="assignments" class="section level3">
-<h3>Assignments</h3>
-<ul class="fa-ul">
-<li>
-<i class="fa-li fa fa-map-o"></i><a target="_blank" href=posters.html> Poster Peesentation</a>
-<li>
-<i class="fa-li fa fa-file-pdf-o"></i><a target="_blank" href=final_paper.html> Final Paper</a>
-</ul>
+<div id="best-practices" class="section level2">
+<h2>Best Practices</h2>
+<p>These are some best practices for writing R code suggested by <a href="https://github.com/swcarpentry/r-novice-inflammation">Software Carpentry</a>. Many of these are applicable, although some are more specific to putting your analyses in R scripts rather than when writing your analyses in R Markdown documents.</p>
+<ol style="list-style-type: decimal">
+<li>Start your code with a description of what it is:</li>
+</ol>
+<pre class="r"><code>#This is code to replicate the analyses and figures from my 2014 Science paper.
+#Code developed by Sarah Supp, Tracy Teal, and Jon Borelli</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>The first code should all of your import statments (<code>library</code>)</li>
+</ol>
+<pre class="r"><code>library(&quot;ggplot2&quot;)
+library(&quot;reshape&quot;)
+library(&quot;vegan&quot;)</code></pre>
+<p>Followed by any sourced documents</p>
+<pre class="r"><code>source(&quot;foo.R&quot;)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Set your working directory before running a script, or start <code>R</code> inside your project folder:</li>
+</ol>
+<p>You should exercise caution when using <code>setwd()</code>. Changing directories inside your script can limit reproducibility:</p>
+<pre><code>* `setwd()` will throw an error if the directory you&#39;re trying to change to doesn&#39;t exit, or the user doesn&#39;t have the correct permissions to access it. This becomes a problem when sharing scripts between users who have organized their directories differently.
+* If/when your script terminates with an error, you might leave the user in a different directory to where they started, and if they call the script again this will cause further problems. If you must use `setwd()`, it is best to put it at the top of the script to avoid this problem.</code></pre>
+<p>The following error message indicates that R has failed to set the working directory you specified:</p>
+<pre><code>```
+Error in setwd(&quot;~/path/to/working/directory&quot;) : cannot change working directory
+```
+
+Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths.
+That means you should avoid using `setwd()` *within* a script; instead you should use `setwd()` in the console to move into the correct directory before running a script.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Use <code>#</code> or <code>#-</code> to set off sections of your code so you can easily scroll through it and find things.</p></li>
+<li><p>Do <strong>not</strong> use <code>attach()</code>. Ever.</p></li>
+<li><p>If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and <code>source</code> them. Source will run all of these functions so that you can use them as you need them.</p>
+<pre class="r"><code>source(&quot;my_genius_fxns.R&quot;)</code></pre></li>
+<li><p>Keep your code modular. If a single function or loop gets too long, consider breaking it into smaller pieces.</p></li>
+<li><p>Don’t repeat yourself. Automate! If you are repeating the same piece of code on multiple objects or files, use a loop or a function to do the same thing. The more you repeat yourself, the more likely you are to make a mistake.</p></li>
+<li><p>Manage all of your source files for a project in the same directory. Then use relative paths as necessary. For example, use</p>
+<pre class="r"><code>dat &lt;- read.csv(file = &quot;/files/dataset-2013-01.csv&quot;, header = TRUE)</code></pre>
+<p>rather than:</p>
+<pre class="r"><code>dat &lt;- read.csv(file = &quot;/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv&quot;, header = TRUE)</code></pre></li>
+<li><p>Don’t save a session history (the default option in R, when it asks if you want an <code>RData</code> file). Instead, start in a clean environment so that older objects don’t contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else’s machine.</p></li>
+<li><p>Collaborate. Grab a buddy and practice “code review”. We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!</p></li>
+</ol>
+<hr />
+<p>Copywrite © <a href="http://software-carpentry.org/">Software Carpentry</a>, [link to the license][cc-by-human]. Page derived from "<a href="https://raw.githubusercontent.com/swcarpentry/r-novice-inflammation/gh-pages/06-best-practices-R.Rmd%22">Best practices for using R and designing programs</a>, with only minor edits.</p>
 </div>
 
 
