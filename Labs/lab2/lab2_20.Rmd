@@ -54,7 +54,7 @@ data(package = "ggplot2")
 
 **Challenge**
 
-- Which data set in the `gapminde` package is country data?
+- Which data set in the `gapminder` package is country data?
 - Load that data using the `data` function
 - Explore the dimensions of the data and it's variables
 
