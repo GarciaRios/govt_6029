@@ -400,8 +400,9 @@ summary {
 <ol style="list-style-type: decimal">
 <li>Manipulate data using the verbs in the <strong>dplyr</strong></li>
 <li>Use the pipe operator <code>%&gt;%</code> to simplify complicated code by chaining expressions together</li>
-<li>Create plots using the ggplot2 package. *****</li>
+<li>Create plots using the ggplot2 package.</li>
 </ol>
+<hr />
 <div id="libraries-and-data" class="section level2">
 <h2>Libraries and Data</h2>
 <p>For this lab we will use the following libraries <code>dplyr</code> and <code>ggplot2</code>. We can load those individually or use <code>tidyverse</code> which is not really a package but a collection of packages. Lately, I only load <code>tidyverse</code> since it contains all the packages that I frequently use. Remember, make sure you have installed these packages before you load them.</p>
@@ -448,11 +449,14 @@ data(package = &quot;ggplot2&quot;)</code></pre>
 <p>We are ready to begin exploring our data-set in more depth.</p>
 <p>For this lab we want to explore the relationship between life expectancy and GDP. Let’s use some <code>dplyr</code> verbs to explore our data. For you Stata users missing “if statements” let’s begin with <code>filter()</code></p>
 <pre class="r"><code>filter(gapminder, lifeExp &lt; 29)
+
+
 filter(gapminder, country == &quot;Rwanda&quot;)</code></pre>
 <p>You can combine filter statements.</p>
 <p>Including multiple logical statements is equivalent to combining them with “and”.</p>
 <p>This will give all observations in “Africa”, before 1966, and which have a life expectancy less than 40.</p>
-<pre class="r"><code>filter(gapminder, continent == &quot;Africa&quot;, year &lt; 1966, lifeExp &lt; 40)</code></pre>
+<pre class="r"><code>gapminder2 &lt;-
+filter(gapminder, continent == &quot;Africa&quot;, year &lt; 1966, lifeExp &lt; 40)</code></pre>
 <p>That is equivalent to</p>
 <pre class="r"><code>filter(gapminder, continent == &quot;Africa&quot; &amp; year &lt; 1966 &amp; lifeExp &lt; 40 )</code></pre>
 <p>To combine logical statements with “or” you need to explicitly use <code>|</code>. To find observations from Afghanistan or Albania,</p>
@@ -609,9 +613,9 @@ gapminder %&gt;%
   scale_x_log10()  +
   facet_wrap(~ continent)</code></pre>
 <p>Notice what <code>color = continent</code> is doing here: it’s affecting both the points and the line. Let’s add some aesthetics specific to <code>geom_point</code> so that it changes only the points.</p>
-<pre class="r"><code>ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + 
-  geom_point(aes(color = continent, alpha = .2)) + 
-  geom_smooth() + 
+<pre class="r"><code>ggplot(gapminder, aes(x = year, y = lifeExp)) + 
+  geom_jitter(aes(color = continent, alpha = .2)) + 
+  geom_smooth(color = &quot;black&quot;) + 
   scale_x_log10()  +
   facet_wrap(~ continent)</code></pre>
 <p><strong>Challenge</strong></p>
@@ -625,18 +629,21 @@ gapminder %&gt;%
 
 </code></pre>
 <hr />
-<p>Great! So we need to account for time. Let’s use some of the cool capabilities of the extensions in the <code>ggplot</code>verse with the <code>gganimate</code> package</p>
+<p>Great! So we need to account for time. Let’s use some of the cool capabilities of the extensions in the <code>ggplot</code>verse with the <code>gganimate</code> package. MAke sure to also install the package <code>gifski</code></p>
 <pre class="r"><code>library(gganimate)
 
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, color = country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +
   scale_colour_manual(values = country_colors) +
   scale_size(range = c(2, 12)) +
   scale_x_log10() +
-  facet_wrap(~ continent) +
+  facet_wrap(~continent) +
+  theme_bw() +
+  # Here comes the gganimate specific bits
+  labs(title = &#39;Year: {frame_time}&#39;, x = &#39;GDP per capita&#39;, y = &#39;Life Expectancy&#39;) +
   transition_time(year) +
-  labs(title = &#39;Year: {frame_time}&#39;, x = &#39;GDP per capita&#39;, y = &#39;life expectancy&#39;) +
-  theme_bw() </code></pre>
+  ease_aes(&#39;linear&#39;)</code></pre>
+<hr />
 <p>Ok, back to the analysis. What if I am only interested in the US?</p>
 <pre class="r"><code>ggplot(filter(gapminder, country == &quot;United States&quot;),
        aes(x = year, y = lifeExp)) +
@@ -654,7 +661,7 @@ ggplot(filter(gapminder, country %in% some_countries),
 <li>NAFTA? Higher GDP?</li>
 </ul>
 <p>Not really… Let’s add yet another variable, GDP</p>
-<pre class="r"><code>ggplot(subset(gapminder, country %in% some_countries),
+<pre class="r"><code>ggplot(filter(gapminder, country %in% some_countries),
        aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
   geom_point(aes(size=gdpPercap))</code></pre>
@@ -663,7 +670,8 @@ ggplot(filter(gapminder, country %in% some_countries),
        aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
   geom_point(aes(size=gdpPercap)) +
-  theme_minimal()</code></pre>
+  theme_minimal() +
+  scale_color_brewer(palette = &quot;Dark2&quot;)</code></pre>
 <p>In addition to the themes included with ggplot, several other themes are available in the <a href="http://cran.r-project.org/web/packages/ggthemes/index.html">ggthemes</a> package.</p>
 </div>
 <div id="references" class="section level2">

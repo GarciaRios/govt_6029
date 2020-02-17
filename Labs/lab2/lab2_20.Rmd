@@ -26,6 +26,8 @@ The objectives of this lab are:
 1. Manipulate data using the verbs in the **dplyr**
 2. Use the pipe operator `%>%` to simplify complicated code by chaining expressions together
 3. Create plots using the ggplot2 package.
+
+
 *****
 
 ## Libraries and Data
@@ -105,6 +107,8 @@ For you Stata users missing "if statements" let's begin with `filter()`
 
 ```{r results='hide'}
 filter(gapminder, lifeExp < 29)
+
+
 filter(gapminder, country == "Rwanda")
 ```
 
@@ -118,6 +122,7 @@ This will give all observations in "Africa", before 1966, and which have a life 
 
 
 ```{r results='hide'}
+gapminder2 <-
 filter(gapminder, continent == "Africa", year < 1966, lifeExp < 40)
 ```
 
@@ -180,10 +185,13 @@ This is going to change your (data) analytical life.
 Notice we can do the same computation as above but without having to create new objects. We are basically passing down the result from the previous line into the following. 
 
 ```{r, echo=F}
+
+
+
 gapminder %>% 
   filter(country == "Cambodia") %>%
   select(year, lifeExp) %>%
-  slice(1:2)
+  slice(1:2) 
 
 ```
 
@@ -265,7 +273,6 @@ gapminder %>%
 
 ```
 
-
 Or this:
 
 
@@ -276,7 +283,6 @@ gapminder %>%
   select(country, year, gdpPercap, usa_gdpPercap, gdpPercapRel) 
 
 ```
-
 
 
 **Challenge**
@@ -302,7 +308,7 @@ just_usa_life <- gapminder %>%
 
 
 gapminder <- 
-  left_join(gapminder, just_usa_life, by = c("year")) 
+  left_join(gapminder, just_usa_life, by = ("year")) 
 
 gapminder <- 
 gapminder %>% 
@@ -461,9 +467,9 @@ Notice what `color = continent` is doing here: it's affecting both the points an
 
 
 ```{r}
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + 
-  geom_point(aes(color = continent, alpha = .2)) + 
-  geom_smooth() + 
+ggplot(gapminder, aes(x = year, y = lifeExp)) + 
+  geom_jitter(aes(color = continent, alpha = .2)) + 
+  geom_smooth(color = "black") + 
   scale_x_log10()  +
   facet_wrap(~ continent)
 ```
@@ -488,23 +494,30 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 ***
 
-Great! So we need to account for time. Let's use some of the cool capabilities of the extensions in the `ggplot`verse with the `gganimate` package
+Great! So we need to account for time. Let's use some of the cool capabilities of the extensions in the `ggplot`verse with the `gganimate` package. MAke sure to also install the package `gifski`
 
 
 ```{r, eval =F}
 library(gganimate)
 
-ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, color = country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +
   scale_colour_manual(values = country_colors) +
   scale_size(range = c(2, 12)) +
   scale_x_log10() +
-  facet_wrap(~ continent) +
+  facet_wrap(~continent) +
+  theme_bw() +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'Life Expectancy') +
   transition_time(year) +
-  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
-  theme_bw() 
+  ease_aes('linear')
+
+
 
 ```
+
+
+***
 
 Ok, back to the analysis. What if I am only interested in the US?
 ```{r}
@@ -534,7 +547,7 @@ So what's up with Mexico?
 
 Not really... Let's add yet another variable, GDP
 ```{r}
-ggplot(subset(gapminder, country %in% some_countries),
+ggplot(filter(gapminder, country %in% some_countries),
        aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
   geom_point(aes(size=gdpPercap))
@@ -547,7 +560,9 @@ ggplot(subset(gapminder, country %in% some_countries),
        aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
   geom_point(aes(size=gdpPercap)) +
-  theme_minimal()
+  theme_minimal() +
+  scale_color_brewer(palette = "Dark2")
+
 ```
 
 In addition to the themes included with ggplot, several other themes are available in the [ggthemes](http://cran.r-project.org/web/packages/ggthemes/index.html) package.

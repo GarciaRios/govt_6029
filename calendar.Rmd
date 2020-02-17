@@ -9,7 +9,7 @@
 
 ####  **Introduction to 6029 and R**
 
-- **January 27**  Intro to the course  [Deck 1](lectures/Lecture_01_handout.pdf)
+- **January 27**  Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
     - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
 
 - **January 27** Lab 1: Introduction to R, RStudio and knitr
