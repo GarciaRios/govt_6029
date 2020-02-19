@@ -29,7 +29,7 @@
 
 #### **Foundations of Linear Regression**
 
-- **February 17**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02_handout.pdf)
+- **February 17**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02.pdf)
     - Readings: 
         - Matrix algebra [handout](docs/matrix.pdf)
         
