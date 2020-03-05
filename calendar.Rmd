@@ -51,9 +51,9 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 
 - **March 9**  Lecture  [Deck 3](lectures/Lecture_03_handout.pdf)
-    - [Sampling Distribution of linear regression example]()
-    - [Multiple regression coefficient anatomy]()
+    - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
 
+    - [Multiple regression coefficient anatomy](docs/mostly_harmless_ch3.pdf)
 
 - **March 16** Lab 4: Multivariate Linear Regression, and Predicted Values
     - Lab document: [html](Labs/lab4/lab4.html)
