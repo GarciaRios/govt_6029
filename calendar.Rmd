@@ -63,7 +63,7 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 #### **Assumptions & Properties of the Linear Regression Model, Part II**
 
 
-- **March 23** Lecture  [Deck 4](lectures/Lecture_04.pdf)
+- **March 23** Lecture  [Deck 4](lectures/lecture4.pdf)
 
 -  **March 30**  Sprnig break
     - No class
