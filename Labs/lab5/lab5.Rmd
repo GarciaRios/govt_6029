@@ -1,0 +1,462 @@
+---
+title: "Lab 5 - Loops and simulations"
+author: "Sergio I Garcia-Rios"
+editor_options: 
+  chunk_output_type: console
+output: 
+  html_document: 
+    toc_depth: 4
+    toc: yes
+    css: ../../custom_style.css
+    theme: simplex
+---
+This lab will use some libraries you've seen before, and one you may not have. We'll load them all now.
+
+```{r, results = 'hide', echo = FALSE}
+knitr::opts_chunk$set(tidy = TRUE,
+                      eval = F,
+                      tidy.opts = list(width.cutoff = 60, indent = 2))
+```
+
+```{r, message=FALSE, warning=FALSE}
+library("MASS")
+library("tidyverse")
+library("broom")
+
+```
+
+## Some useful tools
+```{r eval=FALSE}
+z <- rnorm(10, mean=100, sd=1) # draw randomly from the normal distribution
+
+z1 <- runif(10,0,1) #draw from a uniform distribution between min and max values
+
+sample(z, 2) # samples two numbers from the z vector
+
+sort(z) # puts z in (ascending) order.
+sort(z, decreasing=TRUE)
+
+
+z3 <- sample(c("red","blue","yellow","green"),10,replace=TRUE)
+
+
+sample(c("red","blue","yellow","green"),3, replace=FALSE) #note you cannot have a higher number of draws when replace=FALSE
+
+
+which(z3=="green") # tells you the position(s) where the condition is met
+which.max(z1)
+```
+
+### IF conditions
+```{r}
+a <- 10
+
+if (a==10) print("Yes, a is 10.")
+
+print("This gets printed no matter what value a was.")
+
+
+
+```
+The statement immediately after the if statement is run only when the argument in parentheses evaluates to TRUE.  Try #setting 'a' to another value and see what happens.
+
+
+**Note: use braces {} after the if statement if you want multiple commands to be executed when the condition is met:**
+```{r}
+
+if (a==10) {
+    print("Yes, a is 10.")
+    print("Because a is 10 I'm doing this too.")
+} else {
+	print("DIDNT WORK")
+}
+
+print("This gets printed no matter what value a was.")
+```
+
+
+### FOR loops
+```{r}
+for (i in 1:10){
+  print(i^2)
+  } # close the i loop
+```
+
+You can put as many lines of code as you want in between the {} braces, including other for loops and if statements, and whatever else you want.
+
+## Examples using loops
+### (Example 1 for data online)
+
+Read in the Ross data from last week's lab (selecting and renaming variables as appropriate:
+
+```{r, results='hide'}
+rossdata <- read.csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/ross_2012.csv",
+                     stringsAsFactors = FALSE)
+
+data <- rossdata %>%
+  dplyr::select(cty, year, polity, logoil_gdpcap2000_sup_Q_1, logGDPcap, oecd)
+
+data <- data %>% rename(oil=logoil_gdpcap2000_sup_Q_1, loggdp=logGDPcap)
+```
+
+We're going to examine the extent of missing data by country (what proportion of each country's observations remain after listwise deletion?)
+
+First, create a list of every country name
+```{r results = 'hide'}
+uc <- unique(data$cty)
+
+```
+
+Then calculate the number of countries in the dataset:
+```{r}
+numcountries <- length(uc)
+```
+
+Then create empty vectors to hold our results (we'll use them in the ``for`` loop)
+```{r}
+country_obs <- rep(NA, numcountries)
+country_na <- rep(NA, numcountries)
+```
+
+Next, we write the loop. This loop is going to go through each individual country in turn, and find out two things:
+
+1. How many observations are there for that country?
+2. How many observations for that country are left after listwise deletion of missing data?
+
+After evaluating these questions for each country, and storing the results in two different vectors, the loop will repeat the same tasks for the next country.  The counter variable ``i`` simply goes up by 1 for each iteration of the loop. By referencing ``uc[i]``, we are asking the lines of code inside the loop to apply to the first country, then the second country, then the third, and so on...
+
+```{r results = 'hide'}
+
+for(i in 1:numcountries){
+  tempdata <- filter(data, cty == uc[i]) 
+	na_omit_tempdata <- na.omit(tempdata)
+	country_obs[i] <- nrow(tempdata)
+	country_na[i] <- nrow(na_omit_tempdata)
+	}
+
+dta_na <- cbind(uc, country_obs, country_na,country_na/country_obs)
+```
+
+*Challenge: Why are there quotes around the numbers? How might you fix this?*
+
+```{r results = 'hide'}
+na_table <- data_frame("Country" = uc,
+                       "All_obs" = country_obs,
+                       "Remaining_obs" = country_na,
+                       "Proportion_remaining" = round(country_na/country_obs,2))
+
+```
+
+
+## Another loop example, with regressions:
+
+Run a separate regression model for each year in the dataset and summarize changing magnitude of effects (hint, this is really easy to do with **dplyr** and **broom**, in case you needed illustration of why the packages are useful and not just extra things to learn!)
+
+First, set up a vector of all unique years in the data frame
+```{r}
+uy <- unique(data$year)
+```
+
+Then, create a dichotomous variable of whether a country is a democracy or not:
+```{r}
+data <- mutate(data, dem_indicator = polity >= 8) %>%  tbl_df()
+```
+
+Next we create a data frame of empty vectors in which  to store the regression results:
+```{r}
+results <- data_frame(
+  year = uy,
+  dem_coef = rep(NA, length(uy)),
+  dem_se = rep(NA, length(uy)),
+  oil_coef = rep(NA, length(uy)),
+  oil_se = rep(NA, length(uy)),
+  df = rep(NA, length(uy))
+  )
+
+results <- expand.grid(  
+  year = uy,
+  dem_coef = NA,
+  dem_se = NA,
+  oil_coef = NA,
+  oil_se = NA,
+  df = NA
+  )
+
+```
+
+And now we make a loop that checks if we have enough complete observations and runs a regression for every year, and then stores the coefficients and standard errors.
+
+```{r}
+for(i in 1:length(uy)){
+	tempdata <- filter(data, year == uy[i])
+	if (nrow(na.omit(subset(tempdata, select = c("oil", "dem_indicator")))) > 1) {
+    res_temp <- lm(loggdp ~ dem_indicator + oil, data = tempdata)
+    results$dem_coef[i] <- coef(res_temp)[2]
+    results$dem_se[i] <- sqrt(diag(vcov(res_temp)))[2]
+    results$oil_coef[i] <- coef(res_temp)[3]
+    results$oil_se[i] <- sqrt(diag(vcov(res_temp)))[3]
+    results$df[i] <- res_temp$df
+    }
+  else {
+    print(paste("Year", uy[i], "does not have enough complete observations.", sep = " "))
+  }
+}
+```
+
+Let's look at our results:
+
+```{r}
+results 
+```
+
+Challenge: Combine **dplyr** and **broom** to replicate the loop above without using a loop?
+
+
+```{r}
+# broom code here
+
+data %>% 
+  group_by(year) %>%
+  dplyr::select(loggdp, dem_indicator,  oil, year) %>% 
+  na.omit() %>% 
+  do(year_fit = lm(loggdp ~ dem_indicator + oil, data = .)) 
+
+
+
+
+model1 <- lm(loggdp ~ dem_indicator + oil, data = data)
+
+xhyp = expand.grid(oil = c(0, 5, 11),
+                   dem_indicator = TRUE)
+
+df_res <- data %>augment(model1)
+cbind(df_res, data)
+head(df_res)
+```
+
+
+```{r}
+ggplot(results, aes(x = year)) + geom_line(aes(y = dem_coef)) + geom_ribbon(aes(ymin = dem_coef + qt(.025, results$df) * dem_se,
+                                                                                ymax = dem_coef + qt(.975, results$df) * dem_se),
+                                                                            alpha = 1/3)
+```
+
+
+**Challenge: create a similar plot to explore how the effect of oil has changed over time.**
+
+## Also `map`. My favorite 
+
+```{r}
+
+data  %>% 
+  dplyr::select(loggdp, dem_indicator,  oil, year) %>% 
+  na.omit() %>% 
+  split(.$year) %>% # from base R
+  map(~ lm(loggdp ~ dem_indicator + oil, data = .)) %>% 
+  map(tidy) %>% 
+  enframe(name = "Year") %>% 
+  unnest()
+  
+```
+
+
+
+
+
+## Another example: Using simulations to summarize a regression model:
+This is basically an alternate way to work through part 1.e. of Homework 2
+
+Load the data and run the basic regression with interaction:
+```{r}
+sprinters <- read.csv ("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/sprinters.csv", na.strings=".")
+
+
+sprinter_model <- lm(finish ~ year * women, data=sprinters)
+```
+
+Create a range of hypothetical years to get expected values:
+```{r}
+year_range <- seq(from=min(sprinters$year), to=max(sprinters$year), by=2)
+```
+
+Create a data frame that will relate years to the estimated expected values and CIs (currently empty columns):
+```{r tidy=FALSE}
+
+
+expected <- expand.grid(year = year_range,
+  # point estimates from model for men
+  EVs_male = NA,
+  lowerCIs_male = NA,
+  upperCIs_male = NA,
+  # point estimates from model for women
+  EVs_female = NA,
+  lowerCIs_female = NA,
+  upperCIs_female = NA
+  )
+  
+
+
+expected <- data_frame(
+  year = year_range,
+  # point estimates from model for men
+  EVs_male = rep(NA, length(year_range)),
+  lowerCIs_male = rep(NA, length(year_range)),
+  upperCIs_male = rep(NA, length(year_range)),
+  # point estimates from model for women
+  EVs_female = rep(NA, length(year_range)),
+  lowerCIs_female = rep(NA, length(year_range)),
+  upperCIs_female = rep(NA, length(year_range))
+  )
+```
+
+Get the coefficients and variance-covariance matrix from the model:
+```{r}
+pe<-coef(sprinter_model)
+vc<-vcov(sprinter_model)
+```
+
+Take 1000 draws from the multivariate normal distribution:
+```{r}
+simbetas<-mvrnorm(1000, pe, vc)
+
+```
+
+
+Set up a loop that goes through all  values in year.range, with FEMALE set to 0
+We need define the covariate values for the current scenario.
+These must be in the same order as in `model2$coefficients`:
+`(Intercept)`, `year`, `women`, `year:women`.
+
+```{r tidy=FALSE}
+for (i in 1:length(year_range)) {
+  x.current <- c("(Intercept)" = 1,
+                 "year" = year_range[i],
+                 "women" = 0,
+                 "year:women" = year_range[i] * 0
+  )
+  # calculate the 1000 predictions:
+  pred.current <- simbetas %*% x.current
+  # Now slot the mean, lowerCI and upperCI values into the appropriate
+  # positions in the results vectors:
+  expected$EVs_male[i] <- mean(pred.current)
+  # for illustration; quantile is a better way to do this
+  # see CIs for women below
+  expected$lowerCIs_male[i] <- sort(pred.current)[25]
+  expected$upperCIs_male[i]<-sort(pred.current)[975]
+} # close i loop
+```
+
+Now repeat that same loop, but change to FEMALE=1 (both in the base term and the int. term)
+```{r}
+for (i in 1:length(year_range)) {
+  # define the covariate values for the current scenario
+  x.current<-c("(Intercept)" = 1,
+               "year" = year_range[i],
+               "women" = 1,
+               "year:women" = year_range[i] * 1
+  )
+  # calculate the 1000 predictions:
+  pred.current<- simbetas %*% x.current
+  # Now slot the mean, lowerCI and upperCI values into the appropriate positions in the results vectors:
+  expected$EVs_female[i] <- mean(pred.current)
+  expected$lowerCIs_female[i] <- quantile(pred.current,.025)
+  expected$upperCIs_female[i] <- quantile(pred.current,.975)
+} # close i loop
+```
+
+### Plotting
+```{r}
+ggplot(expected, aes(x = year, y = EVs_male,
+                     ymin = lowerCIs_male,
+                     ymax = upperCIs_male)) +
+  geom_line() +
+  geom_ribbon(alpha = 1/3)
+```
+
+*Challenge: plot the line for women*
+```{r, echo=FALSE}
+sprinters_plot <- sprinters_plot + geom_line(aes(x = year, y = EVs_male)) + geom_ribbon(aes(x = year, ymin = lowerCIs_male, ymax = upperCIs_male), alpha = 1/3)
+sprinters_plot + geom_line(aes(x = year, y = EVs_female)) + geom_ribbon(aes(x = year, ymin = lowerCIs_female, ymax = upperCIs_female), alpha = 1/3)
+
+```
+
+
+
+## Monty Hall Simulation
+
+On Let's Make a Deal, host Monty Hall offers you the following choice:
+
+1. There are 3 doors. Behind one is a car. Behind the other two are goats.
+2. You choose a door. It stays closed.
+3. Monty picks one of the two remaining doors, and opens it to reveal a goat.
+4. Your choice: Keep the door you chose in step 1, or switch to the third door.
+
+*What should you do?*
+
+*What is the probability of a car from staying?
+*What is the probability of a car from switching?
+
+### The simulation approach:
+
+*Set up the doors, goats, and car
+*Contestant picks a door
+*Monty "picks" a remaining door
+*Record where the car and goats were
+*Do all of the above many many times
+*Print the fraction of times a car was found
+
+```{r, echo=T}
+sims <- 10000 # Simulations run
+doors <- c(1,0,0) # The car (1) and the goats (0)
+cars.stay <- 0 # Save times cars won with first choice here
+cars.switch <- 0 # Save times cars won from switching here
+for (i in 1:sims) {
+  random.doors <- sample(doors,3,replace=FALSE)
+	cars.stay <- cars.stay + random.doors[1] #First choose "door number 1"
+	cars.switch <- cars.switch + sort(random.doors[2:3])[2] #Do you understand what this line of code is doing?
+  #cars.switch <- cars.switch + (sum(random.doors[2:3])) # an alternative approach
+}
+
+paste("Probability of a car from staying with 1st door", cars.stay/sims, sep=": ")
+paste("Probability of a car from switching to 2nd door", cars.switch/sims, sep=": ")
+```
+
+
+
+
+## Birthday simulation
+
+**Question: What is the probability that at least two students will share the same birthday in a class of this size?**
+
+*Use a simulation method to answer this.  (Ignore leap years.)*
+
+**Bonus question: Modify your quote to answer the question for varying class sizes.**
+
+```{r, echo = T}
+size <- 17
+sims <- 100000
+score <- 0
+for (i in 1:sims) {
+  class <- sample(1:365, size, replace=TRUE)
+  unique <- length(unique(class))
+  if (length(unique(class)) < size) score <- score+1
+}
+prob <- score/sims
+paste("The probability of at least one shared birthday in a class of 17 students is", round(prob,2))
+```
+
+
+
+
+
+***
+
+<div class="alert alert-danger" role="alert">
+Science should be open! Here at Cornell and everywhere, this lab is released under a 
+[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
+
+</div>
+
+
+***
+***

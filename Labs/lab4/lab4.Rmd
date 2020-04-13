@@ -5,6 +5,7 @@ output:
   html_document: 
     theme: simplex
     toc: yes
+    css: ../../custom_style.css
 editor_options: 
   chunk_output_type: console
 ---
