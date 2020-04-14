@@ -36,9 +36,12 @@ Some of the basic elements of successful traditional presentation apply here:
 
 
 #### Submition guidelines and logistics
+- You will submit your poster  (pdf or PowerPoint only, no code) via Canvas by midnight May 23 
+- At this point we will not have a poster presentation session but we will have one (hopefully) next semester
 
+<!--
 - We will formally begin with the poster presentations at 10:00 am on May 15
 - Try to come a few minutes early so we can set up your poster
 - I will bring some of those mounting adhesives. 
 - Submit your poster (pdf or PowerPoint only, no code) via Blackboard by midnight on Wednesday
-
+-->

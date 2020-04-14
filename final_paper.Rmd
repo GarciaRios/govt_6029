@@ -3,7 +3,7 @@
 ### Final Paper
 
 
-Submit a copy of the paper and all associated code and data necessary to produce the results of the paper (see rule 7) via Balckboard
+Submit a copy of the paper and all associated code and data necessary to produce the results of the paper (see rule 7) via Canvas
 
 As in any graduate courses, strive to write, draft, or work on research that could turn into a publishable article.
 There are several rules and recommendations for this assignment.
@@ -16,8 +16,7 @@ There are several rules and recommendations for this assignment.
    
 
 3. Except in cases of family or medical emergency, I will not grant incompletes.
-   Think of this as a favor: I expect the paper to be the product of
-   15 weeks work, not a year, so turn in what you can accomplish in 15 weeks to get interim feedback, even if your ultimate research aims are broader than a term assignment.
+   Think of this as a favor: I expect the paper to be the product of 15 weeks work, not a year, so turn in what you can accomplish in 15 weeks to get interim feedback, even if your ultimate research aims are broader than a term assignment.
 
 4. The paper should be 15--20 pages long, but longer papers are acceptable.
    However, the quality of the analysis and clarity of presentation far outweigh the quantity of prose.
@@ -33,7 +32,7 @@ There are several rules and recommendations for this assignment.
    
    Provide instructions and documentation so that I can run the code and understand which code relates to various parts of your analyses. 
    
-Put everything (inlcuding the paper, simlified data and  code) in a compresssed file (e.g: .zip, .rar or .tar) and submit that compressed filed   
+Put everything (including the paper, simplified data and  code) in a compressed file (e.g: .zip, .rar or .tar) and submit that compressed file  
 
 #### Recommendations
 

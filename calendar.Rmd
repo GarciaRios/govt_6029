@@ -62,28 +62,32 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Assumptions & Properties of the Linear Regression Model, Part II**
 
+ -  **March 16 23**  Classes suspended 
 
-- **March 23** Lecture  [Deck 4](lectures/lecture4.pdf)
 
--  **March 30**  Sprnig break
-    - No class
 
-- **April 6**   Lab 5  Loops and simulation
+- **April 6** Lecture  [Deck 4](lectures/lecture4.pdf)
+
+
+- **April 16**   Lab 5  Loops and simulation
     - Lab document: [html](Labs/lab5/lab5.html)
-    - Probelm Set 3 Assigned, Due April 17
+    - Problem Set 3 Assigned, Due May 7
 
 ***
 
 #### **Inference and Interpretation of Linear Regression**
 
-- **April 20** Lecture  [Deck 5](lectures/Lecture_05_handout.pdf)
+- **April 23** Lecture  [Deck 5](lectures/Lecture_05_handout.pdf)
 
-- **April 27** Lab 6: Binary Models and Data Wrangling
+- **April 30** Lab 6: Binary Models and Data Wrangling
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
-    - Probelm Set 4 Assigned, Due May 3
+    - Problem Set 4 Canceled
 
-- **May 4** Lab 7: Case Study
+- **May 7** Lab 7: Case Study
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
+
+
+- **May 11-15** Final Project Consulting
 
 
 ***
@@ -91,9 +95,9 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Poster Presentation and Final Paper**
 
-- **May 13** Poster Presentation: 10:00 am
+- **May 22** Poster Due
     - More info [here](posters.html)
-- **May 16** Final Paper Due
+- **May 22** Final Paper Due
     - More info [here](final_paper.html)
 
 <!--
