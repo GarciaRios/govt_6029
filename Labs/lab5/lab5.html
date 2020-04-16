@@ -563,6 +563,8 @@ head(df_res)
   1.96 * dem_se, ymax = dem_coef + 1.96 * dem_se)) + geom_line() + 
   geom_ribbon(alpha = 0.3)</code></pre>
 <p><strong>Challenge: create a similar plot to explore how the effect of oil has changed over time.</strong></p>
+<pre><code>Your Code Here
+</code></pre>
 </div>
 <div id="also-map.-my-favorite" class="section level2">
 <h2>Also <code>map</code>. My favorite</h2>
@@ -597,7 +599,7 @@ sprinter_model &lt;- lm(finish ~ year * women, data = sprinters)</code></pre>
   EVs_female = NA,
   lowerCIs_female = NA,
   upperCIs_female = NA
-  )
+  ) 
   
 
 
@@ -650,8 +652,10 @@ vc &lt;- vcov(sprinter_model)</code></pre>
 <div id="plotting" class="section level3">
 <h3>Plotting</h3>
 <pre class="r"><code>ggplot(expected, aes(x = year, y = EVs_male, ymin = lowerCIs_male, 
-  ymax = upperCIs_male)) + geom_line() + geom_ribbon(alpha = 1/3)</code></pre>
+  ymax = upperCIs_male)) + geom_line() + geom_ribbon(alpha = 0.3)</code></pre>
 <p><em>Challenge: plot the line for women</em></p>
+<pre><code>Your Code Here
+</code></pre>
 </div>
 </div>
 <div id="monty-hall-simulation" class="section level2">
@@ -691,18 +695,8 @@ paste(&quot;Probability of a car from switching to 2nd door&quot;, cars.switch/s
 <p><strong>Question: What is the probability that at least two students will share the same birthday in a class of this size?</strong></p>
 <p><em>Use a simulation method to answer this. (Ignore leap years.)</em></p>
 <p><strong>Bonus question: Modify your quote to answer the question for varying class sizes.</strong></p>
-<pre class="r"><code>size &lt;- 17
-sims &lt;- 1e+05
-score &lt;- 0
-for (i in 1:sims) {
-  class &lt;- sample(1:365, size, replace = TRUE)
-  unique &lt;- length(unique(class))
-  if (length(unique(class)) &lt; size) 
-    score &lt;- score + 1
-}
-prob &lt;- score/sims
-paste(&quot;The probability of at least one shared birthday in a class of 17 students is&quot;, 
-  round(prob, 2))</code></pre>
+<pre><code>Your Code Here
+</code></pre>
 <hr />
 <div class="alert alert-danger" role="alert">
 <p>Science should be open! Here at Cornell and everywhere, this lab is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>.</p>

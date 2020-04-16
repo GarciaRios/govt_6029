@@ -258,6 +258,12 @@ ggplot(results, aes(x = year, y = dem_coef,
 
 **Challenge: create a similar plot to explore how the effect of oil has changed over time.**
 
+
+```{}
+Your Code Here
+
+```
+
 ## Also `map`. My favorite 
 
 ```{r}
@@ -306,7 +312,7 @@ expected <- expand.grid(year = year_range,
   EVs_female = NA,
   lowerCIs_female = NA,
   upperCIs_female = NA
-  )
+  ) 
   
 
 
@@ -384,10 +390,17 @@ ggplot(expected, aes(x = year, y = EVs_male,
                      ymin = lowerCIs_male,
                      ymax = upperCIs_male)) +
   geom_line() +
-  geom_ribbon(alpha = 1/3)
+  geom_ribbon(alpha = .3)
 ```
 
 *Challenge: plot the line for women*
+
+
+```{}
+Your Code Here
+
+```
+
 ```{r, echo=FALSE}
 sprinters_plot <- sprinters_plot + geom_line(aes(x = year, y = EVs_male)) + geom_ribbon(aes(x = year, ymin = lowerCIs_male, ymax = upperCIs_male), alpha = 1/3)
 sprinters_plot + geom_line(aes(x = year, y = EVs_female)) + geom_ribbon(aes(x = year, ymin = lowerCIs_female, ymax = upperCIs_female), alpha = 1/3)
@@ -446,7 +459,13 @@ paste("Probability of a car from switching to 2nd door", cars.switch/sims, sep="
 
 **Bonus question: Modify your quote to answer the question for varying class sizes.**
 
-```{r, echo = T}
+```{}
+Your Code Here
+
+```
+
+
+```{r, echo = F}
 size <- 17
 sims <- 100000
 score <- 0
