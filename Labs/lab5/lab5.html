@@ -436,6 +436,7 @@ sample(c(&quot;red&quot;, &quot;blue&quot;, &quot;yellow&quot;, &quot;green&quot
 
 
 which(z3 == &quot;green&quot;)  # tells you the position(s) where the condition is met
+
 which.max(z1)</code></pre>
 <div id="if-conditions" class="section level3">
 <h3>IF conditions</h3>
@@ -534,30 +535,33 @@ results &lt;- expand.grid(year = uy, dem_coef = NA, dem_se = NA,
 }</code></pre>
 <p>Let’s look at our results:</p>
 <pre class="r"><code>results</code></pre>
-<p>Challenge: Combine <strong>dplyr</strong> and <strong>broom</strong> to replicate the loop above without using a loop?</p>
-<pre class="r"><code># broom code here
+<!--
 
-data %&gt;% 
-  group_by(year) %&gt;%
-  dplyr::select(loggdp, dem_indicator,  oil, year) %&gt;% 
-  na.omit() %&gt;% 
-  do(year_fit = lm(loggdp ~ dem_indicator + oil, data = .)) 
+Challenge: Combine **dplyr** and **broom** to replicate the loop above without using a loop?
 
 
 
+```r
+# broom code here
 
-model1 &lt;- lm(loggdp ~ dem_indicator + oil, data = data)
+data %>% group_by(year) %>% select(loggdp, dem_indicator, oil, 
+  year) %>% na.omit() %>% do(year_fit = lm(loggdp ~ dem_indicator + 
+  oil, data = .)) %>% unnest(year_fit)
 
-xhyp = expand.grid(oil = c(0, 5, 11),
-                   dem_indicator = TRUE)
 
-df_res &lt;- data %&gt;augment(model1)
+
+model1 <- lm(loggdp ~ dem_indicator + oil, data = data)
+
+xhyp = expand.grid(oil = c(0, 5, 11), dem_indicator = TRUE)
+
+df_res <- augment(model1)
 cbind(df_res, data)
-head(df_res)</code></pre>
-<pre class="r"><code>ggplot(results, aes(x = year)) + geom_line(aes(y = dem_coef)) + 
-  geom_ribbon(aes(ymin = dem_coef + qt(0.025, results$df) * 
-    dem_se, ymax = dem_coef + qt(0.975, results$df) * dem_se), 
-    alpha = 1/3)</code></pre>
+head(df_res)
+```
+-->
+<pre class="r"><code>ggplot(results, aes(x = year, y = dem_coef, ymin = dem_coef - 
+  1.96 * dem_se, ymax = dem_coef + 1.96 * dem_se)) + geom_line() + 
+  geom_ribbon(alpha = 0.3)</code></pre>
 <p><strong>Challenge: create a similar plot to explore how the effect of oil has changed over time.</strong></p>
 </div>
 <div id="also-map.-my-favorite" class="section level2">
