@@ -77,7 +77,7 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Inference and Interpretation of Linear Regression**
 
-- **April 23** Lecture  [Deck 5](lectures/Lecture_05_handout.pdf)
+- **April 23** Lecture  [Deck 5](lectures/lecture5.pdf)
 
 - **April 30** Lab 6: Binary Models and Data Wrangling
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
