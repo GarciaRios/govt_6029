@@ -14,7 +14,7 @@ library(haven)
 library(margins)
 library(magrittr)
 library(stargazer)
-
+library(labelled)
 
 # Read Data
 df <-   read_dta("anes_timeseries_2016.dta")
@@ -88,10 +88,10 @@ df_tidy <-
 # I like to check my recodes as I go to make sure that I am doing it right
 
 df_tidy %>% 
-  count(age) 
+  count(sexism) 
 
 df %>%
-  count(V161342)  
+  count(V161508)  
 
 # We are now ready to fit a  model with basic controls
 
@@ -106,7 +106,7 @@ model1 <- glm(vote_trump ~ male +
 
 summary(model1)
 
-# Let's now add other vaiables of interest like econ anx
+# Let's now add other variables of interest like econ anx
 
 summary(model2 <- 
           glm(vote_trump ~ 
@@ -137,7 +137,7 @@ summary(model3 <-
               family = "binomial", data = df_tidy))
 
 
-# WE are done with models but before we move on let's create a nice table for our paper/poster
+# We are done with models but before we move on let's create a nice table for our paper/poster
 
 df_tab <- df_tidy %>%
   select("vote_trump",
@@ -213,7 +213,7 @@ ame <- summary(margins(model))
 ame_minmax <- summary(margins(model3, change = "minmax"))
 
 
-# the summary of margins outputs a very tidy dataframe thrat we can put into ggplot easily
+# the summary of margins outputs a very tidy dataframe that we can put into ggplot easily
 
 ggplot(ame_minmax, aes(x = factor %>% 
                          fct_relevel( "econ_anx", "immig_anx", "sexism") %>% 
@@ -362,6 +362,3 @@ ggplot(choro, aes(long, lat)) +
 ggplot(choro, aes(long, lat)) +
   geom_polygon(aes(group = group, fill = assault / murder)) +
   coord_map("albers",  at0 = 45.5, lat1 = 29.5)
-
-
-
