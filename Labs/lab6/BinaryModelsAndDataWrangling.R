@@ -1,6 +1,6 @@
 #############################
 #  Sergio I Garcia-Rios
-#  Lab: Bianary models
+#  Lab: Binary models
 #  sub:  data wrangling
 ############################
 
@@ -207,7 +207,7 @@ stargazer(model1, model2, model3,
 ame <- summary(margins(model)) 
 
 
-# And also min-max probabilty changes
+# And also min-max probability changes
 
 
 ame_minmax <- summary(margins(model3, change = "minmax"))
