@@ -14,6 +14,7 @@ title: Calendar
 
 - **February 8**  Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
     - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
+    - Lab 0 [html](Labs/lab0/lab0.html)
 
 - **February 15** Lab 1: Introduction to R, RStudio and knitr
     - Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
