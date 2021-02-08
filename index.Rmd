@@ -17,7 +17,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 </tr>
 <tr>
 <td>TA</td>
-<td><a href="https://.com/">Julie George</a> </td>
+<td><a href="https://.com/">Rebeka Johnson</a> </td>
 <td><a href=" jg2268@cornell.edu"> jg2268@cornell.edu</a> </td>
 </tr>
 
@@ -28,8 +28,8 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <table class = "table table-striped table-hover">
 <td>Class </td>
 <td> Monday </td>
-<td> 12:20PM - 2:15PM </td>
-<td> Morrill Hall 110</td>
+<td> 2:40 - 4:35 </td>
+<td> [Zoom link](https://cornell.zoom.us/j/99722546446?pwd=THJzZlZOOERBd3JFNjhVTHpKdHBUQT09) </td>
 </tr>
 
 </table>
@@ -41,20 +41,20 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <table class = "table table-striped table-hover">
 <tr>
 <td>Sergio Garcia-Rios</td>
-<td><a href="bookme.html"> [Click here to find available office
-hours](http://www.sergiogarciarios.com/office_hours/)</td>
-<td> White Hall 308 </td>
+<td><a href="bookme.html"> [Click here to find available office hours](http://www.sergiogarciarios.com/office_hours/)</td>
+<td> [Zoom link](https://cornell.zoom.us/j/3508426266?pwd=RzBYZ2VydDhBUld3alBmZmRIRFdyQT09) </td>
 </tr>
 <tr>
-<td>Julie George</td>
-<td>Monday  3:00 PM to 5:00 PM [Click here to find available office
-hours](https://calendly.com/juliegeorge)</td>
-<td> White Hall -- B12  </td>
+<td> Julie George</td>
+<td> Thursdays 10am-12pm - [Click here to find available office
+hours](https://calendly.com/rebekajohnson )</td>
+<td> [Zoom link](https://cornell.zoom.us/j/93526866276?pwd=bFl2T0xhc0ZoSkloKzVvSTlGTWN4UT09 ) </td>
 </tr>
 
 </table>
 
 
+***
 
 
 ### Overview and Class Goals
@@ -65,10 +65,17 @@ This course continues the graduate sequence in quantitative political methodolog
 Our agenda includes gaining familiarity with statistical programming via the popular R environment, developing clear and informative graphical representations of regression results, and understanding regression models in matrix form.
 
 
+
+***
+
+
 ### Prerequisites
 
 
 It is desirable for students to have taken the introductory course in the sequence (Government 6019), but any prior course on basic social statistics and linear regression should suffice.
+
+
+***
 
 
 ### Assessment and Evaluation
@@ -84,8 +91,7 @@ Assignments will be submitted digitally through canvas  at the due date.
 
 #### Poster Presentation
 
-You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session. We will invite other faculty, our chance to show off!
-
+You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session joined by the 2020 cohort. We will invite other faculty and grad students, our chance to show off!
 
 Tentative date for poster presentation session: TBA  <!-- **May 13, 2019 10:00 am EST** -->
 
@@ -96,9 +102,12 @@ A 15--20 page original report on an original quantitative analysis or replicatio
 The quantitative analysis should be conducted in R and reproducible.
 
 
-The final paper is due on **May  22, 2019 11:59 pm EST**.
+The final paper is due on **May  25, 2019 11:59 pm EST**.
 
 Further details on the projects will be provided as due dates approach
+
+
+***
 
 ### Email, Canvas, and Slack: 
 

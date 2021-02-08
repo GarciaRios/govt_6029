@@ -11,8 +11,9 @@
 
 
 
-<title>calendar.utf8</title>
+<title>Calendar</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
@@ -24,6 +25,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -69,6 +79,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="custom_style.css" type="text/css" />
 
@@ -276,28 +287,28 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-file-pdf-o fa-2x"></span>
+    <span class="far fa-file-pdf fa-2x"></span>
      
     Syllabus
   </a>
 </li>
 <li>
   <a href="calendar.html">
-    <span class="fa fa-calendar fa-2x"></span>
+    <span class="far fa-calendar fa-2x"></span>
      
     Calendar
   </a>
 </li>
 <li>
   <a href="labs.html">
-    <span class="fa fa-file-code-o fa-2x"></span>
+    <span class="far fa-file-code fa-2x"></span>
      
     Labs
   </a>
 </li>
 <li>
   <a href="assignments.html">
-    <span class="fa fa-pencil-square-o fa-2x"></span>
+    <span class="far fa-edit fa-2x"></span>
      
     Problem-Sets &amp; Assignments
   </a>
@@ -314,6 +325,7 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Calendar</h1>
 
 </div>
 
@@ -325,16 +337,16 @@ $(document).ready(function () {
 <div id="introduction-to-6029-and-r" class="section level4">
 <h4><strong>Introduction to 6029 and R</strong></h4>
 <ul>
-<li><strong>January 27</strong> Intro to the course <a href="lectures/Lecture_01.pdf">Deck 1</a>
+<li><strong>February 8</strong> Intro to the course <a href="lectures/Lecture_01.pdf">Deck 1</a>
 <ul>
 <li>In-class R Markdown example analysis: <a href="docs/Challenger_Analysis.Rmd">Rmd source</a>, <a href="docs/Challenger_Analysis.html">html output</a></li>
 </ul></li>
-<li><strong>January 27</strong> Lab 1: Introduction to R, RStudio and knitr
+<li><strong>February 15</strong> Lab 1: Introduction to R, RStudio and knitr
 <ul>
 <li>Lab document: <a href="Labs/lab1/lab1.html">html</a>, <a href="Labs/lab1/lab1.Rmd">RMarkdown</a></li>
 <li>Data: <a href="data/gapminder.csv">gapminder.csv</a></li>
 </ul></li>
-<li><strong>February 3</strong> No Class
+<li><strong>February 22</strong> No Class
 <ul>
 <li>Readings:
 <ul>
@@ -342,7 +354,7 @@ $(document).ready(function () {
 </li>
 </ul></li>
 </ul></li>
-<li><strong>February 10</strong> Lab 2: Graphing and Data Manipulation
+<li><strong>March 1</strong> Lab 2: Graphing and Data Manipulation
 <ul>
 <li>Lab document: <a href="Labs/lab2/lab2_20.html">html</a></li>
 <li>Readings:
@@ -357,18 +369,14 @@ $(document).ready(function () {
 <div id="foundations-of-linear-regression" class="section level4">
 <h4><strong>Foundations of Linear Regression</strong></h4>
 <ul>
-<li><strong>February 17</strong> Review, Properties and Assumptions, Matrix Form <a href="lectures/Lecture_02.pdf">Deck 2</a>
+<li><strong>March 8</strong> Review, Properties and Assumptions, Matrix Form <a href="lectures/Lecture_02.pdf">Deck 2</a>
 <ul>
 <li>Readings:
 <ul>
 <li>Matrix algebra <a href="docs/matrix.pdf">handout</a></li>
 </ul></li>
 </ul></li>
-<li><strong>February 24</strong> February Break
-<ul>
-<li>No Class</li>
-</ul></li>
-<li><strong>March 2</strong> Lab 3: Linear Regression, Matrices, and predicted Values
+<li><strong>March 15</strong> Lab 3: Linear Regression, Matrices, and predicted Values
 <ul>
 <li>Lab document: <a href="Labs/lab3/lab3.html">html</a></li>
 <li>Probelm Set 2 Assigned, Due March 13</li>
@@ -383,12 +391,12 @@ $(document).ready(function () {
 <div id="assumptions-properties-of-the-linear-regression-model-part-i" class="section level4">
 <h4><strong>Assumptions &amp; Properties of the Linear Regression Model, Part I</strong></h4>
 <ul>
-<li><strong>March 9</strong> Lecture <a href="lectures/Lecture_02.pdf">Deck 3</a>
+<li><strong>March 22</strong> Lecture <a href="lectures/Lecture_02.pdf">Deck 3</a>
 <ul>
 <li><p><a href="https://www.econometrics-with-r.org/4-5-tsdotoe.html">Sampling Distribution of linear regression example</a></p></li>
 <li><p><a href="docs/mostly_harmless_ch3.pdf">Multiple regression coefficient anatomy</a></p></li>
 </ul></li>
-<li><strong>March 16</strong> Lab 4: Multivariate Linear Regression, and Predicted Values
+<li><strong>March 29</strong> Lab 4: Multivariate Linear Regression, and Predicted Values
 <ul>
 <li>Lab document: <a href="Labs/lab4/lab4.html">html</a></li>
 </ul></li>
@@ -398,9 +406,8 @@ $(document).ready(function () {
 <div id="assumptions-properties-of-the-linear-regression-model-part-ii" class="section level4">
 <h4><strong>Assumptions &amp; Properties of the Linear Regression Model, Part II</strong></h4>
 <ul>
-<li><p><strong>March 16 23</strong> Classes suspended</p></li>
-<li><p><strong>April 6</strong> Lecture <a href="lectures/lecture4.pdf">Deck 4</a></p></li>
-<li><p><strong>April 16</strong> Lab 5 Loops and simulation</p>
+<li><p><strong>April 5</strong> Lecture <a href="lectures/lecture4.pdf">Deck 4</a></p></li>
+<li><p><strong>April 12</strong> Lab 5 Loops and simulation</p>
 <ul>
 <li>Lab document: <a href="Labs/lab5/lab5.html">html</a></li>
 <li>Problem Set 3 Assigned, Due May 7</li>
@@ -411,13 +418,14 @@ $(document).ready(function () {
 <div id="inference-and-interpretation-of-linear-regression" class="section level4">
 <h4><strong>Inference and Interpretation of Linear Regression</strong></h4>
 <ul>
-<li><p><strong>April 23</strong> Lecture <a href="lectures/lecture5.pdf">Deck 5</a></p></li>
-<li><p><strong>April 30</strong> Lab 6: Binary Models and Data Wrangling</p>
+<li><p><strong>April 19</strong> Lecture <a href="lectures/lecture5.pdf">Deck 5</a>]</p></li>
+<li><p><strong>April 26</strong> Wellness Day - No Class</p></li>
+<li><p><strong>May 3</strong> Lab 6: Binary Models and Data Wrangling</p>
 <ul>
 <li>Lab document: <a href="Labs/lab6/BinaryModelsAndDataWrangling.R">html</a></li>
 <li>Problem Set 4 Canceled</li>
 </ul></li>
-<li><p><strong>May 7</strong> Lab 7: Case Study</p>
+<li><p><strong>May 10</strong> Lab 7: Case Study</p>
 <ul>
 <li>Lab document: <a href="Labs/lab6/BinaryModelsAndDataWrangling.R">html</a></li>
 </ul></li>
@@ -427,17 +435,14 @@ $(document).ready(function () {
 </div>
 <div id="poster-presentation-and-final-paper" class="section level4">
 <h4><strong>Poster Presentation and Final Paper</strong></h4>
-<ul>
-<li><strong>May 22</strong> Poster Due
-<ul>
-<li>More info <a href="posters.html">here</a></li>
-</ul></li>
-<li><strong>May 22</strong> Final Paper Due
-<ul>
-<li>More info <a href="final_paper.html">here</a></li>
-</ul></li>
-</ul>
 <!--
+
+- **May 22** Poster Due
+    - More info [here](posters.html)
+- **May 22** Final Paper Due
+    - More info [here](final_paper.html)
+
+
 
 
 ## Topic 2: Assumptions & Properties of the Linear Regression Model, Part I
@@ -681,7 +686,7 @@ Syllabus derived from Christopher Adolph. (Spring 2014). *POLS/CSSS 503: Advance
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

@@ -13,6 +13,7 @@
 
 <title>posters.utf8</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
@@ -24,6 +25,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -69,6 +79,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="custom_style.css" type="text/css" />
 
@@ -276,28 +287,28 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fa fa-file-pdf-o fa-2x"></span>
+    <span class="far fa-file-pdf fa-2x"></span>
      
     Syllabus
   </a>
 </li>
 <li>
   <a href="calendar.html">
-    <span class="fa fa-calendar fa-2x"></span>
+    <span class="far fa-calendar fa-2x"></span>
      
     Calendar
   </a>
 </li>
 <li>
   <a href="labs.html">
-    <span class="fa fa-file-code-o fa-2x"></span>
+    <span class="far fa-file-code fa-2x"></span>
      
     Labs
   </a>
 </li>
 <li>
   <a href="assignments.html">
-    <span class="fa fa-pencil-square-o fa-2x"></span>
+    <span class="far fa-edit fa-2x"></span>
      
     Problem-Sets &amp; Assignments
   </a>
@@ -355,9 +366,13 @@ $(document).ready(function () {
 <div id="submition-guidelines-and-logistics" class="section level4">
 <h4>Submition guidelines and logistics</h4>
 <ul>
-<li>You will submit your poster (pdf or PowerPoint only, no code) via Canvas by midnight May 23</li>
-<li>At this point we will not have a poster presentation session but we will have one (hopefully) next semester</li>
+<li>TBA</li>
 </ul>
+<!--
+
+- You will submit your poster  (pdf or PowerPoint only, no code) via Canvas by midnight May 23 
+- At this point we will not have a poster presentation session but we will have one (hopefully) next semester
+
 <!--
 - We will formally begin with the poster presentations at 10:00 am on May 15
 - Try to come a few minutes early so we can set up your poster
@@ -376,7 +391,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

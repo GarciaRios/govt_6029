@@ -8,7 +8,7 @@
 
 # Load libraries
 
-
+```{r}
 library(tidyverse)
 library(haven)
 library(margins)
@@ -35,7 +35,207 @@ df_tidy <-
       V161031 == 2 ~  1,
       V161031 <= -1 ~ NA_real_,
       TRUE ~ 0),
+    conservative = case_when(
+      V161126 == -9 ~ NA_real_,
+      V161126 == -8 ~ NA_real_,
+      V161126 == 99 & V161127 == 1~3,
+      V161126 == 99 & V161127 == 2~5,
+      V161126 == 99 & V161127 == 3~4,
+      V161126 == 99 & V161127 <= -1 ~ NA_real_,
+      TRUE~ as.numeric(V161126)),
     male = case_when(
+       V161342 == 1 ~ 1,
+       V161342 == 2 ~ 0,
+       TRUE ~ NA_real_),
+    income = recode(V161361x, 
+                 `-9`=NA_real_,
+                 `-5` = NA_real_),
+    year= recode(V161361x,
+                `-9` = NA_real_,
+                `-8` = NA_real_ ),
+    age = 2016 - year,
+    education = recode (V161270,
+                        `-9` = NA_real_,
+                        `-8` = NA_real_,
+                        `90` = NA_real_,
+                        `95` = NA_real_),
+    white = recode(V161310a,
+                    `-9` = NA_real_,
+                    `-8` = NA_real_),
+    
+    econ_anx = recode(V162134,
+                    `-9` = NA_real_,
+                    `-8` = NA_real_,
+                    `-7` = NA_real_,
+                    `-6` = NA_real_),
+  sexism = recode(V161508, 
+                    `-9` = NA_real_, 
+                    `-5` = NA_real_),
+  sexism = abs(6-sexism),
+  aff_action_oppose = recode(V161204,
+                               `-9` = NA_real_,
+                               `-8` = NA_real_,
+                               `1` = 1,
+                               `2` = 3,
+                               `3` = 2),
+    immig_anx = recode(V162157,
+                       `-9` = NA_real_,
+                       `-8` = NA_real_,
+                       `-7` = NA_real_,
+                       `-6` = NA_real_))
+
+  
+  
+df_tidy %>% count(vote_trump)
+```
+ ## Models
+```{r}
+
+model1 <-  glm(vote_trump ~ male +income + conservative+ education +white + age, family= "binomial", data = df_tidy)
+
+summary(model1)
+                        
+
+summary(model2 <- 
+          glm(vote_trump ~ 
+                male + 
+                income + 
+                age + 
+                conservative + 
+                education + 
+                econ_anx +
+                white,
+              family = "binomial", data = df_tidy))
+
+summary(model3 <- 
+          glm(vote_trump ~ 
+                male + 
+                income + 
+                age + 
+                conservative + 
+                education + 
+                sexism +
+                aff_action_oppose +
+                immig_anx +
+                econ_anx +
+                white,
+              family = "binomial", data = df_tidy))
+
+
+```        
+
+```{r}
+summary(margins(model1))
+
+
+ame_minmax <-summary(margins(model3, change = "minmax"))
+
+ggplot(ame_minmax, aes(x = factor %>%
+                         fct_relevel( "econ_anx", "immig_anx", "sexism") %>% 
+                         fct_rev(), 
+                       y = AME,
+                       ymin = lower,
+                       ymax = upper)) + 
+  geom_pointrange(size = 1, alpha = .7) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_flip() + 
+  scale_x_discrete(labels=c(male = "Male",
+                            income = "Income", 
+                            age  = "Age", 
+                            conservative  = "Conservative", 
+                            education = "Education",
+                            sexism   = "Sexism",
+                            aff_action_oppose  = "Oppose Aff Action",
+                            immig_anx  = "Immigration Axiety",
+                            econ_anx = "Economic Anxiety",
+                            white  = "White")) +
+  labs(y = "Average Marginal Effect (Min-Max Change): Vote for Trump",
+       x = "") + 
+  theme_bw() +
+  ggsave("ame_plot.pdf", width = 8, height = 7) 
+
+
+
+
+
+summary(model <- 
+          glm(vote_trump ~ 
+                male +
+                income + 
+                age +
+                conservative*immig_anx +
+                education + 
+                white +
+                sexism +
+                aff_action_oppose +
+                econ_anx,
+              family = "binomial", data = df_tidy))
+
+
+
+
+
+
+xhyp <- df_tidy %$%
+  expand.grid(
+    conservative = seq(1, 7, .01),
+    immig_anx = c(1, 5), 
+    male = mean(male, na.rm = T),
+    income = mean(income, na.rm = T), 
+    age = mean(age, na.rm = T),
+    education = mean(education, na.rm = T), 
+    white = mean(white, na.rm = T),
+    sexism = mean(sexism, na.rm = T),
+    aff_action_oppose = mean(aff_action_oppose, na.rm = T),
+    econ_anx = mean(econ_anx, na.rm = T)
+  )
+
+
+preds <- predict(model, xhyp, type = "response", se.fit = T)
+
+preds_df <- cbind(xhyp, preds)
+
+
+ggplot(preds_df, aes(x = conservative, y = fit, 
+                     fill = factor(immig_anx),
+                     color = factor(immig_anx),
+                     ymin = fit - (1.96*se.fit),
+                     ymax = fit + (1.96*se.fit))) +
+  geom_ribbon(alpha = .7) +
+  geom_line() +
+  scale_fill_brewer(palette = "Accent",
+                   labels  = c("Low", "High")) +
+  scale_color_brewer(palette = "Accent",
+                    labels  = c("Low", "High")) +
+  labs(x= "Consevative Level", 
+       fill = "Immig Anxiety",
+       color = "Immig Anxiety",
+       y = "(Pr) Voting for Trump") +
+  theme_bw() +
+  ggsave("preds.pdf", width = 8, height = 7)
+
+
+
+
+
+
+ggplot(preds_df, aes(x = conservative, y = fit, 
+                     color = factor(immig_anx),
+                     ymin = fit - (1.96*se.fit),
+                     ymax = fit + (1.96*se.fit))) +
+  geom_pointrange(size = 1) +
+  theme_bw()
+
+```
+      
+
+
+```{r}
+
+df_tidy <- 
+  df2 %>% 
+  mutate(   
+  male = case_when(
       V161342 == 2 ~ 0,
       V161342 == 1 ~ 1,
       TRUE ~ NA_real_),
@@ -52,7 +252,7 @@ df_tidy <-
                        `-9` = NA_real_, 
                        `-8` = NA_real_, 
                        `95` = NA_real_),
-    white = recode(V161310a, 
+    white = recode( V161310a, 
                     `-9` = NA_real_, 
                     `-8` = NA_real_),
     conservative = recode(V161126, 
@@ -69,8 +269,11 @@ df_tidy <-
                                `1` = 1,
                                `2` = 3,
                                `3` = 2),
-
-    
+    econ_anx = recode(V162134,
+                      `-9` = NA_real_,
+                      `-8` = NA_real_,
+                      `-7` = NA_real_,
+                      `-6` = NA_real_),
     immig_anx = recode(V162157,
                        `-9` = NA_real_,
                        `-8` = NA_real_,
@@ -115,8 +318,6 @@ summary(model2 <-
                 econ_anx +
                 white,
               family = "binomial", data = df_tidy))
-
-
 
 
 # Now a full model
@@ -247,7 +448,7 @@ ggplot(ame_minmax, aes(x = factor %>%
                          fct_relevel( "econ_anx", "immig_anx", "sexism") %>% 
                          fct_rev(), 
                        y = AME,
-                        ymin = lower,
+                       ymin = lower,
                        ymax = upper)) + 
   geom_pointrange(size = 1, alpha = .7) +
   geom_hline(yintercept = 0, linetype = "dashed") +
@@ -273,7 +474,6 @@ ggplot(ame_minmax, aes(x = factor %>%
 # We can also get predicted probabilities using predict the way we have done it before
 
 
-
 summary(model <- 
           glm(vote_trump ~ 
                 male +
@@ -286,6 +486,10 @@ summary(model <-
                 aff_action_oppose +
                 econ_anx,
               family = "binomial", data = df_tidy))
+
+
+
+
 
 
 xhyp <- df_tidy %$%
@@ -361,3 +565,4 @@ ggplot(choro, aes(long, lat)) +
 ggplot(choro, aes(long, lat)) +
   geom_polygon(aes(group = group, fill = assault / murder)) +
   coord_map("albers",  at0 = 45.5, lat1 = 29.5)
+```

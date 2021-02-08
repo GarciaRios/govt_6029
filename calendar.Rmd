@@ -1,3 +1,6 @@
+---
+title: Calendar
+---
 ***
 
 <i class="fa fa-warning"></i> **Warning:**  The following schedule is a *tentative* guideline and will be evolving to meet course needs up to and during the semester.In particular, the pace of the course will be adjusted so that we move as possible conditional on everyone "getting" the material.
@@ -9,16 +12,16 @@
 
 ####  **Introduction to 6029 and R**
 
-- **January 27**  Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
+- **February 8**  Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
     - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
 
-- **January 27** Lab 1: Introduction to R, RStudio and knitr
+- **February 15** Lab 1: Introduction to R, RStudio and knitr
     - Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
     - Data: [gapminder.csv](data/gapminder.csv)
-- **February 3** No Class
+- **February 22** No Class
     -  Readings:
         - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)    
-- **February 10** Lab 2: Graphing and Data Manipulation
+- **March 1** Lab 2: Graphing and Data Manipulation
     - Lab document: [html](Labs/lab2/lab2_20.html)
     -  Readings:
         - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3-28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
@@ -29,14 +32,13 @@
 
 #### **Foundations of Linear Regression**
 
-- **February 17**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02.pdf)
+- **March 8**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02.pdf)
     - Readings: 
         - Matrix algebra [handout](docs/matrix.pdf)
         
 
-- **February 24**  February Break 
-    - No  Class
-- **March 2**  Lab 3:  Linear Regression, Matrices, and predicted Values
+
+- **March 15**  Lab 3:  Linear Regression, Matrices, and predicted Values
     - Lab document: [html](Labs/lab3/lab3.html)
     - Probelm Set 2 Assigned, Due March 13
     - Readings: 
@@ -50,26 +52,26 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 
 
-- **March 9**  Lecture  [Deck 3](lectures/Lecture_02.pdf)
+- **March 22**  Lecture  [Deck 3](lectures/Lecture_02.pdf)
     - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
 
     - [Multiple regression coefficient anatomy](docs/mostly_harmless_ch3.pdf)
 
-- **March 16** Lab 4: Multivariate Linear Regression, and Predicted Values
+- **March 29** Lab 4: Multivariate Linear Regression, and Predicted Values
     - Lab document: [html](Labs/lab4/lab4.html)
 
 ***
 
 #### **Assumptions & Properties of the Linear Regression Model, Part II**
 
- -  **March 16 23**  Classes suspended 
 
 
 
-- **April 6** Lecture  [Deck 4](lectures/lecture4.pdf)
+
+- **April 5** Lecture  [Deck 4](lectures/lecture4.pdf)
 
 
-- **April 16**   Lab 5  Loops and simulation
+- **April 12**   Lab 5  Loops and simulation
     - Lab document: [html](Labs/lab5/lab5.html)
     - Problem Set 3 Assigned, Due May 7
 
@@ -77,13 +79,18 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Inference and Interpretation of Linear Regression**
 
-- **April 23** Lecture  [Deck 5](lectures/lecture5.pdf)
+- **April 19** Lecture  [Deck 5](lectures/lecture5.pdf)]
 
-- **April 30** Lab 6: Binary Models and Data Wrangling
+
+- **April 26**  Wellness Day 
+       - No  Class
+
+
+- **May 3** Lab 6: Binary Models and Data Wrangling
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
     - Problem Set 4 Canceled
 
-- **May 7** Lab 7: Case Study
+- **May 10** Lab 7: Case Study
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
 
 
@@ -95,12 +102,15 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Poster Presentation and Final Paper**
 
+
+<!--
+
 - **May 22** Poster Due
     - More info [here](posters.html)
 - **May 22** Final Paper Due
     - More info [here](final_paper.html)
 
-<!--
+
 
 
 ## Topic 2: Assumptions & Properties of the Linear Regression Model, Part I

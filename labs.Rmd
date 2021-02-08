@@ -1,5 +1,10 @@
+---
+title: Labs
+---
+
+
 ***
-### Labs
+
 
 <ul class="fa-ul">
 <li><i class="fa-li fa fa-flask"></i><a target="_blank" href=./Labs/lab0/lab0.html>0.-- Introduction to the Course</a>
