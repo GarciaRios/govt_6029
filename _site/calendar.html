@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Calendar</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<link rel="stylesheet" href="custom_syle.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="far fa-file-pdf fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="far fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Calendar</h1>
+
+</div>
+
+
+<hr />
+<p><i class="fa fa-warning"></i> <strong>Warning:</strong> The following schedule is a <em>tentative</em> guideline and will be evolving to meet course needs up to and during the semester.In particular, the pace of the course will be adjusted so that we move as possible conditional on everyone “getting” the material.</p>
+<hr />
+<hr />
+<div id="introduction-to-6029-and-r" class="section level4">
+<h4><strong>Introduction to 6029 and R</strong></h4>
+<ul>
+<li><i class="fa fa-book"></i> <strong>February 8</strong> Intro to the course <a href="lectures/Lecture_01.pdf">Deck 1</a>
+<ul>
+<li>In-class R Markdown example analysis: <a href="docs/Challenger_Analysis.Rmd">Rmd source</a>, <a href="docs/Challenger_Analysis.html">html output</a></li>
+<li>Lab 0 <a href="Labs/lab0/lab0.html">html</a></li>
+</ul></li>
+<li><i class="fa fa-flask"></i> <strong>February 15</strong> Lab 1: Introduction to R, RStudio and knitr
+<ul>
+<li>Lab document: <a href="Labs/lab1/lab1.html">html</a>, <a href="Labs/lab1/lab1.Rmd">RMarkdown</a></li>
+<li>Data: <a href="data/gapminder.csv">gapminder.csv</a></li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="foundations-of-linear-regression" class="section level4">
+<h4><strong>Foundations of Linear Regression</strong></h4>
+<ul>
+<li><i class="fa fa-book"></i> <strong>February 22</strong> Review, Matrix Form <a href="lectures/Lecture_02.pdf@">Deck 2</a>
+<ul>
+<li>Readings:
+<ul>
+<li>Matrix algebra <a href="docs/matrix.pdf">handout</a></li>
+</ul></li>
+</ul></li>
+<li><i class="fa fa-flask"></i> <strong>March 1</strong> Lab 2: Graphing and Data Manipulation
+<ul>
+<li>Lab document: <a href="Labs/lab2/lab2_20.html">html</a></li>
+<li>Readings:
+<ul>
+<li>Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.’’ <em>Journal of Computational and Graphical Statistics</em> 19(1): 3-28. <a href="http://dx.doi.org/10.1198/jcgs.2009.07098">link here</a></li>
+</ul></li>
+<li>Problem Set 1 Assigned, Due Mar 10</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="assumptions-properties-of-the-linear-regression-model" class="section level4">
+<h4><strong>Assumptions &amp; Properties of the Linear Regression Model</strong></h4>
+<ul>
+<li><p><i class="fa fa-book"></i> <strong>March 8</strong> Properties and Assumptions, <a href="lectures/Lecture_03_upd21.pdf@">Deck 3</a> - <a href="https://www.econometrics-with-r.org/4-5-tsdotoe.html">Sampling Distribution of linear regression example</a></p></li>
+<li><p><i class="fa fa-flask"></i> <strong>March 15</strong> Lab 3: Linear Regression, Matrices, and predicted Values</p>
+<ul>
+<li>Lab document: <a href="Labs/lab3/lab3.html">html</a></li>
+<li>Readings:
+<ul>
+<li>Gelman and Hill, Ch. 2. <a href="docs/gelman_hill_ch2.pdf">Concepts and methods from basic probability and statistics</a></li>
+</ul></li>
+<li>Problem Set 2 Assigned, Due March 24</li>
+</ul></li>
+<li><p><i class="fa fa-flask"></i> <strong>March 22</strong> Lab 4: Multivariate Linear Regression, and Predicted Values</p>
+<ul>
+<li>Lab document: <a href="Labs/lab4/lab4.html">html</a></li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="inference-and-interpretation-of-linear-regression" class="section level4">
+<h4><strong>Inference and Interpretation of Linear Regression</strong></h4>
+<ul>
+<li><p><strong>March 29</strong> Inference and Interpretation of Linear Regression <a href="lectures/lecture4.pdf@">Deck 4</a></p></li>
+<li><p><i class="fa fa-flask"></i> <strong>April 5</strong> Lab 5 Loops and simulation</p>
+<ul>
+<li>Lab document: <a href="Labs/lab5/lab5.html">html</a></li>
+<li>Problem Set 3 Assigned, Due Apr 14</li>
+</ul></li>
+<li><p><strong>April 12</strong> Specification, Bias, and Transformations <a href="lectures/lecture5.pdf@">Deck 5</a>]</p></li>
+</ul>
+<hr />
+</div>
+<div id="special-topics" class="section level4">
+<h4><strong>Special Topics</strong></h4>
+<ul>
+<li><p><i class="fa fa-flask"></i> <strong>May 19</strong> Lab 6: Binary Models and Data Wrangling</p>
+<ul>
+<li>Lab document: <a href="Labs/lab6/BinaryModelsAndDataWrangling.R">html</a></li>
+<li>Problem Set 4, Due Apr 28</li>
+</ul></li>
+<li><p><strong>April 26</strong> Wellness Day - No Class</p></li>
+<li><p><i class="fa fa-flask"></i> <strong>May 3</strong> Lab 7: Case Study</p>
+<ul>
+<li>Lab document: <a href="Labs/lab6/BinaryModelsAndDataWrangling.R">html</a></li>
+</ul></li>
+<li><p><strong>May 10-12-</strong> Final Project Consulting</p></li>
+</ul>
+<hr />
+</div>
+<div id="poster-presentation-and-final-paper" class="section level4">
+<h4><strong>Poster Presentation and Final Paper</strong></h4>
+<ul>
+<li><strong>May 21</strong> Poster Due
+<ul>
+<li>More info <a href="posters.html">here</a></li>
+</ul></li>
+<li><strong>May 25</strong> Final Paper Due
+<ul>
+<li>More info <a href="final_paper.html">here</a></li>
+</ul></li>
+</ul>
+<!--
+
+
+## Topic 2: Assumptions & Properties of the Linear Regression Model, Part I
+
+### Monday, February 12
+
+- [Deck 2](lectures/Lecture_02_handout.pdf)
+- Readings: 
+    - Matrix algebra readings. Read **any** of the following
+        - Moore, Will H., and David A. Siegel. 2013. *A Mathematics Course for Political and Social Research*. 1st edition. Princeton, NJ: Princeton University Press, Chapter 12 (on Canvas).
+        - Kevin Quinn's matrix algebra [handout](docs/matrix.pdf)
+        - [CSSS Math Camp Lectures](http://www.csss.washington.edu/MathCamp/Lectures/) Section 4
+    - Fox, Ch. 5, 9.1--9.2
+
+### Monday, February 19
+
+- No Class February Break
+
+
+- Readings:
+
+    - Hadley Wickham, [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+
+## Topic 3: Assumptions & Properties of the Linear Regression Model, Part II
+
+
+
+- [Deck 3](lectures/Lecture_03_handout.pdf)
+- [Sampling Distribution of linear regression example](https://raw.githubusercontent.com/POLS503/pols_503_sp15/master/lectures/Sampling_Distribution_Linear_Regression.Rmd)
+- [Multiple regression coefficient anatomy](https://github.com/POLS503/pols_503_sp15/blob/master/lectures/multiple_regression_anatomy.R)
+- Readings:
+
+    - Fox, Ch. 6, 9.3
+    
+[Problem Set 1](hw/hw1.html) Due
+
+- Lab document: [.Rmd](labs/lab3.Rmd), [html](labs/lab3.html)
+- Readings
+
+    - Wickham, Hadley. 2014. ``Tidy Data.'' *Journal of Statistical Software* 59(10). <http://www.jstatsoft.org/v59/i10/>.
+    - Hadley Wickham, [tidyr vignette](https://cran.rstudio.com/web/packages/tidyr/vignettes/tidy-data.html)
+
+## Topic 4: Statistical Inference / Interpretation of the Linear Model
+
+
+
+- [Deck 4](lectures/Lecture_04_handout.pdf)
+- Using R with the Duncan occupational prestige data [.Rmd](docs/Duncan_regression_example.Rmd), [.html](docs/Duncan_regression_example.html)
+- Readings:
+
+    - Fox, Ch. 6, 9.3
+
+
+
+- Lab document: [.Rmd](labs/lab4.Rmd), [html](labs/lab4.html)
+- Data: [ross_2012.csv](data/ross_2012.csv)
+- Readings
+
+    - **stargazer** [vignette](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf)
+    - **broom** [vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
+
+## Topic 5: Model Fitting and Data Transformation
+
+
+
+[Problem Set 2](hw/hw2.html) Due
+
+- More on p-values and significance testing
+
+    - Nuzzo, Regina. 2014. ``Scientific Method: Statistical Errors.'' *Nature* 506(7487): 150–52. <http://www.nature.com/doifinder/10.1038/506150a>
+
+- Omitted Variable Bias
+
+    - [Omitted Variable Bias handout](handout/OVB_Measurement_Error.pdf)
+    - Fox, Ch. 6.3
+    - Agrist and Pischke, Ch. 3.2.2
+
+
+- Heteroskedasticity and misspecification
+
+    - [OLS Residuals deck](lectures/Lecture_OLS_Residuals_presentation.pdf)
+    - Fox, Ch 12.1--12.3
+    - Angrist and Pischke, Ch. 8
+    - King, Gary, and Margaret E. Roberts. 2015. ``How Robust Standard Errors Expose Methodological Problems They Do Not Fix, and What to Do About It.'' Political Analysis 23(2): 159–79. <http://pan.oxfordjournals.org/content/23/2/159>
+
+- Mispecification, Transforming Covariates
+
+    - See Christopher Adolph's slides from 503 last year <http://faculty.washington.edu/cadolph/503/topic5.pw.pdf>
+    - Fox, Ch. 4, Ch 17.1--17.3
+    - Gelman and Hill, Ch. 4.1--4.3, 4.5-4.6
+    - Brambor, Thomas, William Roberts Clark, and Matt Golder. 2006. “Understanding Interaction Models: Improving Empirical Analyses.” Political Analysis 14(1): 63–82. <http://pan.oxfordjournals.org/content/14/1/63>
+    
+
+
+- Lab document: [.Rmd](labs/lab5.Rmd), [html](labs/lab5.html)
+
+## Topic 6: Measurement Error, Transformations
+
+
+
+We covered substantive vs. statistical influence; transformations; and measurement error.
+You will need to cover collinearity, unusual and influential data, and robust regression on your own.
+
+- The perils of stargazing:
+    - Christopher Adolph, "Inference and Interpretation of Linear Regression", POLS 503, Spring 2014. <http://faculty.washington.edu/cadolph/503/topic4.pw.pdf#page=77>, pg. 77--.
+
+- Transformations of Variables
+
+    - Lecture deck: [.pdf](lectures/Lecture_Transformation_handout.pdf)
+
+- Measurement error
+
+    - Lecture deck: [.pdf](lectures/Lecture_Measurement_Error_handout.pdf)
+    - Fox. Ch. 6.4
+    
+- Collinearity
+
+    - Fox Ch 13 (13.1, skim the rest)
+
+
+
+
+Lab notes: [.html](http://UW-POLS503.github.io/pols_503_sp15/labs/lab6.html), [.Rmd](http://pols503.github.io/pols_503_sp15/labs/lab6.Rmd)
+
+## Topic 7: Interpretation, Model Selection
+
+
+
+[Problem Set 3](hw/hw3.html) Due
+
+- [Deck on Model Specification and Fit](lectures/Lecture_Model_Specification_handout.pdf)
+- Life Expectancy Example: [.html](docs/Life_Expectancy_Example.html), [.Rmd](docs/Life_Expectancy_Example.Rmd)
+- Interpretation of regression
+
+    - King, Gary, Michael Tomz, and Jason Wittenberg. 2000. ``Making the Most of Statistical Analyses: Improving Interpretation and Presentation." *American Journal of Political Science* 44(2): 347–61. <http://www.jstor.org/stable/2669316>.
+
+- Bootstrapping
+
+    - Fox, Ch 21
+
+- Model Selection and Cross-Validation
+
+    - Fox, Ch 22
+
+
+
+Lab notes: [.html](labs/lab7.html), [.Rmd](labs/lab7.Rmd)
+
+## Topic 8: Causal Inference I
+
+
+
+- Unusual and Influential Data and Robust Regression
+
+    - Worked Example [Rmd](docs/Outliers_Robust_Regression.Rmd), [html](docs/Outliers_Robust_Regression.html)
+    - Christopher Adolph, "Outliers and Robust Regression Techniques", POLS 503, Spring 2014. <http://faculty.washington.edu/cadolph/503/topic6.pw.pdf>
+    - Readings
+    
+        - Fox, Ch 11, 19
+
+- Missing Data
+
+    - Slides on Missing Data [pdf](lectures/Lecture_Missing_Data_handout.pdf)
+    - Worked Example [Rmd](docs/Imputing_Missing_Data.Rmd), [html](docs/Imputing_Missing_Data.html)
+    - Readings:
+    
+        - King, Gary, James Honaker, Anne Joseph, and Kenneth Scheve. 2001. "Analyzing Incomplete Political Science Data: An Alternative Algorithm for Multiple Imputation." American Political Science Review 95: 49–69. Copy at http://j.mp/1zTTZUT
+
+- Miscellaneous Thoughts on the state of quantitative analysis in political science. *We did not talk about this, but these are good readings*
+
+    - Schrodt, Philip A. 2014. ``Seven Deadly Sins of Contemporary Quantitative Political Analysis.'' *Journal of Peace Research* 51(2): 287–300. <http://jpr.sagepub.com/content/51/2/287>
+    - Achen, Christopher H. 2002. ``Toward a New Political Methodology: Microfoundations and ART.'' *Annual Review of Political Science* 5(1): 423–50. <http://dx.doi.org/10.1146/annurev.polisci.5.112801.080943>. Read the part on a "Rule of Three"; skim other parts.
+    - Achen, Christopher H. 2005. ``Let’s Put Garbage-Can Regressions and Garbage-Can Probits Where They Belong.'' *Conflict Management and Peace Science* 22(4): 327–39. <http://cmp.sagepub.com/content/22/4/327> *skim*
+
+
+### Monday, May 22
+
+Lab document: [html](labs/lab8.html), [Rmd](labs/lab8.Rmd)
+
+## Topic 9: Causal Inference II
+
+### Monday, May 26
+
+**Problem Set 4 Due**
+
+- Limited Dependent Variables
+
+    - Slides on the Linear Probability Model and Logit [pdf](lectures/Lecture_Binary_Dependent_Variables_handout.pdf)
+
+- Potential outcomes framework, regression, matching
+
+    - Slides on Casual Inference [pdf](lectures/Lecture_Causal_Inference_handout.pdf)
+    - Readings
+
+        - Gelman and Hill, Ch 9--10. 
+        - Angrist and Pischke, Ch 1--3.
+        - Angrist, Joshua D., and Jorn-Steffen Pischke. 2010. ``The Credibility Revolution in Empirical Economics: How Better Research Design Is Taking the Con out of Econometrics.'' *Journal of Economic Perspectives* 24(2): 3–30. <http://www.aeaweb.org/articles.php?doi=10.1257/jep.24.2.3> *For background reading*
+
+
+### Monday, May 29
+
+Lab document: [Rmd](labs/lab9.Rmd), [html](labs/lab9.html)
+
+## Topic 10: Panel Data 
+
+### Monday, June 2
+
+- Slides on Panel data: [pdf](lectures/Lecture_Panel_Data_handout.pdf)
+- Example with R code: [html](docs/panel.html), [Rmd](docs/panel.Rmd)
+- Readings
+
+    - Angrist and Pischke, Ch. 5, 8.2
+    - Peter Kennedy, *A Guide to Econometrics*, 6th edition, Chapter 18, "Panel Data". On Canvas.
+    - Wooldridge, *Econometric Analysis of Cross Section and Panel Data*, Chapter 10, "Basic Linear Unobserved Effects Panel Data Models". On Canvas.
+    - Beck, N., & Katz, J. N. (2011). Modeling Dynamics in Time-Series–Cross-Section Political Economy Data. *Annual Review of Political Science*, 14(1), 331–352. <http://doi.org/10.1146/annurev-polisci-071510-103222>
+
+
+### Monday, June 5
+
+Open office hours to answer questions about your papers
+
+
+* * * 
+
+Syllabus derived from Christopher Adolph. (Spring 2014). *POLS/CSSS 503: Advanced Quantitative Political Methodology* [Syllabus]. University of Washington. http://faculty.washington.edu/cadolph/503/503.pdf [CC-BY-SA](https://creativecommons.org/licenses/by-sa/2.0/).
+
+<!--  LocalWords:  UTC td href TAs García SAV gelman angrist UW eBook
+ -->
+<!--  LocalWords:  zuur Brambor TBD CSSS img src 221B Tu faq html
+ -->
+<!--  LocalWords:  wickham brambor
+ -->
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

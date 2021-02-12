@@ -1,0 +1,11 @@
+---
+title: "lab 1"
+author: "SGR"
+output:
+
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```

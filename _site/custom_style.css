@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Spectral');
+
+
+
+.navbar-inverse{background-color:#b31b1b; border-color:#222222}
+
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus{background-color:transparent;color:#ffffff}
+
+/*
+*.navbar-fixed-top {
+    height: 95px; }
+    /* Whatever you want. */  
+    
+
+
+
+
+.navbar-brand{
+  font-size: 25px;
+  font-family: 'Spectral', serif;
+}
+
+body{
+color: #525252;  
+font-size: 15px;
+font-family: 'Spectral', sans-serif;
+
+}
+
+a {
+font-family: 'Spectral', sans-serif;
+}
+i {
+font-family: 'Spectral', sans-serif;
+}
+h1,h2,h3,h4,h5,h6  {font-family: 'Raleway', sans-serif;}
+
+

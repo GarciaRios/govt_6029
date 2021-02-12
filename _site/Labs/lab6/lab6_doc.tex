@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\linespread{1.5}
+\author{Sergio Garcia-Rios 
+	\thanks{Cornell University - Government}
+	}
+\title{Anxiously Preparing for a Final Paper: \\ 
+A \LaTeX\  Template for ARA Students}
+\date{}
+
+
+
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\section{Introduction}
+\lipsum[1-3]
+
+\section{Theory and Hypotheses}
+\lipsum[2]
+
+% Comment here
+\subsection{Hypotheses}
+\lipsum[2] This here \footnote{This is the footnote stuff} is a footnote
+
+\begin{itemize}
+    \item Hypothesis 1: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+    \item Hypothesis 2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+\end{itemize}
+
+
+\lipsum[1]
+
+\section{Data and Methods}
+
+\lipsum[2]
+
+\input{descriptives}
+\lipsum[3]
+
+\subsection{Models and specification}
+
+\lipsum[4]
+
+
+\begin{multline}
+  \operatorname{Pr}(\text{Vote} = 1 \mid \text{H, T})\\
+ = \frac{\exp(\beta_{0} + \beta_{1} \text{Gender} + \beta_{2} \text{Age} + \dots +
+    \beta_{12} \text{immigration)} }{1 + \exp(\beta_{0} + \beta_{1} \text{Gender} + \beta_{2} \text{Age} +
+\dots + \beta_{12 }\text{immigration})} \label{eq:glm1} 
+\end{multline}
+
+
+
+\lipsum[5]
+
+
+
+\section{Results}
+
+\lipsum[2]
+
+I can reference Table \ref{tab: regs} here and can reference Figure \ref{fig: ame} and Equation \ref{eq:glm1}
+
+
+\input{regressions}
+
+\lipsum[5-6]
+
+
+\begin{figure}
+\centering
+\caption{This is the title for this figure}
+\label{fig: ame}
+\includegraphics[scale=.6]{ame_plot}
+\end{figure}
+
+\lipsum[5]
+
+
+\begin{figure}
+\centering
+\caption{This is the title for this figure}
+\label{fig: preds}
+\includegraphics[scale=.6]{preds}
+\end{figure}
+
+\lipsum[8]
+
+\section{Conclusion}
+
+\lipsum[20-22]
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

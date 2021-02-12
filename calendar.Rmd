@@ -10,92 +10,101 @@ title: Calendar
 ***
 
 
+
 ####  **Introduction to 6029 and R**
 
-- **February 8**  Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
+- <i class="fa fa-book"></i> **February 8**   Intro to the course  [Deck 1](lectures/Lecture_01.pdf)
     - In-class R Markdown example analysis: [Rmd source](docs/Challenger_Analysis.Rmd), [html output](docs/Challenger_Analysis.html)
     - Lab 0 [html](Labs/lab0/lab0.html)
 
-- **February 15** Lab 1: Introduction to R, RStudio and knitr
+- <i class="fa fa-flask"></i>  **February 15** Lab 1: Introduction to R, RStudio and knitr
     - Lab document: [html](Labs/lab1/lab1.html), [RMarkdown](Labs/lab1/lab1.Rmd)
     - Data: [gapminder.csv](data/gapminder.csv)
-- **February 22** No Class
-    -  Readings:
-        - Data Camp "Introduction to R": [link here](https://www.datacamp.com/courses/free-introduction-to-r)    
-- **March 1** Lab 2: Graphing and Data Manipulation
-    - Lab document: [html](Labs/lab2/lab2_20.html)
-    -  Readings:
-        - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3-28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
-    - Probelm Set 1 Assigned, Due Feb 21
 
 ***
 
 
 #### **Foundations of Linear Regression**
 
-- **March 8**  Review, Properties and Assumptions, Matrix Form [Deck 2](lectures/Lecture_02.pdf)
+- <i class="fa fa-book"></i>  **February 22** Review, Matrix Form [Deck 2](lectures/Lecture_02.pdf@)
     - Readings: 
         - Matrix algebra [handout](docs/matrix.pdf)
-        
+ 
+ 
+-  <i class="fa fa-flask"></i> **March 1** Lab 2: Graphing and Data Manipulation
+    - Lab document: [html](Labs/lab2/lab2_20.html)
+    -  Readings:
+        - Wickham, Hadley. 2010. ``A Layered Grammar of Graphics.'' *Journal of Computational and Graphical Statistics* 19(1): 3-28. [link here](http://dx.doi.org/10.1198/jcgs.2009.07098)
+    - Problem Set 1 Assigned, Due Mar 10
+
+    
 
 
-- **March 15**  Lab 3:  Linear Regression, Matrices, and predicted Values
-    - Lab document: [html](Labs/lab3/lab3.html)
-    - Probelm Set 2 Assigned, Due March 13
-    - Readings: 
-        - Gelman and Hill, Ch. 2. [Concepts and methods from basic
-probability and statistics](docs/gelman_hill_ch2.pdf)
+
 
 
 ***
 
-#### **Assumptions & Properties of the Linear Regression Model, Part I**
+#### **Assumptions & Properties of the Linear Regression Model**
+
+
+- <i class="fa fa-book"></i> **March 8**  Properties and Assumptions, [Deck 3](lectures/Lecture_03_upd21.pdf@)
+        - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
 
 
 
-- **March 22**  Lecture  [Deck 3](lectures/Lecture_02.pdf)
-    - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
+-  <i class="fa fa-flask"></i> **March 15**   Lab 3:  Linear Regression, Matrices, and predicted Values
+    - Lab document: [html](Labs/lab3/lab3.html)
+    - Readings: 
+        - Gelman and Hill, Ch. 2. [Concepts and methods from basic
+probability and statistics](docs/gelman_hill_ch2.pdf)
+    - Problem Set 2 Assigned, Due March 24
+        
 
-    - [Multiple regression coefficient anatomy](docs/mostly_harmless_ch3.pdf)
-
-- **March 29** Lab 4: Multivariate Linear Regression, and Predicted Values
+-  <i class="fa fa-flask"></i> **March 22** Lab 4: Multivariate Linear Regression, and Predicted Values
     - Lab document: [html](Labs/lab4/lab4.html)
 
 ***
 
-#### **Assumptions & Properties of the Linear Regression Model, Part II**
-
-
-
-
-
-- **April 5** Lecture  [Deck 4](lectures/lecture4.pdf)
-
-
-- **April 12**   Lab 5  Loops and simulation
-    - Lab document: [html](Labs/lab5/lab5.html)
-    - Problem Set 3 Assigned, Due May 7
-
-***
 
 #### **Inference and Interpretation of Linear Regression**
 
-- **April 19** Lecture  [Deck 5](lectures/lecture5.pdf)]
 
+
+
+
+- **March 29** Inference and Interpretation of Linear Regression [Deck 4](lectures/lecture4.pdf@)
+
+
+- <i class="fa fa-flask"></i>  **April 5**   Lab 5  Loops and simulation 
+    - Lab document: [html](Labs/lab5/lab5.html)
+    - Problem Set 3 Assigned, Due Apr 14
+
+-  <i class="fa fa-book"></i> **April 12** Specification, Bias,  and Transformations [Deck 5](lectures/lecture5.pdf@)
+       
+
+
+
+
+***
+
+
+#### **Special Topics**
+
+- <i class="fa fa-flask"></i>  **May 19** Lab 6: Binary Models and Data Wrangling
+    - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
+     - Problem Set 4, Due Apr 28
 
 - **April 26**  Wellness Day 
        - No  Class
 
 
-- **May 3** Lab 6: Binary Models and Data Wrangling
-    - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
-    - Problem Set 4 Canceled
-
-- **May 10** Lab 7: Case Study
+- <i class="fa fa-flask"></i>  **May 3** Lab 7: Case Study
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
 
 
-- **May 11-15** Final Project Consulting
+- **May 10-12-** Final Project Consulting 
+
 
 
 ***
@@ -104,14 +113,14 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 #### **Poster Presentation and Final Paper**
 
 
-<!--
 
-- **May 22** Poster Due
+
+- **May 21** Poster Due
     - More info [here](posters.html)
-- **May 22** Final Paper Due
+- **May 25** Final Paper Due
     - More info [here](final_paper.html)
 
-
+<!--
 
 
 ## Topic 2: Assumptions & Properties of the Linear Regression Model, Part I

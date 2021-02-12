@@ -1,6 +1,7 @@
 ---
 title: Advanced Regression Analysis
 ---
+
 ***
 ##### Statement from Government Department: 
 
@@ -18,7 +19,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <tr>
 <td>TA</td>
 <td><a href="https://.com/">Rebeka Johnson</a> </td>
-<td><a href=" jg2268@cornell.edu"> jg2268@cornell.edu</a> </td>
+<td><a href= "rj388@cornell.edu"> rj388@cornell.edu </a> </td>
 </tr>
 
 </table>
@@ -102,7 +103,7 @@ A 15--20 page original report on an original quantitative analysis or replicatio
 The quantitative analysis should be conducted in R and reproducible.
 
 
-The final paper is due on **May  25, 2019 11:59 pm EST**.
+The final paper is due on **May  25, 2021 11:59 pm EST**.
 
 Further details on the projects will be provided as due dates approach
 
@@ -117,7 +118,7 @@ Canvas will be be primarily used as a dropbox for assignments submissions. All o
 
 
 
-It is often more efficient to answer questions in person, so try to ask them in class. However, if you want to reach the teaching team outside of class time the preferred method of communication will through Slack. If you run into coding issues you can send direct messages to us but I encourage you use the _#homework_ channel where we will try to troubleshoot the issues collectively (class and teaching team). My experience is that if you have a question or are  running into  coding issues at least someone else the class might have the same question. 
+It is often more efficient to answer questions in person, so try to ask them in class. However, if you want to reach the teaching team outside of class time the preferred method of communication will through Slack. If you run into coding issues you can send direct messages to us but I encourage you use the _#ProblemSets_ channel where we will try to troubleshoot the issues collectively (class and teaching team). My experience is that if you have a question or are  running into  coding issues at least someone else the class might have the same question. 
 
 Of course you can always email us but try to limit problem-set and coding questions to Slack
 

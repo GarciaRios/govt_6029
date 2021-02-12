@@ -1,8 +1,8 @@
-name: Cornell-GOVT 6029 ARA
+name: Cornell - GOVT 6029 ARA 
 navbar:
   title: Cornell-GOVT 6029 ARA
   left:
-  - icon: far fa-file-pdf fa-2x
+  - icon: far fa-file-pdf fa-2x 
     href: index.html
     text: Syllabus 
   - icon: far fa-calendar fa-2x
@@ -19,5 +19,8 @@ output:
   html_document:
     theme: simplex
     css: custom_style.css
+    #css: styles_B.css
     lib_dir: site_libs
     self_contained: no
+
+

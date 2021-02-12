@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Advanced Regression Analysis</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cornell-GOVT 6029 ARA</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="far fa-file-pdf fa-2x"></span>
+     
+    Syllabus
+  </a>
+</li>
+<li>
+  <a href="calendar.html">
+    <span class="far fa-calendar fa-2x"></span>
+     
+    Calendar
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Advanced Regression Analysis</h1>
+
+</div>
+
+
+<hr />
+<div id="statement-from-government-department" class="section level5">
+<h5>Statement from Government Department:</h5>
+<p>In fractious times, we reaffirm core principles. The Government Department at Cornell studies and teaches about intolerance, but will not practice it. We write about xenophobia and bigotry, but will not pretend they only exist elsewhere. We research racism, homophobia, and misogyny, but will not permit them to pass unchallenged. Our role as academics has never been inconsistent with our duty as citizens, and we pledge to honor the rich diversity of our students, staff, and faculty. Those who come to us—as students, co-workers, and colleagues—must be free to learn and live without fear, and we urge the administration to declare—promptly and forcefully—that Cornell is a sanctuary campus.</p>
+<hr />
+</div>
+<div id="teaching-team" class="section level3">
+<h3>Teaching Team</h3>
+<table class="table table-striped table-hover">
+<tr>
+<td>
+Professor
+</td>
+<td>
+<a href="http://www.sergiogarciarios.com">Sergio I Garcia-Rios </a>
+</td>
+<td>
+<a href="mailto:garcia.rios@cornell.edu">garcia.rios@cornell.edu</a>
+</td>
+</tr>
+<tr>
+<td>
+TA
+</td>
+<td>
+<a href="https://.com/">Rebeka Johnson</a>
+</td>
+<td>
+<a href=" jg2268@cornell.edu"> jg2268@cornell.edu</a>
+</td>
+</tr>
+</table>
+</div>
+<div id="class-meetings" class="section level3">
+<h3>Class Meetings</h3>
+<table class="table table-striped table-hover">
+<td>
+Class
+</td>
+<td>
+Monday
+</td>
+<td>
+2:40 - 4:35
+</td>
+<td>
+<a href="https://cornell.zoom.us/j/99722546446?pwd=THJzZlZOOERBd3JFNjhVTHpKdHBUQT09">Zoom link</a>
+</td>
+</tr>
+</table>
+</div>
+<div id="office-hours" class="section level3">
+<h3>Office Hours</h3>
+<table class="table table-striped table-hover">
+<tr>
+<td>
+Sergio Garcia-Rios
+</td>
+<td>
+<a href="bookme.html"> <a href="http://www.sergiogarciarios.com/office_hours/">Click here to find available office hours</a>
+</td>
+<td>
+<a href="https://cornell.zoom.us/j/3508426266?pwd=RzBYZ2VydDhBUld3alBmZmRIRFdyQT09">Zoom link</a>
+</td>
+</tr>
+<tr>
+<td>
+Rebeka Johnson
+</td>
+<td>
+Thursdays 10am-12pm - <a href="https://calendly.com/rebekajohnson">Click here to find available office hours</a>
+</td>
+<td>
+<a href="https://cornell.zoom.us/j/93526866276?pwd=bFl2T0xhc0ZoSkloKzVvSTlGTWN4UT09">Zoom link</a>
+</td>
+</tr>
+</table>
+<hr />
+</div>
+<div id="overview-and-class-goals" class="section level3">
+<h3>Overview and Class Goals</h3>
+<p>This course continues the graduate sequence in quantitative political methodology, focused particularly on fitting, interpreting, and refining the linear regression model.</p>
+<p>Our agenda includes gaining familiarity with statistical programming via the popular R environment, developing clear and informative graphical representations of regression results, and understanding regression models in matrix form.</p>
+<hr />
+</div>
+<div id="prerequisites" class="section level3">
+<h3>Prerequisites</h3>
+<p>It is desirable for students to have taken the introductory course in the sequence (Government 6019), but any prior course on basic social statistics and linear regression should suffice.</p>
+<hr />
+</div>
+<div id="assessment-and-evaluation" class="section level3">
+<h3>Assessment and Evaluation</h3>
+<div id="problem-sets" class="section level4">
+<h4>Problem Sets</h4>
+<p>Problem sets assigned weekly or bi-weekly. These problem sets will include programming problems with an emphasis on writing understandable, reproducible code.</p>
+<p>The assignments and due dates will be distributed during the semester</p>
+<p>Assignments will be submitted digitally through canvas at the due date.</p>
+</div>
+<div id="poster-presentation" class="section level4">
+<h4>Poster Presentation</h4>
+<p>You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session joined by the 2020 cohort. We will invite other faculty and grad students, our chance to show off!</p>
+<p>Tentative date for poster presentation session: TBA <!-- **May 13, 2019 10:00 am EST** --></p>
+</div>
+<div id="final-paper" class="section level4">
+<h4>Final Paper</h4>
+<p>A 15–20 page original report on an original quantitative analysis or replication-and-extension of a published article. The quantitative analysis should be conducted in R and reproducible.</p>
+<p>The final paper is due on <strong>May 25, 2019 11:59 pm EST</strong>.</p>
+<p>Further details on the projects will be provided as due dates approach</p>
+<hr />
+</div>
+</div>
+<div id="email-canvas-and-slack" class="section level3">
+<h3>Email, Canvas, and Slack:</h3>
+<p>You can find all the relevant information for this course on this website.</p>
+<p>Canvas will be be primarily used as a dropbox for assignments submissions. All of your assignments will be submitted through Canvas. You have to submit a HTML document and RMarkdown file. Canvas has trust issues with html files so you might have to submit a zipped folder with both files. More on this later.</p>
+<p>It is often more efficient to answer questions in person, so try to ask them in class. However, if you want to reach the teaching team outside of class time the preferred method of communication will through Slack. If you run into coding issues you can send direct messages to us but I encourage you use the <em>#homework</em> channel where we will try to troubleshoot the issues collectively (class and teaching team). My experience is that if you have a question or are running into coding issues at least someone else the class might have the same question.</p>
+<p>Of course you can always email us but try to limit problem-set and coding questions to Slack</p>
+</div>
+<div id="texts" class="section level3">
+<h3>Texts</h3>
+<p>We will be using a selection of readings available online through this website</p>
+<hr />
+<div id="license" class="section level4">
+<h4>License</h4>
+<p><a rel="license" href="httpso://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></p>
+<p>Science should be open, here at Cornell and everywhere else, all materials for this class are licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>The source for the materials of this course including the source for this website is on GitHub at <a href="https://github.com/GarciaRios/govt_6029" class="uri">https://github.com/GarciaRios/govt_6029</a>.</p>
+</div>
+<div id="references" class="section level4">
+<h4>References</h4>
+<p>This course has benefited from numerous open materials, which are listed <a href="">here</a>.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Academic/Scientific Paper Template using R-Markdown},
+            pdfauthor={Sergio I Garcia-Rios},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Academic/Scientific Paper Template using R-Markdown}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Sergio I Garcia-Rios}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{09/19/2016}
+
+
+\begin{document}
+\maketitle
+
+\begin{verbatim}
+## 
+## Please cite as:
+\end{verbatim}
+
+\begin{verbatim}
+##  Hlavac, Marek (2015). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+\end{verbatim}
+
+\begin{verbatim}
+##  R package version 5.2. http://CRAN.R-project.org/package=stargazer
+\end{verbatim}
+
+\section{Abstract}\label{abstract}
+
+\emph{Lorem ipsum dolor sit amet, est ad doctus eligendi scriptorem. Mel
+erat falli ut. Feugiat legendos adipisci vix at, usu at laoreet
+argumentum suscipiantur. An eos adhuc aliquip scriptorem, te adhuc dolor
+liberavisse sea. Ponderum vivendum te nec, id agam brute disputando
+mei.}
+
+\section{Lists}\label{lists}
+
+List here
+
+\begin{itemize}
+\tightlist
+\item
+  item 1
+\item
+  item 2
+\end{itemize}
+
+\section{Introduction}\label{introduction}
+
+Lorem ipsum dolor sit amet, est ad doctus eligendi scriptorem. Mel erat
+falli ut. Feugiat legendos adipisci vix at, usu at laoreet argumentum
+suscipiantur. An eos adhuc aliquip scriptorem, te adhuc dolor
+liberavisse sea. Ponderum vivendum te nec, id agam brute disputando mei.
+
+Putant numquam tacimates at eum. Aliquip torquatos ex vis, mei et quando
+debitis appareat, impetus accumsan corrumpit in usu. Nam mucius facilis
+singulis id, duo ei autem imperdiet instructior. Cu ceteros alienum mel,
+id vix putant impedit, ex idque eruditi forensibus eum. Posse dicunt id
+usu. Ei iracundia constituto sed, duo ne exerci ignota, an eum unum
+conceptam.
+
+Has audire salutandi no, ut eam dicat libris dicunt. Pri hendrerit
+quaerendum adversarium ea, dicat atqui munere et sea. Illum insolens eos
+ne, eu enim graece rationibus mea. At postea utamur mel, eius nonumes
+percipitur at vis. Numquam similique in per, te quo saepe utroque
+pericula.
+
+Ea nonumy volumus usu, no mel inermis dissentias. Dico partiendo
+vituperatoribus eum et. Mea accusam convenire te, usu populo qualisque
+gloriatur ut. Eu eum oratio altera option, ad mea ignota scriptorem. Ne
+suas latine vix, eos oblique sanctus pertinax cu.
+
+\section{Methods}\label{methods}
+
+Lorem ipsum dolor sit amet, est ad doctus eligendi scriptorem. Mel erat
+falli ut. Feugiat legendos adipisci vix at, usu at laoreet argumentum
+suscipiantur. An eos adhuc aliquip scriptorem, te adhuc dolor
+liberavisse sea. Ponderum vivendum te nec, id agam brute disputando mei.
+
+Putant numquam tacimates at eum. Aliquip torquatos ex vis, mei et quando
+debitis appareat, impetus accumsan corrumpit in usu. Nam mucius facilis
+singulis id, duo ei autem imperdiet instructior. Cu ceteros alienum mel,
+id vix putant impedit, ex idque eruditi forensibus eum. Posse dicunt id
+usu. Ei iracundia constituto sed, duo ne exerci ignota, an eum unum
+conceptam.
+
+\subsection{Equations}\label{equations}
+
+The deterministic part of the model is defined by this \textbf{in-line
+equation} as \(\mu_i = \beta_0 + \beta_1x\), and the stochastic part by
+the \textbf{centered equation}:
+
+\[ \frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu_i)^2/(2\sigma^2)} \]
+
+\subsection{Tables}\label{tables}
+
+\begin{table}[!htbp] \centering 
+  \caption{This is a GLM summary table with stargazer} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & y \\ 
+\hline \\[-1.8ex] 
+ x & 2.152$^{***}$ \\ 
+  & (0.102) \\ 
+  & \\ 
+ Constant & 0.104 \\ 
+  & (0.099) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & 100 \\ 
+R$^{2}$ & 0.820 \\ 
+Adjusted R$^{2}$ & 0.818 \\ 
+Residual Std. Error & 0.979 (df = 98) \\ 
+F Statistic & 446.244$^{***}$ (df = 1; 98) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+\subsection{Plots}\label{plots}
+
+You can embed code to produce your figures and then print them. And for
+the Figures and captions notice that in the code I use
+\texttt{\textbackslash{}\textbackslash{}label\{fig:plot\}} in the title
+which adds .tex code to which I can later call inside the caption of
+another Figure.
+
+\begin{figure}
+\centering
+\includegraphics{manuscript_template_files/figure-latex/carDataPlot-1.pdf}
+\caption{Relationship between displ and hwy. The shaded line is the 95\%
+confidecne interval \label{fig:plot}}
+\end{figure}
+
+For instance, Figure \ref{fig2:plot} shows that Figure \ref{fig:plot} is
+very similar to Figure \ref{fig2:plot}. These references to the Figure
+number were made automatically and the reference inside the caption was
+also made automatically using the labels created in the previis chunk
+and with the
+commands\texttt{\textbackslash{}\textbackslash{}ref\{fig:plot\}} and
+\texttt{\textbackslash{}\textbackslash{}label\{fig2:plot\}}
+
+\begin{figure}
+\centering
+\includegraphics{manuscript_template_files/figure-latex/plot-ref-1.pdf}
+\caption{This Figure is very similar to Figure \ref{fig:plot}
+\label{fig2:plot}}
+\end{figure}
+
+\subsection{Citations}\label{citations}
+
+The relationship was first described by Halpern et al. (2006). However,
+there are also opinions that the relationship is spurious (Keil et al.
+2012). I used R for our calculations (R Core Team 2017), and I used
+package \texttt{knitcitations} (Boettiger 2017) to make the
+bibliography.
+
+\section{Results and discussion}\label{results-and-discussion}
+
+Lorem ipsum dolor sit amet, est ad doctus eligendi scriptorem. Mel erat
+falli ut. Feugiat legendos adipisci vix at, usu at laoreet argumentum
+suscipiantur. An eos adhuc aliquip scriptorem, te adhuc dolor
+liberavisse sea. Ponderum vivendum te nec, id agam brute disputando mei.
+
+Putant numquam tacimates at eum. Aliquip torquatos ex vis, mei et quando
+debitis appareat, impetus accumsan corrumpit in usu. Nam mucius facilis
+singulis id, duo ei autem imperdiet instructior. Cu ceteros alienum mel,
+id vix putant impedit, ex idque eruditi forensibus eum. Posse dicunt id
+usu. Ei iracundia constituto sed, duo ne exerci ignota, an eum unum
+conceptam.
+
+Has audire salutandi no, ut eam dicat libris dicunt. Pri hendrerit
+quaerendum adversarium ea, dicat atqui munere et sea. Illum insolens eos
+ne, eu enim graece rationibus mea. At postea utamur mel, eius nonumes
+percipitur at vis. Numquam similique in per, te quo saepe utroque
+pericula.
+
+Ea nonumy volumus usu, no mel inermis dissentias. Dico partiendo
+vituperatoribus eum et. Mea accusam convenire te, usu populo qualisque
+gloriatur ut. Eu eum oratio altera option, ad mea ignota scriptorem. Ne
+suas latine vix, eos oblique sanctus pertinax cu.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Boettiger_2017}{}
+Boettiger, Carl. 2017. \emph{Knitcitations: Citations for 'Knitr'
+Markdown Files}. \url{https://CRAN.R-project.org/package=knitcitations}.
+
+\hypertarget{ref-Halpern_2006}{}
+Halpern, Benjamin S., Helen M. Regan, Hugh P. Possingham, and Michael A.
+McCarthy. 2006. ``Accounting for Uncertainty in Marine Reserve Design.''
+\emph{Ecology Letters} 9 (1). Wiley-Blackwell: 2--11.
+doi:\href{https://doi.org/10.1111/j.1461-0248.2005.00827.x}{10.1111/j.1461-0248.2005.00827.x}.
+
+\hypertarget{ref-Keil_2012}{}
+Keil, Petr, Jonathan Belmaker, Adam M. Wilson, Philip Unitt, and Walter
+Jetz. 2012. ``Downscaling of Species Distribution Models:
+\textless{}U+2028\textgreater{}a Hierarchical Approach.'' Edited by
+Robert Freckleton. \emph{Methods in Ecology and Evolution} 4 (1).
+Wiley-Blackwell: 82--94.
+doi:\href{https://doi.org/10.1111/j.2041-210x.2012.00264.x}{10.1111/j.2041-210x.2012.00264.x}.
+
+\hypertarget{ref-R_Core_Team_2017}{}
+R Core Team. 2017. \emph{R: A Language and Environment for Statistical
+Computing}. Vienna, Austria: R Foundation for Statistical Computing.
+\url{https://www.R-project.org/}.
+
+
+\end{document}
