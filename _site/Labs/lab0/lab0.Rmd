@@ -22,9 +22,11 @@ The course website is at `r course_website`. This is where all course materials
 will be posted.
 
 
-### (2) Get a GitHib account
+### (2) Get a GitHib account and join Slack
 
-Go to http://github.com/.  Open an account if you don't have one already, follow us!
+- <i class="fab fa-github"></i> Go to http://github.com/.  Open an account if you don't have one already, follow us!
+- <i class="fab fa-slack"></i> Join the ARA Slack: [here](https://join.slack.com/t/advancedregre-aif5488/shared_invite/zt-lxyq2gkm-kooDNrvaUTEb47Y7M6njEQ)
+
 
 ### (3) Get RStudio
 
