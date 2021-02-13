@@ -16,19 +16,27 @@ Github <- "http://github.com/"
 ```
 
 
-### (1) Familiarize yourself with the course website
+***
 
-The course website is at `r course_website`. This is where all course materials
+### Class logisitcs
+
+1. 
+
+- Familiarize yourself with the course website
+- The course website is at `r course_website`. This is where all course materials
 will be posted.
 
 
-### (2) Get a GitHib account and join Slack
+###  GitHub  and  Slack
 
-- <i class="fab fa-github"></i> Go to http://github.com/.  Open an account if you don't have one already, follow us!
-- <i class="fab fa-slack"></i> Join the ARA Slack: [here](https://join.slack.com/t/advancedregre-aif5488/shared_invite/zt-lxyq2gkm-kooDNrvaUTEb47Y7M6njEQ)
+2.  
+  - <i class="fab fa-github"></i> Go to http://github.com/.  Open an account if you don't have one already, follow us!  
+  - <i class="fab fa-slack"></i> Join the ARA Slack: [here](https://join.slack.com/t/advancedregre-aif5488/shared_invite/zt-lxyq2gkm-kooDNrvaUTEb47Y7M6njEQ)
 
 
-### (3) Get RStudio
+### Get RStudio
+
+3.
 
 You will be using R and RStudio throughout the course both to learn the 
 statistical concepts discussed in the textbook and also to analyze real data 
@@ -81,16 +89,19 @@ will learn best practices for saving your code and making sure that your
 analysis is reproducible.
 
 
-### (4) Assessing your Skills
+### Assessing your Skills
 
-Take the course [pre-assessment](Govt_Course_Assessment.pdf). How well or bad you do in this pre-assessment will NOT affect your grade. Answer what you can, if you don't know the answer don't guess skip it. This will help us adjust the goals of the course, we need a real assessment of your skills. We won't judge I promise. 
+4. 
 
+Take the course [pre-assessment](Govt_Course_Assessment.pdf). How well or bad you do in this pre-assessment will NOT affect your grade. Answer what you can, if you don't know the answer don't guess, skip it. This will help us adjust the goals of the course, we need a real assessment of your skills. We won't judge, I promise. 
+
+
+
+***
 
 <div id="license">
-This lab is released under a 
+Science should be open! Here at Cornell and everywhere, this lab is released under a 
 [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
 
-</div>
 
 
-******

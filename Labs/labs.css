@@ -1,20 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Spectral');
+
+
 body {
     counter-reset: li; /* initialize counter named li */
     font-size:14px;
 }
 
 h1 {
-    font-family:Helvetica, Arial,  sans-serif;
+    font-family: 'Raleway',  sans-serif;
     font-weight:bold;
     color:#b31b1b;
 }
 
 h2 {
-    font-family:Helvetica, Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight:bold;
     margin-top: 24px;
     color:#b31b1b;
 }
+
+
+h3,h4,h5,h6  {font-family: 'Raleway', sans-serif;}
 
 ol {
     margin-left:0; /* Remove the default left margin */
@@ -47,7 +55,7 @@ ol > li:before {
     color:#fff;
     background: #b31b1b;
     font-weight:bold;
-    font-family:"Helvetica Neue", Arial, sans-serif;
+    font-family:'Raleway', sans-serif;
     text-align:center;
 }
 li ol,
@@ -87,4 +95,20 @@ div#license {
     padding: 10px 10px;
     background-color: rgba(191, 183, 120, 0.2);
     border-radius: 5px;
+}
+
+
+
+body{
+color: #525252;  
+font-size: 15px;
+font-family: 'Spectral', sans-serif;
+
+}
+
+a {
+font-family: 'Spectral', sans-serif;
+}
+i {
+font-family: 'Spectral', sans-serif;
 }

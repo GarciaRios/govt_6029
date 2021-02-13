@@ -1,4 +1,0 @@
-title: Poster Presentation
-css: ../custom_style.css
----
-Creating an academic popster is very similar to how you would create slides for a traditional presentaton
