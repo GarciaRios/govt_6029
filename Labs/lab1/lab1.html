@@ -451,8 +451,8 @@ summary {
 </div>
 <div id="loading-data-into-r" class="section level2">
 <h2>Loading Data into R</h2>
-<p>For the remainder of this lab you will be using a dataset of GDP per capita and fertility from Gapminder.[^2]</p>
-<p>Download the csv (“<a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated values</a>”)&quot; <a href="https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv">here</a>.</p>
+<p>For the remainder of this lab you will be using a dataset of GDP per capita and fertility from Gapminder.</p>
+<p>Download the csv (“<a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated values</a>”) from <a href="https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv">here</a>.</p>
 <p>Then load the file</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;gapminder.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>This creates a <em>data frame</em>. A <em>data frame</em> is a type of R object that corresponds to what you usually think of as a dataset or a spreadsheet — rows are observations and columns are variables.</p>
@@ -521,6 +521,7 @@ summary {
 <p><em>footnotes</em>:</p>
 <ul>
 <li><p>If you are curious as to why the variable was named <code>foo</code>, read <a href="http://en.wikipedia.org/wiki/Foobar">this</a>.</p></li>
+<li><p>Dataset from the <a href="https://github.com/jennybc/gapminder">gapminder</a> R packager. The dataset in that package is an excerpt from the <a href="http://www.gapminder.org/data/">Gapminder</a> data. Gapminder data is released under the Creative Commons Attribution 3.0 Unported license. See their <a href="https://docs.google.com/document/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM">terms of use</a>.</p></li>
 <li><p>Some text and the data set used in this are taken from Jenny Bryant, <a href="https://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html">R basics, workspace and working directory, RStudio projects</a>, licensed under <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0</a></p></li>
 </ul>
 <hr />

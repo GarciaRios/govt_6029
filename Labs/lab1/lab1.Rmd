@@ -249,13 +249,10 @@ na.omit(dfrm2)
 ## Loading Data into R
 
 For the remainder of this lab you will be using a dataset of GDP per capita and fertility
-from Gapminder.[^2]
-
-[^-]: Dataset from the [gapminder](https://github.com/jennybc/gapminder) R packager.
-      The dataset in that package is an excerpt from the [Gapminder](http://www.gapminder.org/data/) data. Gapminder data is released under the Creative Commons Attribution 3.0 Unported license. See their [terms of use](https://docs.google.com/document/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM).
+from Gapminder.
 
 
-Download the csv ("[comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values)")" [here](https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv).
+Download the csv ("[comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values)") from [here](https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/gapminder.csv).
 
 Then load the file
 ```{r results='hide',echo=FALSE}
@@ -339,7 +336,8 @@ _footnotes_:
 
 - If you are curious as to why the variable was named `foo`, read [this](http://en.wikipedia.org/wiki/Foobar).
 
-
+- Dataset from the [gapminder](https://github.com/jennybc/gapminder) R packager.
+      The dataset in that package is an excerpt from the [Gapminder](http://www.gapminder.org/data/) data. Gapminder data is released under the Creative Commons Attribution 3.0 Unported license. See their [terms of use](https://docs.google.com/document/pub?id=1POd-pBMc5vDXAmxrpGjPLaCSDSWuxX6FLQgq5DhlUhM).
 - Some text and the data set used in this are taken from Jenny Bryant, [R basics, workspace and working directory, RStudio projects](https://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html), licensed under [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/) 
 
 
