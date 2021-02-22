@@ -27,6 +27,7 @@ title: Calendar
 #### **Foundations of Linear Regression**
 
 - <i class="fa fa-book"></i>  **February 22** Review, Matrix Form [Deck 2](lectures/Lecture_02.pdf@)
+    - Data: [murder.csv](data/murder.csv)
     - Readings: 
         - Matrix algebra [handout](docs/matrix.pdf)
  
