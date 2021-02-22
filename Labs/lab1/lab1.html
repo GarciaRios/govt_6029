@@ -352,7 +352,7 @@ summary {
 <li><em>File -&gt; New Project</em></li>
 <li>Select “New Directory”</li>
 <li>Select “Empty Project”</li>
-<li>Select a name for your project as Directory Name. “POLS_503_Labs” is as good as any, and better than most. Then choose where to put this directory with “Create project as sub-directory of”. Don’t worry about the other options.</li>
+<li>Select a name for your project as Directory Name. Then choose where to put this directory with “Create project as sub-directory of”. Don’t worry about the other options.</li>
 </ul>
 </div>
 </div>
@@ -408,7 +408,7 @@ summary {
 <div id="comments" class="section level2">
 <h2>Comments</h2>
 <p>Any R code following a hash (<code>#</code>) is not executed. These are called comments, and can and <strong>should</strong> be used to annotate and explain your code. For example, this doesn’t do anything.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#thisisacomment</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#thisisacomment </span></span></code></pre></div>
 <p>And in this, nothing after the <code>#</code> is executed,</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#this is still a comment</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="co"># this is also a comment</span></span></code></pre></div>
@@ -422,11 +422,13 @@ summary {
 <p>The function <code>na.omit</code> is particularly useful.</p>
 <p>It removes any row in a dataset with a missing value in <em>any</em> column.</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dfrm <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">8</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>dfrm</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dfrm <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">3</span>), </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   )</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(dfrm)</span></code></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>dfrm</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">na.omit</span>(dfrm)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><strong>Dealing with NA’s</strong>
 <ul>
@@ -496,11 +498,14 @@ summary {
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gapminder<span class="sc">$</span>lifeExp</span></code></pre></div>
 <p>Again, perhaps a summary may be more interesting. We can do more specific operations on this variable alone:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(gapminder<span class="sc">$</span>lifeExp)</span></code></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(gapminder<span class="sc">$</span>lifeExp)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Descriptive Statistics
 <ul>

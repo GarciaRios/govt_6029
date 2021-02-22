@@ -90,7 +90,6 @@ Create a RStudio project that you will use for all your labs.
 - Select "New Directory"
 - Select "Empty Project"
 - Select a name for your project as Directory Name.
-   "POLS_503_Labs" is as good as any, and better than most.
    Then choose where to put this directory with "Create project as sub-directory of".
    Don't worry about the other options.
 
@@ -179,14 +178,21 @@ There are some technical reasons to use `<-` instead of `=`, but the primary rea
     - Then multiply it by 4.
     - Create a variable with a really long name and assign it a value. Start typing its name
 
+
+
+
+
 ## Comments
 
 Any R code following a hash (``#``) is not executed.
 These are called comments, and can and **should** be used to annotate and explain your code.
 For example, this doesn't do anything.
+
+
 ```{r}
-#thisisacomment
+#thisisacomment 
 ```
+
 And in this, nothing after the ``#`` is executed,
 ```{r}
 #this is still a comment
@@ -216,7 +222,9 @@ It removes any row in a dataset with a missing value in *any* column.
 
 For example:
 ```{r}
-dfrm <- data.frame(x = c(NA, NA, 4, 3), y = c(NA, NA, 7, 8))
+dfrm <- data.frame(x = c(NA, NA, 4, 3), 
+                   y = c(NA, NA, 7, 8)
+                   )
 
 dfrm
 
@@ -310,6 +318,9 @@ Again, perhaps a summary may be more interesting. We can do more specific operat
 
 ```{r}
 mean(gapminder$lifeExp)
+
+
+
 median(gapminder$lifeExp)
 sd(gapminder$lifeExp)
 min(gapminder$lifeExp)
