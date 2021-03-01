@@ -1,11 +1,12 @@
 ---
 title: 'Lab 2: Graphing and Data Manipulation'
 author: "Sergio Garcia-Rios"
-date: "Feb 10 2020"
+date: "March 1 2021"
 output: 
   html_document: 
     theme: simplex
     toc: yes
+    css: ../labs.css
 editor_options: 
   chunk_output_type: console
 ---
@@ -18,14 +19,17 @@ library(ggplot2)
 library(gapminder)
 ```
 
+***
 
+## Objectives
 
 The objectives of this lab are:
 
 
-1. Manipulate data using the verbs in the **dplyr**
-2. Use the pipe operator `%>%` to simplify complicated code by chaining expressions together
-3. Create plots using the ggplot2 package.
+- Manipulate data using the verbs in the **dplyr**
+- Use the pipe operator `%>%` to simplify complicated code by chaining expressions together
+- Create plots using the ggplot2 package.
+
 *****
 
 ## Libraries and Data
@@ -36,7 +40,7 @@ For this lab we will use the following libraries `dplyr` and `ggplot2`. We can l
 
 
 
-## Gapminder Data
+### Gapminder Data
 
 You will be using the gapminder data again.
 
@@ -51,12 +55,11 @@ data(package = "ggplot2")
 
 ```
 
-
-**Challenge**
-
-- Which data set in the `gapminde` package is country data?
-- Load that data using the `data` function
-- Explore the dimensions of the data and it's variables
+1.
+  **Challenge**
+    - Which data set in the `gapminder` package is country data?
+    - Load that data using the `data` function
+    - Explore the dimensions of the dataset and it's variables
 
 
 ```
@@ -72,8 +75,10 @@ Load the gapminder data
 ```{r, echo = F}
 
 data("gapminder")
-head(gapminder)
+glimpse(gapminder)
 ```
+
+***
 
 ## Introduction to `dplyr`
 
@@ -94,6 +99,8 @@ head(gapminder)
 ```{r}
 glimpse(gapminder)
 ```
+
+***
 
 ### Exploring our Data
 
@@ -133,6 +140,7 @@ To find observations from Afghanistan or Albania,
 filter(gapminder, country == "Afghanistan" | country == "Albania")
 ```
 
+***
 
 ### Use `arrange` to sort columns in  a given order
 
@@ -143,7 +151,7 @@ arrange(gapminder, pop)
 arrange(gapminder, -pop) 
 ```
 
-
+***
 
 ### Use `select()` to subset the data on variables or columns.
 
@@ -152,10 +160,10 @@ Most of the times we don't need to see all the variables and are often intereste
 select(gapminder, year, lifeExp) 
 ```
 
-
+2.
 **Challenge**
 
-Using a combination of `filter`, `select`, and `slice` to create data frames to show only year and life expectancy of Cambodia for the first two observations
+  Using a combination of `filter`, `select`, and `slice` to create data frames to show only year and life expectancy of Cambodia for the first two observations
 
 ```
 
@@ -170,9 +178,11 @@ df2 <- select(df1, year, lifeExp)
 df3 <- slice(df2, 1:2)
 ```
 
+***
+
 ### Use `%>%` to join the XXI century
 
-Before we go any further, we should introduce  the pipe operator that `dplyr` imports from the **magrittr** package.
+Before we go any further, we should introduce the pipe operator that `dplyr` imports from the **magrittr** package.
 
 This is going to change your (data) analytical life.
 
@@ -194,6 +204,7 @@ We think of the `%>%` operator as a _then_ statement. So in the previous line we
 - We selected only `year` and `lifeExp` columns, _then_
 - Sliced the data to see only the first two observations
 
+***
 
 ### Use `mutate()` to add  new variables
 
@@ -221,6 +232,10 @@ just_usa <- gapminder %>%
   select(year, gdpPercap) %>%
   rename(usa_gdpPercap = gdpPercap)
 ```
+
+****
+
+### Merging Data
 
 We can join (or merge) the data set to the gapminder data using the `left_join` function.
 
@@ -278,10 +293,9 @@ gapminder %>%
 ```
 
 
-
-**Challenge**
-
-What about life expectancy? Create a relative to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
+3. 
+  **Challenge**
+    What about life expectancy? Create a relative to life expectancy variable, compare the three NAFTA countries US, Canada and Mexico
 
 
 ```
@@ -317,7 +331,7 @@ gapminder %>%
 
 
 
-
+***
 
 ## Plotting with ggplot2
 
@@ -330,18 +344,19 @@ Instead plots are built up from component functions.
 Main components:
 
 
-1. Data
-2. Aesthetics: Maps variables in the data to visual properties: position, color, size, shape, line type ...
-3. Geometric objects: The specific shapes that are drawn: points, lines,
+- Data
+- Aesthetics: Maps variables in the data to visual properties: position, color, size, shape, line type ...
+- Geometric objects: The specific shapes that are drawn: points, lines,
 
 
 Other:
 
-4. scales: How variables values map to "computer" values.
-5. stat: summarize or transform the data. e.g. bin data and count in histogram; run a regression to get a line.
-5. facet: create mini-plots of data subsets
+- scales: How variables values map to "computer" values.
+- stat: summarize or transform the data. e.g. bin data and count in histogram; run a regression to get a line.
+- facet: create mini-plots of data subsets
 
 Let's continue using the gapminder data, take another look at it
+
 ```{r}
 glimpse(gapminder)
 ```
@@ -470,12 +485,11 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 
 
-
-**Challenge**
-
-* Plot lifeExp against year
-* Make mini-plots, split out by continent
-* Add a fitted smooth and/or linear regression, w/ or w/o faceting
+4. 
+  **Challenge**
+    - Plot lifeExp against year
+    - Make mini-plots, split out by continent
+    - Add a fitted smooth and/or linear regression, w/ or w/o faceting
 
 
 ```
@@ -487,6 +501,8 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 
 ***
+
+### Exploratory Analysis with (`ggplot`)Graphs  
 
 Great! So we need to account for time. Let's use some of the cool capabilities of the extensions in the `ggplot`verse with the `gganimate` package
 
@@ -542,9 +558,10 @@ ggplot(subset(gapminder, country %in% some_countries),
 
 You can change the way the plot looks overall using `theme`
 
+
 ```{r}
 ggplot(subset(gapminder, country %in% some_countries),
-       aes(x = year, y = lifeExp, color = country)) +
+      aes(x = year, y = lifeExp, color = country)) +
   geom_line() +
   geom_point(aes(size=gdpPercap)) +
   theme_minimal()
@@ -557,20 +574,15 @@ In addition to the themes included with ggplot, several other themes are availab
 - Hadley Wickham's tutorials from useR 2014: Video [Part I](https://www.youtube.com/watch?v=8SGif63VW6E), [Part II](https://www.youtube.com/watch?v=Ue08LVuk790), [Slides and Tutorial](https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a).
 - The vignettes for [dplyr](http://cran.rstudio.com/web/packages/dplyr/) and [tidyr](http://cran.rstudio.com/web/packages/dplyr/)
 
-
-[^1]: You may encounter these other packages in other classes, or code samples online.
-
-    - base graphics: included with R. Functions like `plot`, `barplot`, `hist`. See http://www.statmethods.net/graphs/index.html
-    - lattice graphics: Functions including `barchart`, `densityplot`, `dotplot`, `xyplot`, `histogram`. See http://www.statmethods.net/advgraphs/trellis.html
-    - - Other graphics packages designed for the web: [ggvis](http://ggvis.rstudio.com/), [rcharts](http://rcharts.io/), [plotly](https://plot.ly/)
-    - - [tile](http://faculty.washington.edu/cadolph/?page=60) Chris Adolph's graphics package.
-
-[^2]:
-
-* * *
 - Derived from Jennifer Bryan, "hello ggplot2!", https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides.pdf. License: CC-BY-NC
 - Derived from Karthik Ram, "A quick introduction to ggplot2", [Speakerdeck](http://inundata.org/2013/04/10/a-quick-introduction-to-ggplot2/), [github](https://github.com/karthik/ggplot-lecture). License: [CC-BY](http://creativecommons.org/licenses/by/2.0/)
--->
+
+* * *
+
+<div id="license">
+Science should be open! Here at Cornell and everywhere, this lab is released under a 
+[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
+
 
 
 <!--  LocalWords:  'Lab Manipulation' html dplyr summarise frac gd df
