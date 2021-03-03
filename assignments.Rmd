@@ -11,7 +11,7 @@ title: Problem Sets
 
 <ul class="fa-ul">
 
-<li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html@>1.-- Problem Set 1</a>
+<li><i class="fa-li fa fa-pencil-square-o"></i><a target="_blank" href=./hw/hw1/hw1.html>1.-- Problem Set 1</a>
   <ul class="fa-ul">
 <!--
   <li><i class="fa-li fa fa fa-check-circle-o"></i><a target="_blank" href=./hw/hw1/hw1_sol.html>1.-- Problem Set 1 Sol</a>
