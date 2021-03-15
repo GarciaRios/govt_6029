@@ -1,11 +1,12 @@
 ---
 title: "Lab 3: Linear Regression, Matrices, and Predicted Values"
-author: "Sergio Garcia-Rios / Julie George"
+author: "Sergio Garcia-Rios"
 output: 
   html_document: 
     highlight: pygments
     theme: simplex
     toc: yes
+    css: ../labs.css
 editor_options: 
   chunk_output_type: console
 ---
@@ -39,7 +40,7 @@ This dataset is cross sectional data on industrial democracies. Containing:
 `lnenp`   Natural log of effective number of parties
 `maj`     Majoritarian election system dummy
 `pr`      Proportional representation dummy
-`unam`    Unanimity government dummy (Switzerland)
+`unam`    Unanimity government dummy
 --------- ----------------------------------------------------------------
 
 Source of data and model Torben Iversen and David Soskice, 2002, ``Why do some democracies redistribute more than others?'' Harvard University.
@@ -53,7 +54,7 @@ iver <- read_csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/
 ok, let's take a quick look
 
 ```{r}
-head(iver) 
+glimpse(iver) 
 ```
 
 Now a quick summary
@@ -74,36 +75,98 @@ res <- lm(y ~ x1 + x2 + x3, data = your.dataframe)
 
 Let's run a regression using the Iverson and Soskice data.  We save the regression as an object and then print the summary of the results:
 
-**A simple bivariate model:**
+### A simple bivariate model
+
 Here let's use `povred` as the outcome variable and `lnenp` as our only covariate
 
 ```{r}
+
 lm_bivar <- lm(povred ~ lnenp, data = iver)
 
 summary(lm_bivar)
 ```
 
-**Challenge:**
+1. **Bivariate Regression:**
+    -  How do we interpret this output?
+    
+### A multivariate model 
 
-* How do we interpret this output?
+It's probably much more complicated than the number of parties. et's add more covariates
 
-```{r}
-.
-
-```
-
-**A multivariate model:**
+What else do we have? 
 
 ```{r}
 head(iver)
 ```
 
 
+Ok, how about the type of electoral system
+
 ```{r}
-lm_multi <- lm(povred ~ lnenp +  pr + maj, data = iver)
+lm_multi <- lm(povred ~ lnenp + elec_sys, data = iver)
+
 summary(lm_multi)
 ```
 
+
+
+2. **Multivariate Regression:**
+    -  How do we interpret this output?
+    -  What changed?
+    -  Try changing the categorical variable and use the dummies instead
+        -  Are there any changes?
+
+
+
+
+
+## Interaction models
+
+Let's add an interaction here. It will help us observe observe the _joint_ effect
+
+```{r}
+lm_multi_interact <- lm(povred ~ lnenp * elec_sys, data = iver)
+
+summary(lm_multi_interact)
+
+
+lm_multi_interact <- lm(povred ~ lnenp * elec_sys, data = iver)
+
+```
+
+
+
+
+
+
+## Prelimnary analysis: 
+
+So the first thing that we whould have done, and that you should do every time is to strat by familiarizing with the data _before_  you run regressions
+
+
+Let's run a few `ggplots` to see what's going on
+
+```{}
+
+
+```
+
+
+
+```{r, eval=FALSE, echo=FALSE}
+ggplot(data = iver# %>% 
+        # filter(unam ==0)
+       , 
+       aes(y = povred, x = lnenp, 
+                 color = elec_sys,
+                 label = cty)) +   
+  geom_point(size = 2) +
+  geom_text(nudge_y = -2) +
+  geom_smooth(method = lm) +
+  facet_wrap(~ elec_sys )
+
+
+```
 
 
 ### Aside on the formula
@@ -111,6 +174,8 @@ summary(lm_multi)
 Note: the first argument to the function is an R formula.  Formulas appear throughout many R functions, and have some special features of their syntax, some of which are illustrated below.
 
 In `lm`, the formula is used to generate the exact $X$ matrix that will be used to estimate the model.  To see the matrix being generated internally by `lm`, add the argument `x = TRUE` to the `lm()` call:
+
+
 ```{r, eval=T}
 lm_cat <- lm(povred ~ lnenp + elec_sys, data = iver, x = TRUE)
 
@@ -128,7 +193,7 @@ Take a look at the help page for `formula`
 
 
 
-To better understand what the formula is doing, let's look at the model matrix one of the more complex formulas above generates, note the inteeraction term and the base terms of this interaction:
+To better understand what the formula is doing, let's look at the model matrix one of the more complex formulas above generates, note the interaction term and the base terms of this interaction:
 ```{r}
 
 lm_multi_interact <- lm(povred ~ lnenp * elec_sys, data = iver, x = TRUE)
@@ -171,19 +236,13 @@ matrix will be numeric,
 as.matrix(select(iver, - cty, - elec_sys))
 ```
 
+3. Anatomy of lm objects
+    - Use `names()` and `glimpse()` (or  `str()` it will do the same as `glimpse` in this case) to explore the contents of one of the lm objects you've created. (Look at the help file for `lm` for further details)
+    - Extract and save as separate objects:
+      - The coefficients
+      - The residuals (what are the residuals?)
+      - The fitted values (what are the fitted values?)
 
-
-**Challenge:**
-
-1. Use `names()` and `glimpse()` (or  `str()` it will do the same as `glimpse` in tbis case) to explore the contents of one of the lm objects you've created. (Look at the help file for `lm` for further details)
-2. Extract and save as separate objects:
-    a. The coefficients
-    b. The residuals (what are the residuals?)
-    c. The fitted values (what are the fitted values?)
-
-```{r}
-.
-```
 
 ```{r,  echo = F}
 coefficients_multi <- lm_multi$coefficients
@@ -213,6 +272,8 @@ fitted_multi
 fitted(lm_multi)
 ```
 
+#### Standard errors
+
 If you notice the standard errors are missing from the `lm()` list. Let's calcualte it    
 
 
@@ -233,12 +294,13 @@ This calculates the standard errors by calculating the square root of the diagon
 Another way to get the fitted values is with `predict()`:
 
 ```{r}
-predict(lm_multi)
+predict(lm_bivar)
 ```
 
 The nice thing about predict is that it will actually let us calculate the expected values from our model for any set of real or hypothetical data with the same X variables:
 
 Here's the general form of a call to predict, giving 95% confidence intervals:
+
 ```{r eval=FALSE}
 
 predict(object, # lm object
@@ -248,26 +310,50 @@ predict(object, # lm object
 )
 ```
 
-Let's try this with our model.
 
-**Challenge:**
+So the newdata component refers to the specifc values we want. For instance, if our model is:
 
-1. What would we expect the level of poverty reduction to be for a majoritarian country with 2 parties?
-2. What would we expect the level of poverty reduction to be for a PR country as it goes from 1 to 5 parties?
+$y_1 = x1 + x2, x3$ where:
 
-*hint (refer to data frame info above for how to create a new dataframe for newdata argument)*
 
-```{r}
-.
+
+We might want to specify this: 
+```{}
+newdata =  
+  data_frame(
+    x1 = 5,
+    x2 = 320,
+    x3 = "Texas"
+)
 
 ```
+
+
+Let's try this with our models.
+
+4. Predicting Values
+    - Using the bivariate model What is the predicted level of poverty with 3 parties 
+    - What would we expect the level of poverty reduction to be for a majoritarian country with 2 parties?
+    - What would we expect the level of poverty reduction to be for a PR country as it goes from 1 to 5 parties?
+    
+    *hint (refer to data frame info above for how to create a new dataframe for newdata argument)*
+
+
+
+
 
 
 ```{r, echo=F}
-predict(lm_cat, newdata = data_frame(lnenp = 2, 
-                                     elec_sys = "maj"),
+predict(lm_cat, 
+        newdata = 
+          data_frame(lnenp = 2,
+                     elec_sys = "maj"),
         interval = "confidence")
 ```
+
+
+### Expanding the posibilities of the preditions
+
 
 Of course, we can use more than one value of interest
 ```{r}
@@ -290,41 +376,41 @@ predict(lm_cat, newdata = hypx, interval="confidence")
 ```
 
 
+I can do this for multiple values and combinations:
+
+```{r}
+
+hypx <-  expand.grid(lnenp = seq(0,2, .1),
+                    elec_sys = c("pr", "maj"))
+
+
+
+
+predict(lm_cat, newdata = hypx, interval="confidence")
+```
+
+
+
 ## Plotting regression results
 
-Plotting regression results can be even more informative. Information dense, and more intuitive than regression tables!
+Plotting regression results can be even more informative and more intuitive than regression tables!
 
 To plot a regression line (not just using the `lm` smoother in **ggplot2**), you can either fit a line to the observed values of X and the fitted values and CIs from `predict`, or fit a line to hypothetical data to illustrate the estimated relationship (the latter can help you to have smoother confidence intervals where you have fewer observations).
 
-We willuse the hypothetical data
-
-
-
-Let's now calculate expected values of `povred` for each observed level of `lnenp`, setting the covariates to an fixed level, illustrating the effect of a change in `lnenp`, all else equal (for a "typical" respondent, use the mean of the covariates you are keeping fixed).  Remember to keep variable names identical to those in the model!
-
-
+We will use the hypothetical data we calculated above:
 
 ```{r}
-
-xhyp <- data.frame(lnenp = iver$lnenp, 
-                   maj = mean(iver$maj),
-                   pr = mean(iver$pr)) 
-xhyp
+preds <-  predict(lm_cat, newdata = hypx, interval="confidence", level = .90)
 ```
 
 
-```{r}
-preds <- predict(lm_multi, 
-                 newdata = xhyp ,
-                 interval = "confidence")
 
-preds
-```
+This is calculating expected values of `povred` for various hypothetical values of `lnenp`, setting the other covariates to a fixed level, illustrating the effect of a change in `lnenp`, all else equal (for a "typical" respondent, use the mean of the covariates you are keeping fixed).  Remember to keep variable names identical to those in the model!
 
-Great! let's now merge (bind) our hypothetical data and these prediciotns. It will make things easier when we graph
+So those predictions are great and we could plot as they are them but let's  merge (bind) our hypothetical data and these predictions. It will make things easier when we graph
 
 ```{r}
-pred_plot <- cbind(xhyp, preds)
+pred_plot <- cbind(hypx, preds)
 pred_plot
 ```
 
@@ -333,9 +419,12 @@ Now we can graph it
 
 ```{r}
 ggplot(pred_plot, aes(x = lnenp, y = fit,
-                      ymin = lwr, ymax =  upr)) +
+                      ymin = lwr, ymax =  upr, 
+                      color = elec_sys,
+                      fill = elec_sys )) +
   geom_line() +
-  geom_ribbon(alpha = .3)
+  geom_ribbon(alpha = .3) +
+  facet_wrap(~ elec_sys)
 
 ```
 
@@ -378,6 +467,8 @@ Like always, use whatever works for you.
 
 ***
 
+***
+
 <div class="alert alert-danger" role="alert">
 Science should be open! Here at Cornell and everywhere, this lab is released under a 
 [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
@@ -385,5 +476,4 @@ Science should be open! Here at Cornell and everywhere, this lab is released und
 </div>
 
 
-***
-***
+
