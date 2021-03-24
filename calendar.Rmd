@@ -26,7 +26,7 @@ title: Calendar
 
 #### **Foundations of Linear Regression**
 
-- <i class="fa fa-book"></i>  **February 22** Review, Matrix Form [Deck 2](lectures/Lecture_02.pdf@)
+- <i class="fa fa-book"></i>  **February 22** Review, Matrix Form [Deck 2](lectures/Lecture_02.pdf)
     - Data: [murder.csv](data/murder.csv)
     - Readings: 
         - Matrix algebra [handout](docs/matrix.pdf)
@@ -49,8 +49,8 @@ title: Calendar
 #### **Assumptions & Properties of the Linear Regression Model**
 
 
-- <i class="fa fa-book"></i> **March 8**  Properties and Assumptions, [Deck 3](lectures/Lecture_03_upd21.pdf@)
-        - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
+- <i class="fa fa-book"></i> **March 8**  Properties and Assumptions, [Deck 3](lectures/Lecture_03.pdf)
+    - [Sampling Distribution of linear regression example](https://www.econometrics-with-r.org/4-5-tsdotoe.html)
 
 
 
