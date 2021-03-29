@@ -28,6 +28,10 @@ library(broom)
 library(coefplot)
 ```
 
+
+***
+
+
 ## Reading in the Data
 
 Read in the Ross data
@@ -44,7 +48,7 @@ glimpse(rossdata)
 
 This is a pretty big data-set, we do not need all the variables let's subset our data to include only the variables we will use.
 
-1. *Using only what you need:*
+1. **Using only what you need**
     - Create a new data-set containing only:
       -  `cty`
       -  `year`
@@ -66,6 +70,7 @@ rossdata_short <- rossdata %>%
 ```
 
 
+***
 
 ## Data Management
 
@@ -95,6 +100,9 @@ rossdata_short %>%
 
 Finally! we are ready to start data-analyzing..
 
+***
+
+
 ## Sacatterplots
 
 
@@ -102,11 +110,14 @@ We are going to be exploring the relationship between Democracy level (polity) a
 
 Let's explore these relationships with plots.
 
-2. *Preliminary Exploration*
-    -Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.
+
+
+2. **Preliminary Exploration**
+    - Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.
 
 ```{}
-
+ 
+ 
 
 ```
 
@@ -178,7 +189,7 @@ model2<-lm(polity ~ gdp + oil + oecd, data = rossdata_short)
 summary(model2)
 ```
 
-3. *Interpreting a multivariate model*
+3. **Interpreting a multivariate model**
     -  Which has a larger impact on the level of democracy: oil dependence or OECD membership?
     -  Which has a larger impact on the level of democracy: oil dependence or GDP per capital?
 
@@ -190,9 +201,12 @@ summary(model3)
 ```
 
 
-4. *Interpreting a multivariate model with an interaction*
+4. **Interpreting a multivariate model with an interaction**
     - How would you interpret these results?
 
+
+
+*** 
 
 
 ## Visualiazing Regression Results
@@ -233,10 +247,13 @@ coefplot(model2, coefficients = c("oecd", "oil", "gdp"))
 ```
 
 
-5. *Coefficient Plots*
+5. **Coefficient Plots**
     -  What is wrong with this plot?
     -  Is it useful?
     -  Why? Why not?
+
+
+*** 
 
 
 ## Regression tables
@@ -247,6 +264,9 @@ Several packages (`stargazer`, `texreg`, `apsrtable`) are useful for creating pu
 library(stargazer)
 stargazer(model1, model2, model3, type = "html")
 ```
+
+*** 
+
 
 
 

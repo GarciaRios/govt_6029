@@ -219,6 +219,7 @@ summary {
 <pre class="r"><code>library(tidyverse)
 library(broom)
 library(coefplot)</code></pre>
+<hr />
 </div>
 <div id="reading-in-the-data" class="section level2">
 <h2>Reading in the Data</h2>
@@ -229,7 +230,7 @@ head (rossdata)
 glimpse(rossdata)</code></pre>
 <p>This is a pretty big data-set, we do not need all the variables let’s subset our data to include only the variables we will use.</p>
 <ol style="list-style-type: decimal">
-<li><em>Using only what you need:</em>
+<li><strong>Using only what you need</strong>
 <ul>
 <li>Create a new data-set containing only:
 <ul>
@@ -246,6 +247,7 @@ glimpse(rossdata)</code></pre>
 <pre><code>
 
 </code></pre>
+<hr />
 </div>
 <div id="data-management" class="section level2">
 <h2>Data Management</h2>
@@ -262,15 +264,20 @@ glimpse(rossdata)</code></pre>
 rossdata_short %&gt;%
   summary()</code></pre>
 <p>Finally! we are ready to start data-analyzing..</p>
+<hr />
 </div>
 <div id="sacatterplots" class="section level2">
 <h2>Sacatterplots</h2>
 <p>We are going to be exploring the relationship between Democracy level (polity) and other covariates.</p>
 <p>Let’s explore these relationships with plots.</p>
 <ol start="2" style="list-style-type: decimal">
-<li><em>Preliminary Exploration</em> -Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.</li>
+<li><strong>Preliminary Exploration</strong>
+<ul>
+<li>Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.</li>
+</ul></li>
 </ol>
-<pre><code>
+<pre><code> 
+ 
 </code></pre>
 <p>Okay, let’s do it together</p>
 <p>We begin simple…</p>
@@ -291,7 +298,7 @@ summary(model1)</code></pre>
 <pre class="r"><code>model2&lt;-lm(polity ~ gdp + oil + oecd, data = rossdata_short)
 summary(model2)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><em>Interpreting a multivariate model</em>
+<li><strong>Interpreting a multivariate model</strong>
 <ul>
 <li>Which has a larger impact on the level of democracy: oil dependence or OECD membership?</li>
 <li>Which has a larger impact on the level of democracy: oil dependence or GDP per capital?</li>
@@ -301,11 +308,12 @@ summary(model2)</code></pre>
 <pre class="r"><code>model3 &lt;- lm(polity ~ gdp + oil*oecd, data = rossdata_short)
 summary(model3)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li><em>Interpreting a multivariate model with an interaction</em>
+<li><strong>Interpreting a multivariate model with an interaction</strong>
 <ul>
 <li>How would you interpret these results?</li>
 </ul></li>
 </ol>
+<hr />
 </div>
 <div id="visualiazing-regression-results" class="section level2">
 <h2>Visualiazing Regression Results</h2>
@@ -325,19 +333,21 @@ summary(model3)</code></pre>
 <p>We can also use <code>coefplot</code></p>
 <pre class="r"><code>coefplot(model2, coefficients = c(&quot;oecd&quot;, &quot;oil&quot;, &quot;gdp&quot;))</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><em>Coefficient Plots</em>
+<li><strong>Coefficient Plots</strong>
 <ul>
 <li>What is wrong with this plot?</li>
 <li>Is it useful?</li>
 <li>Why? Why not?</li>
 </ul></li>
 </ol>
+<hr />
 </div>
 <div id="regression-tables" class="section level2">
 <h2>Regression tables</h2>
 <p>Several packages (<code>stargazer</code>, <code>texreg</code>, <code>apsrtable</code>) are useful for creating publication type regression tables. <code>stargazer</code> and <code>texreg</code> are the most complete package. Both allow output to either LaTeX or HTML tables for many types of statistical models. We’ll use <em>stargazer</em> here:</p>
 <pre class="r"><code>library(stargazer)
 stargazer(model1, model2, model3, type = &quot;html&quot;)</code></pre>
+<hr />
 </div>
 <div id="predicted-values" class="section level2">
 <h2>Predicted Values</h2>
