@@ -5,7 +5,7 @@ output:
   html_document: 
     theme: simplex
     toc: yes
-    css: ../../custom_style.css
+    css: ../labs.css
 editor_options: 
   chunk_output_type: console
 ---
@@ -23,8 +23,7 @@ We will be exploring the relationship between oil dependency and democracy.
 This lab will use some libraries you've seen before and we should load them now plus `broom`and `coefplot` which you might need to install
 
 ```{r, message=FALSE, warning=FALSE}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(broom)
 library(coefplot)
 ```
@@ -45,26 +44,24 @@ glimpse(rossdata)
 
 This is a pretty big data-set, we do not need all the variables let's subset our data to include only the variables we will use.
 
-### Challenge
-
-Create a new data-set containing only:
-
--  `cty`
--  `year`
--  `polity` 
--  `logoil_gdpcap2000_sup_Q_1`
--  `logGDPcap`
--  `oecd`
-
-Call this new data-frame `data`
+1. *Using only what you need:*
+    - Create a new data-set containing only:
+      -  `cty`
+      -  `year`
+      -  `polity` 
+      -  `logoil_gdpcap2000_sup_Q_1`
+      -  `logGDPcap`
+      -  `oecd`
+    - Call this new data-frame `rossdata_short`
 
 ```{}
-.
+
+
 
 ```
 
 ```{r, echo=FALSE}
-data <- rossdata %>% 
+rossdata_short <- rossdata %>% 
   select(cty, year, polity, logoil_gdpcap2000_sup_Q_1, logGDPcap, oecd)
 ```
 
@@ -76,23 +73,23 @@ data <- rossdata %>%
 Some of those names are too long, we should change it to something meaningful and short. This can be done easily using `dplyr` and `rename`.
 
 ```{r}
-data <- data %>%
+rossdata_short <- rossdata_short %>%
   rename(oil = logoil_gdpcap2000_sup_Q_1, 
          gdp = logGDPcap)
 ```
 
 This data-frame is way easier to glimpse at:
 ```{r}
-glimpse(data)
+glimpse(rossdata_short)
 
 ```
 
 A lot of missing values here. Let's omit them and then look at a summary of the data set
 ```{r}
-data <- data %>% 
+rossdata_short <- rossdata_short %>% 
   na.omit()
 
-data %>%
+rossdata_short %>%
   summary()
 ```
 
@@ -105,13 +102,27 @@ We are going to be exploring the relationship between Democracy level (polity) a
 
 Let's explore these relationships with plots.
 
-### Challenge
+2. *Preliminary Exploration*
+    -Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.
 
-Create a plot that explores the relationship between democracy level and at least another variable then try to include more than two covariates using different colors and shapes.
+```{}
+
+
+```
+
+
+Okay, let's do it together 
 
 We begin simple... 
-```{r}
-ggplot(data, aes(x = gdp, y = polity)) +
+
+```{}
+
+
+
+```
+
+```{r, echo=FALSE}
+ggplot(rossdata_short, aes(x = gdp, y = polity)) +
   geom_point() + 
   theme_bw() 
 
@@ -119,46 +130,68 @@ ggplot(data, aes(x = gdp, y = polity)) +
 
 Unfortunately, a simple scatter plot makes it hard to detect any relationship. However, `ggplot2` makes it easy to add different colors and shapes which might help identify trends.
 
-```{r}
-ggplot(data, aes(x = gdp, y = polity, 
+```{}
+
+
+
+```
+
+```{r, echo=FALSE}
+ggplot(rossdata_short, aes(x = gdp, y = polity, 
                  color = oil, shape=factor(oecd))) +
-  geom_jitter(height = .08,  size = 3, alpha = .5) + 
+  geom_jitter(height = .5,  size = 3, alpha = .4) + 
   theme_bw() 
 ```
 
-```{r}
-hi_oil<-data %>% filter(oil>10) 
 
-ggplot(data, aes(x = gdp, y = polity, 
+
+```{}
+
+
+
+```
+
+```{r, echo=FALSE}
+hi_oil <- rossdata_short %>% filter(oil>10) 
+
+ggplot(rossdata_short, aes(x = gdp, y = polity, 
                  colour = factor(oecd), size=(oil))) +
   geom_jitter(height = .2, alpha =.2) + 
   theme_bw() 
 ```
 
+
+
+
+
 It seems like the higher the GDP the more democratic countries are, except if you are a high oil producer or a non-OECD. Let's explore these relationships using a regression.
 
 ```{r}
-model1<-lm(polity ~ oil, data=data)
+model1 <- lm(polity ~ oil, data=rossdata_short)
 summary(model1)
 ```
+
 Let's now include controls for GDP per capita and OECD membership
+
 ```{r}
-model2<-lm(polity ~ gdp + oil + oecd, data=data)
+model2<-lm(polity ~ gdp + oil + oecd, data = rossdata_short)
 summary(model2)
 ```
 
-
--  Which has a larger impact on the level of democracy: oil dependence or OECD membership?
--  Which has a larger impact on the level of democracy: oil dependence or GDP per capital?
+3. *Interpreting a multivariate model*
+    -  Which has a larger impact on the level of democracy: oil dependence or OECD membership?
+    -  Which has a larger impact on the level of democracy: oil dependence or GDP per capital?
 
 Recall the OECD membership clustering? Let's try an interaction
 
 ```{r}
-model3<-lm(polity ~ gdp + oil*oecd, data=data)
+model3 <- lm(polity ~ gdp + oil*oecd, data = rossdata_short)
 summary(model3)
 ```
 
-How would you interpret these results?
+
+4. *Interpreting a multivariate model with an interaction*
+    - How would you interpret these results?
 
 
 
@@ -169,11 +202,15 @@ How would you interpret these results?
 ```{r}
 glance(model2)
 ```
+
 `tidy` returns a data frame with a row for each coefficient estimate:
+
 ```{r}
 tidy(model2)
 ```
+
 `augment` returns the original data frame used in the model with additional columns for fitted values, the standard errors of those fitted values, residuals, etc.
+
 ```{r}
 head(augment(model2))
 ```
@@ -196,10 +233,10 @@ coefplot(model2, coefficients = c("oecd", "oil", "gdp"))
 ```
 
 
-### Challenge
--  What is wrong with this plot?
--  Is it useful?
--  Why? Why not?
+5. *Coefficient Plots*
+    -  What is wrong with this plot?
+    -  Is it useful?
+    -  Why? Why not?
 
 
 ## Regression tables
@@ -252,8 +289,8 @@ xnew <- expand.grid(gdp = seq(4,11),
                     oecd = 1)
 
 xnew <- expand.grid(gdp = seq(4,11),
-                    oil = mean(data$oil),
-                    oecd = mean(data$oecd))
+                    oil = mean(rossdata_short$oil),
+                    oecd = mean(rossdata_short$oecd))
 ```
 
 
@@ -286,9 +323,9 @@ ggplot(mod2_pred_df, aes(x = gdp, y = fit,
 What about oil?
 
 ```{r}
-xnew <- expand.grid(gdp = mean(data$gdp),
+xnew <- expand.grid(gdp = mean(rossdata_short$gdp),
                     oil = seq(0,11),
-                    oecd = mean(data$oecd))
+                    oecd = mean(rossdata_short$oecd))
 
 pred.res <- predict(model2, newdata=xnew, interval="confidence")
 
@@ -306,12 +343,12 @@ ggplot(mod2_pred_df, aes(x = oil, y = fit,
 
 ### Predicting Interactions
 
-Now the model with the interaction.
+Let's get predictions from the model with the interaction.
 
 ```{r}
 summary(model3)
 
-xnew <- expand.grid(gdp = mean(data$gdp),
+xnew <- expand.grid(gdp = mean(rossdata_short$gdp),
                     oil = seq(0,11),
                     oecd = c(0,1))
 
@@ -336,9 +373,9 @@ ggplot(mod3_pred_df, aes(x =oil , y = fit,
        y = "Predicted Value of Democracy",
        x = "Oil") + 
   scale_fill_discrete(name = "OECD",
-                      labels=c("NOn Member","Member")) +
+                      labels=c("Non Member","Member")) +
   scale_color_discrete(name = "OECD",
-                      labels=c("NOn Member","Member")) +
+                      labels=c("Non Member","Member")) +
   theme_bw()
 ```
 
@@ -351,5 +388,4 @@ Science should be open! Here at Cornell and everywhere, this lab is released und
 </div>
 
 
-***
-***
+
