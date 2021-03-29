@@ -138,7 +138,7 @@ Unfortunately, a simple scatter plot makes it hard to detect any relationship. H
 
 ```{r, echo=FALSE}
 ggplot(rossdata_short, aes(x = gdp, y = polity, 
-                 color = oil, shape=factor(oecd))) +
+                 color = oil, shape = factor(oecd))) +
   geom_jitter(height = .5,  size = 3, alpha = .4) + 
   theme_bw() 
 ```
@@ -155,8 +155,8 @@ ggplot(rossdata_short, aes(x = gdp, y = polity,
 hi_oil <- rossdata_short %>% filter(oil>10) 
 
 ggplot(rossdata_short, aes(x = gdp, y = polity, 
-                 colour = factor(oecd), size=(oil))) +
-  geom_jitter(height = .2, alpha =.2) + 
+                 colour = factor(oecd), size = (oil))) +
+  geom_jitter(height = .2, alpha = .2) + 
   theme_bw() 
 ```
 
@@ -167,7 +167,7 @@ ggplot(rossdata_short, aes(x = gdp, y = polity,
 It seems like the higher the GDP the more democratic countries are, except if you are a high oil producer or a non-OECD. Let's explore these relationships using a regression.
 
 ```{r}
-model1 <- lm(polity ~ oil, data=rossdata_short)
+model1 <- lm(polity ~ oil, data = rossdata_short)
 summary(model1)
 ```
 
@@ -255,13 +255,14 @@ stargazer(model1, model2, model3, type = "html")
 
 We are going to use `predict` to get predicted values. We first have to set up a `newdata` 
 ```{r}
-xnew <- data.frame(gdp=5.9, oil=0, oecd=1)
+xnew <- data.frame(
+  gdp = 5.9, oil = 0, oecd = 1)
 
-predict(model2, newdata=xnew, interval="confidence")
+predict(model2, newdata = xnew, interval = "confidence")
 
-xnew2 <- data.frame(gdp=5.9, oil=0, oecd=0)
+xnew2 <- data.frame(gdp = 5.9, oil = 0, oecd = 0)
 
-predict(model2, newdata=xnew2, interval="confidence")
+predict(model2, newdata = xnew2, interval = "confidence")
 ```
 
 What is  this really doing?
@@ -297,7 +298,7 @@ xnew <- expand.grid(gdp = seq(4,11),
 
 Now we feed this new data into `predict`
 ```{r}
-pred.res <- predict(model2, newdata=xnew, interval="confidence")
+pred.res <- predict(model2, newdata = xnew, interval="confidence")
 
 ```
 
@@ -327,7 +328,7 @@ xnew <- expand.grid(gdp = mean(rossdata_short$gdp),
                     oil = seq(0,11),
                     oecd = mean(rossdata_short$oecd))
 
-pred.res <- predict(model2, newdata=xnew, interval="confidence")
+pred.res <- predict(model2, newdata = xnew, interval = "confidence")
 
 mod2_pred_df <- cbind(xnew, pred.res)
 
@@ -363,7 +364,7 @@ mod3_pred_df <- cbind(xnew, pred.res)
 
 Now we can ggplot it
 ```{r}
-ggplot(mod3_pred_df, aes(x =oil , y = fit, 
+ggplot(mod3_pred_df, aes(x = oil , y = fit, 
                          ymin = lwr, ymax = upr,
                          color = factor(oecd),
                          fill = factor(oecd))) +
@@ -373,9 +374,9 @@ ggplot(mod3_pred_df, aes(x =oil , y = fit,
        y = "Predicted Value of Democracy",
        x = "Oil") + 
   scale_fill_discrete(name = "OECD",
-                      labels=c("Non Member","Member")) +
+                      labels = c("Non Member","Member")) +
   scale_color_discrete(name = "OECD",
-                      labels=c("Non Member","Member")) +
+                      labels = c("Non Member","Member")) +
   theme_bw()
 ```
 

@@ -285,7 +285,7 @@ rossdata_short %&gt;%
 
 </code></pre>
 <p>It seems like the higher the GDP the more democratic countries are, except if you are a high oil producer or a non-OECD. Let’s explore these relationships using a regression.</p>
-<pre class="r"><code>model1 &lt;- lm(polity ~ oil, data=rossdata_short)
+<pre class="r"><code>model1 &lt;- lm(polity ~ oil, data = rossdata_short)
 summary(model1)</code></pre>
 <p>Let’s now include controls for GDP per capita and OECD membership</p>
 <pre class="r"><code>model2&lt;-lm(polity ~ gdp + oil + oecd, data = rossdata_short)
@@ -342,13 +342,14 @@ stargazer(model1, model2, model3, type = &quot;html&quot;)</code></pre>
 <div id="predicted-values" class="section level2">
 <h2>Predicted Values</h2>
 <p>We are going to use <code>predict</code> to get predicted values. We first have to set up a <code>newdata</code></p>
-<pre class="r"><code>xnew &lt;- data.frame(gdp=5.9, oil=0, oecd=1)
+<pre class="r"><code>xnew &lt;- data.frame(
+  gdp = 5.9, oil = 0, oecd = 1)
 
-predict(model2, newdata=xnew, interval=&quot;confidence&quot;)
+predict(model2, newdata = xnew, interval = &quot;confidence&quot;)
 
-xnew2 &lt;- data.frame(gdp=5.9, oil=0, oecd=0)
+xnew2 &lt;- data.frame(gdp = 5.9, oil = 0, oecd = 0)
 
-predict(model2, newdata=xnew2, interval=&quot;confidence&quot;)</code></pre>
+predict(model2, newdata = xnew2, interval = &quot;confidence&quot;)</code></pre>
 <p>What is this really doing?</p>
 <pre class="r"><code>model2
 names(model2)
@@ -370,7 +371,7 @@ xnew &lt;- expand.grid(gdp = seq(4,11),
                     oil = mean(rossdata_short$oil),
                     oecd = mean(rossdata_short$oecd))</code></pre>
 <p>Now we feed this new data into <code>predict</code></p>
-<pre class="r"><code>pred.res &lt;- predict(model2, newdata=xnew, interval=&quot;confidence&quot;)</code></pre>
+<pre class="r"><code>pred.res &lt;- predict(model2, newdata = xnew, interval=&quot;confidence&quot;)</code></pre>
 </div>
 <div id="ploting-predicted-values" class="section level3">
 <h3>Ploting Predicted Values</h3>
@@ -390,7 +391,7 @@ mod2_pred_df</code></pre>
                     oil = seq(0,11),
                     oecd = mean(rossdata_short$oecd))
 
-pred.res &lt;- predict(model2, newdata=xnew, interval=&quot;confidence&quot;)
+pred.res &lt;- predict(model2, newdata = xnew, interval = &quot;confidence&quot;)
 
 mod2_pred_df &lt;- cbind(xnew, pred.res)
 
@@ -417,7 +418,7 @@ pred.res &lt;- predict(model3, newdata=xnew, interval=&quot;confidence&quot;)
 
 mod3_pred_df &lt;- cbind(xnew, pred.res)</code></pre>
 <p>Now we can ggplot it</p>
-<pre class="r"><code>ggplot(mod3_pred_df, aes(x =oil , y = fit, 
+<pre class="r"><code>ggplot(mod3_pred_df, aes(x = oil , y = fit, 
                          ymin = lwr, ymax = upr,
                          color = factor(oecd),
                          fill = factor(oecd))) +
@@ -427,9 +428,9 @@ mod3_pred_df &lt;- cbind(xnew, pred.res)</code></pre>
        y = &quot;Predicted Value of Democracy&quot;,
        x = &quot;Oil&quot;) + 
   scale_fill_discrete(name = &quot;OECD&quot;,
-                      labels=c(&quot;Non Member&quot;,&quot;Member&quot;)) +
+                      labels = c(&quot;Non Member&quot;,&quot;Member&quot;)) +
   scale_color_discrete(name = &quot;OECD&quot;,
-                      labels=c(&quot;Non Member&quot;,&quot;Member&quot;)) +
+                      labels = c(&quot;Non Member&quot;,&quot;Member&quot;)) +
   theme_bw()</code></pre>
 <hr />
 <div class="alert alert-danger" role="alert">
