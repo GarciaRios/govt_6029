@@ -84,9 +84,9 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 
 
-- <i class="fa fa-flask"></i>  **April 21**   Lab 5  Loops and simulation 
+- <i class="fa fa-flask"></i>  **April 12**   Lab 5  Loops and simulation 
     - Lab document: [html](Labs/lab5/lab5.html)
-    - Problem Set 3 Assigned, Due Apr 14
+    - Problem Set 3 Assigned, Due Apr 21
 
 
        
@@ -99,12 +99,18 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 #### **Special Topics**
 
-- <i class="fa fa-flask"></i>  **May 19** Lab 6: Binary Models and Data Wrangling
+
+
+- <i class="fa fa-flask"></i>  **April 19** Lab 6: Binary Models and Data Wrangling
     - Lab document: [html](Labs/lab6/BinaryModelsAndDataWrangling.R)
-     - Problem Set 4, Due Apr 28
+
+ <!--    - Problem Set 4, Due Apr 28 -->
 
 - **April 26**  Wellness Day 
        - No  Class
+
+
+
 
 
 - <i class="fa fa-flask"></i>  **May 3** Lab 7: Case Study
