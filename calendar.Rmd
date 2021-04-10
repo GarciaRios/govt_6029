@@ -62,8 +62,7 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
     - Problem Set 2 Assigned, Due March 24
         
 
--  <i class="fa fa-flask"></i> **March 22** Lab 4: Multivariate Linear Regression, and Predicted Values
-    - Lab document: [html](Labs/lab4/lab4.html)
+
 
 ***
 
@@ -74,14 +73,22 @@ probability and statistics](docs/gelman_hill_ch2.pdf)
 
 
 
-- **March 29** Inference and Interpretation of Linear Regression [Deck 4](lectures/lecture4.pdf@)
+- <i class="fa fa-book"></i>  **March 22** Inference and Interpretation of Linear Regression [Deck 4](lectures/lecture4.pdf@)
 
 
-- <i class="fa fa-flask"></i>  **April 5**   Lab 5  Loops and simulation 
+-  <i class="fa fa-flask"></i> **March 29** Lab 4: Multivariate Linear Regression, and Predicted Values
+    - Lab document: [html](Labs/lab4/lab4.html)
+
+
+-  <i class="fa fa-book"></i> **April 5** Specification, Bias,  and Transformations [Deck 5](lectures/lecture5.pdf@)
+
+
+
+- <i class="fa fa-flask"></i>  **April 21**   Lab 5  Loops and simulation 
     - Lab document: [html](Labs/lab5/lab5.html)
     - Problem Set 3 Assigned, Due Apr 14
 
--  <i class="fa fa-book"></i> **April 12** Specification, Bias,  and Transformations [Deck 5](lectures/lecture5.pdf@)
+
        
 
 
