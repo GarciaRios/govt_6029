@@ -7,9 +7,11 @@ output:
   html_document: 
     toc_depth: 4
     toc: yes
-    css: ../../custom_style.css
+    css: ../labs.css
     theme: simplex
 ---
+
+
 This lab will use some libraries you've seen before, and one you may not have. We'll load them all now.
 
 ```{r, results = 'hide', echo = FALSE}
@@ -26,6 +28,8 @@ library("broom")
 ```
 
 ## Some useful tools
+
+
 ```{r eval=FALSE}
 z <- rnorm(10, mean=100, sd=1) # draw randomly from the normal distribution
 
@@ -51,6 +55,8 @@ which.max(z1)
 ```
 
 ### IF conditions
+
+
 ```{r}
 a <- 10
 
@@ -58,13 +64,13 @@ if (a==10) print("Yes, a is 10.")
 
 print("This gets printed no matter what value a was.")
 
-
-
 ```
+
 The statement immediately after the if statement is run only when the argument in parentheses evaluates to TRUE.  Try #setting 'a' to another value and see what happens.
 
 
 **Note: use braces {} after the if statement if you want multiple commands to be executed when the condition is met:**
+
 ```{r}
 
 if (a==10) {
@@ -97,6 +103,8 @@ You can put as many lines of code as you want in between the {} braces, includin
 Read in the Ross data from last week's lab (selecting and renaming variables as appropriate:
 
 ```{r, results='hide'}
+
+
 rossdata <- read.csv("https://raw.githubusercontent.com/GarciaRios/govt_6029/master/data/ross_2012.csv",
                      stringsAsFactors = FALSE)
 
@@ -118,6 +126,7 @@ uc <- unique(data$cty)
 Then calculate the number of countries in the dataset:
 ```{r}
 numcountries <- length(uc)
+
 ```
 
 Then create empty vectors to hold our results (we'll use them in the ``for`` loop)
@@ -128,8 +137,8 @@ country_na <- rep(NA, numcountries)
 
 Next, we write the loop. This loop is going to go through each individual country in turn, and find out two things:
 
-1. How many observations are there for that country?
-2. How many observations for that country are left after listwise deletion of missing data?
+- How many observations are there for that country?
+-  How many observations for that country are left after listwise deletion of missing data?
 
 After evaluating these questions for each country, and storing the results in two different vectors, the loop will repeat the same tasks for the next country.  The counter variable ``i`` simply goes up by 1 for each iteration of the loop. By referencing ``uc[i]``, we are asking the lines of code inside the loop to apply to the first country, then the second country, then the third, and so on...
 
@@ -145,7 +154,7 @@ for(i in 1:numcountries){
 dta_na <- cbind(uc, country_obs, country_na,country_na/country_obs)
 ```
 
-*Challenge: Why are there quotes around the numbers? How might you fix this?*
+1. Why are there quotes around the numbers? How might you fix this?
 
 ```{r results = 'hide'}
 na_table <- data_frame("Country" = uc,
@@ -256,29 +265,13 @@ ggplot(results, aes(x = year, y = dem_coef,
 ```
 
 
-**Challenge: create a similar plot to explore how the effect of oil has changed over time.**
+2. create a similar plot to explore how the effect of oil has changed over time.
 
 
 ```{}
 Your Code Here
 
 ```
-
-## Also `map`. My favorite 
-
-```{r}
-
-data  %>% 
-  dplyr::select(loggdp, dem_indicator,  oil, year) %>% 
-  na.omit() %>% 
-  split(.$year) %>% # from base R
-  map(~ lm(loggdp ~ dem_indicator + oil, data = .)) %>% 
-  map(tidy) %>% 
-  enframe(name = "Year") %>% 
-  unnest()
-  
-```
-
 
 
 
@@ -296,10 +289,13 @@ sprinter_model <- lm(finish ~ year * women, data=sprinters)
 
 Create a range of hypothetical years to get expected values:
 ```{r}
-year_range <- seq(from=min(sprinters$year), to=max(sprinters$year), by=2)
+year_range <- seq(from=min(sprinters$year), 
+                  to=max(sprinters$year), by=2)
 ```
 
 Create a data frame that will relate years to the estimated expected values and CIs (currently empty columns):
+
+
 ```{r tidy=FALSE}
 
 
@@ -330,6 +326,7 @@ expected <- data_frame(
 ```
 
 Get the coefficients and variance-covariance matrix from the model:
+
 ```{r}
 pe<-coef(sprinter_model)
 vc<-vcov(sprinter_model)
@@ -385,6 +382,7 @@ for (i in 1:length(year_range)) {
 ```
 
 ### Plotting
+
 ```{r}
 ggplot(expected, aes(x = year, y = EVs_male,
                      ymin = lowerCIs_male,
@@ -393,7 +391,8 @@ ggplot(expected, aes(x = year, y = EVs_male,
   geom_ribbon(alpha = .3)
 ```
 
-*Challenge: plot the line for women*
+3.  plot the line for women
+
 
 
 ```{}
@@ -407,30 +406,37 @@ sprinters_plot + geom_line(aes(x = year, y = EVs_female)) + geom_ribbon(aes(x = 
 
 ```
 
+## Now... `map`. My favorite 
+
+```{r}
+map
+```
 
 
-## Monty Hall Simulation
+## On your own
+
+ Monty Hall Simulation
 
 On Let's Make a Deal, host Monty Hall offers you the following choice:
 
-1. There are 3 doors. Behind one is a car. Behind the other two are goats.
-2. You choose a door. It stays closed.
-3. Monty picks one of the two remaining doors, and opens it to reveal a goat.
-4. Your choice: Keep the door you chose in step 1, or switch to the third door.
+- There are 3 doors. Behind one is a car. Behind the other two are goats.
+- You choose a door. It stays closed.
+- Monty picks one of the two remaining doors, and opens it to reveal a goat.
+- Your choice: Keep the door you chose in step 1, or switch to the third door.
 
 *What should you do?*
 
-*What is the probability of a car from staying?
-*What is the probability of a car from switching?
+- What is the probability of a car from staying?
+- What is the probability of a car from switching?
 
 ### The simulation approach:
 
-*Set up the doors, goats, and car
-*Contestant picks a door
-*Monty "picks" a remaining door
-*Record where the car and goats were
-*Do all of the above many many times
-*Print the fraction of times a car was found
+- Set up the doors, goats, and car
+- Contestant picks a door
+- Monty "picks" a remaining door
+- Record where the car and goats were
+- Do all of the above many many times
+- Print the fraction of times a car was found
 
 ```{r, echo=T}
 sims <- 10000 # Simulations run
@@ -492,4 +498,4 @@ Science should be open! Here at Cornell and everywhere, this lab is released und
 
 
 ***
-***
+
