@@ -409,7 +409,18 @@ sprinters_plot + geom_line(aes(x = year, y = EVs_female)) + geom_ribbon(aes(x = 
 ## Now... `map`. My favorite 
 
 ```{r}
-map
+
+
+data  %>% 
+  dplyr::select(loggdp, dem_indicator,  oil, year) %>% 
+  na.omit() %>% 
+  split(.$year) %>% # from base R
+  map(~ lm(loggdp ~ dem_indicator + oil, data = .)) %>% 
+  map(tidy) %>% 
+  enframe(name = "Year") %>% 
+  unnest()
+
+
 ```
 
 

@@ -461,7 +461,14 @@ vc &lt;- vcov(sprinter_model)</code></pre>
 </div>
 <div id="now-map.-my-favorite" class="section level2">
 <h2>Now… <code>map</code>. My favorite</h2>
-<pre class="r"><code>map</code></pre>
+<pre class="r"><code>data  %&gt;% 
+  dplyr::select(loggdp, dem_indicator,  oil, year) %&gt;% 
+  na.omit() %&gt;% 
+  split(.$year) %&gt;% # from base R
+  map(~ lm(loggdp ~ dem_indicator + oil, data = .)) %&gt;% 
+  map(tidy) %&gt;% 
+  enframe(name = &quot;Year&quot;) %&gt;% 
+  unnest()</code></pre>
 </div>
 <div id="on-your-own" class="section level2">
 <h2>On your own</h2>
