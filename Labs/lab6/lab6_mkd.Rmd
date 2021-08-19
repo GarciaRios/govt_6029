@@ -8,7 +8,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 
 library(tidyverse)
 library(haven)
@@ -16,22 +16,25 @@ library(margins)
 library(magrittr)
 library(stargazer)
 library(labelled)
+library(broom)
 
 ```
 
-## Data Wrangling
+
+
+
 
 
 ```{r read data, echo=FALSE}
 df <-   read_dta("anes_timeseries_2016.dta")
 
 df2 <- zap_labels(df)
-df2 %>% count
+
 ```
 
-### Recoding Variables
 
-```{r recodes}
+
+```{r recodes, echo=FALSE}
 
 
 
@@ -85,35 +88,30 @@ df_tidy <-
                                `1` = 1,
                                `2` = 3,
                                `3` = 2),
-
-    
     immig_anx = recode(V162157,
                        `-9` = NA_real_,
                        `-8` = NA_real_,
                        `-7` = NA_real_,
                        `-6` = NA_real_))
 
-  
-
-df_tidy %>% count(year)
-
-
 ```
 
-## Models
-```{r}
+
+
+```{r, echo=FALSE}
+#summary()
 model1 <- glm(vote_trump ~ 
                 male + income + age + 
                 conservative + education + white,
-              family = "binomial", data = df_tiy)
+              family = "binomial", data = df_tidy)
+#)
 
 
 
 
-summary(model1)
 
-
-summary(model2 <- 
+#summary(
+  model2 <- 
           glm(vote_trump ~ 
                 male + 
                 income + 
@@ -122,11 +120,13 @@ summary(model2 <-
                 education + 
                 econ_anx +
                 white,
-              family = "binomial", data = df_tidy))
+              family = "binomial", data = df_tidy)
+ # )
 
 
 
-summary(model3 <- 
+#summary(
+  model3 <- 
           glm(vote_trump ~ 
                 male + 
                 income + 
@@ -138,22 +138,151 @@ summary(model3 <-
                 immig_anx +
                 econ_anx +
                 white,
-              family = "binomial", data = df_tidy))
+              family = "binomial", data = df_tidy)
+  #)
 
 
 
 
 ```
 
-## Marginal effects
+## Dscriptive Tables
+
+```{r, echo=FALSE, results='asis'}
+
+# We are done with models but before we move on let's create a nice table for our paper/poster
+
+df_tab <- df_tidy %>%
+  select("vote_trump",
+  "male", 
+  "income", 
+  "age",
+  "conservative", 
+  "education",
+  "sexism",
+  "aff_action_oppose",
+  "immig_anx",
+  "econ_anx",
+  "white"
+  ) %>% 
+  as.data.frame()
+
+var_names_dec <- c("Vote for Trump", 
+               "Male",
+               "Income", 
+               "Age", 
+               "Conservative", 
+               "Education",
+               "Sexism",
+               "Oppose Aff Action",
+               "Immigration Axiety",
+               "Economic Anxiety",
+               "White")
+
+
+
+
+# When you give stargazer a data-frame instead of a lm-object
+# it will create a nice table with desicriptive statistics
+
+stargazer(df_tab, 
+          covariate.labels = var_names_dec,
+          title = "Descriptive Statistics for Variables Used",
+          out = "descriptives.tex", 
+          label = "tab: desc",
+          header = FALSE,
+          single.row = TRUE)
+```
+
+
+
+
+
+
+
+```{r, results='asis'}
+stargazer(df_tab, 
+          covariate.labels = var_names_dec,
+          title = "Descriptive Statistics for Variables Used",
+          type = "html",
+          label = "tab: desc",
+          single.row = TRUE)
+```
+
+
+
+
+
+###  Models
+
+```{r, echo=FALSE, results='asis'}
+
+
+var_names <- c( "Male",
+                "Income", 
+                "Age", 
+                "Conservative", 
+                "Education",
+                "Sexism",
+                "Oppose Aff Action",
+                "Immigration Axiety",
+                "Economic Anxiety",
+                "White")
+
+
+
+stargazer(model1, model2, model3, 
+          covariate.labels = var_names, 
+          dep.var.labels =  "Vote for Trump",
+          title = "Logistic Regression: Trump something something",
+          out = "regressions.tex", 
+          label = "tab: regs",
+          header = FALSE,
+          single.row = TRUE
+          )
+
+```
+
+
+
+```{r, results='asis'}
+
+stargazer(model1, model2, model3, 
+          covariate.labels = var_names, 
+          dep.var.labels =  "Vote for Trump",
+          title = "Logistic Regression: Trump something something",
+          out = "regressions.tex", 
+          label = "tab: regs",
+          header = FALSE,
+          type= "html",
+          single.row = TRUE
+          )
+```
 
 
 ```{r}
 
+
+coef_plot <- 
+tidy(model1)
+
+
+```
+
+
+
+### Marginal effects
+
+
+```{r, echo=FALSE}
+
+summ_mar_model1 <-
 summary(margins(model1))
 
 
 ame <- summary(margins(model3)) 
+
+
 ame_minmax <- summary(margins(model3, change = "minmax")) 
 
 ggplot(ame_minmax, aes(x = factor %>%
@@ -181,9 +310,15 @@ ggplot(ame_minmax, aes(x = factor %>%
   ggsave("ame_plot.pdf", width = 8, height = 7) 
 
 
+```
 
 
-summary(model_int <- 
+### Interaction
+
+```{r}
+
+#summary(
+  model_int <- 
           glm(vote_trump ~ 
                 male +
                 income + 
@@ -194,7 +329,8 @@ summary(model_int <-
                 sexism +
                 aff_action_oppose +
                 econ_anx,
-              family = "binomial", data = df_tidy))
+              family = "binomial", data = df_tidy)
+#)
 
 
 
@@ -215,7 +351,15 @@ xhyp <- df_tidy %$%
 
 
 
-preds <- predict(model_int, xhyp, type = "response", se.fit = T)
+
+
+
+
+
+
+preds <- predict(model_int, xhyp,
+                 type = "response", 
+                 se.fit = T)
 
 preds_df <- cbind(preds, xhyp)
 
