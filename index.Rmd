@@ -18,8 +18,8 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 </tr>
 <tr>
 <td>TA</td>
-<td><a href="https://.com/">Rebeka Johnson</a> </td>
-<td><a href= "rj388@cornell.edu"> rj388@cornell.edu </a> </td>
+<td><a href="https://government.cornell.edu/kevin-foley">Kevin Foley </a> </td>
+<td><a href= "kpf32@cornell.edu"> kpf32@cornell.edu </a> </td>
 </tr>
 
 </table>
@@ -29,7 +29,7 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <table class = "table table-striped table-hover">
 <td>Class </td>
 <td> Monday </td>
-<td> 2:40 - 4:35 </td>
+<td> 11:20AM - 2:20PM </td>
 <td> [Zoom link](https://cornell.zoom.us/j/99722546446?pwd=THJzZlZOOERBd3JFNjhVTHpKdHBUQT09) </td>
 </tr>
 
@@ -46,9 +46,9 @@ In fractious times, we reaffirm core principles.  The Government Department at C
 <td> [Zoom link](https://cornell.zoom.us/j/3508426266?pwd=RzBYZ2VydDhBUld3alBmZmRIRFdyQT09) </td>
 </tr>
 <tr>
-<td> Rebeka Johnson</td>
-<td> Thursdays 10am-12pm - [Click here to find available office
-hours](https://calendly.com/rebekajohnson )</td>
+<td> Kevin Foley </td>
+<td> Wednesdays 12:30-1:30pm - [Click here to find available office
+hours](https://calendly.com/kpf32/office-hours)</td>
 <td> [Zoom link](https://cornell.zoom.us/j/93526866276?pwd=bFl2T0xhc0ZoSkloKzVvSTlGTWN4UT09 ) </td>
 </tr>
 
@@ -92,7 +92,7 @@ Assignments will be submitted digitally through canvas  at the due date.
 
 #### Poster Presentation
 
-You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session joined by the 2020 cohort. We will invite other faculty and grad students, our chance to show off!
+You will use all (relevant) techniques learned in this class to finalize your research project and present your findings to your classmates in a poster presentation session joined by the 2021 cohort. We will invite other faculty and grad students, our chance to show off!
 
 Tentative date for poster presentation session: TBA  <!-- **May 13, 2019 10:00 am EST** -->
 
@@ -103,7 +103,7 @@ A 15--20 page original report on an original quantitative analysis or replicatio
 The quantitative analysis should be conducted in R and reproducible.
 
 
-The final paper is due on **May  25, 2021 11:59 pm EST**.
+The final paper is due on **May  21, 2021 11:59 pm EST**.
 
 Further details on the projects will be provided as due dates approach
 
