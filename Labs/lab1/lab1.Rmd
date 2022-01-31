@@ -18,6 +18,8 @@ knitr::opts_chunk$set( warning = FALSE, message = FALSE,
 
 
 
+
+
 ## Learning Objectives
 
 - Install R and RStudio
@@ -176,7 +178,7 @@ There are some technical reasons to use `<-` instead of `=`, but the primary rea
 1. **Creating "Objects"**
     - Create a variable named whatever strikes your fancy and set it equal to the square root of 2.
     - Then multiply it by 4.
-    - Create a variable with a really long name and assign it a value. Start typing its name
+  - Multiply the variable by itself and reassign it to the same variable name. What happens?
 
 
 
@@ -334,6 +336,9 @@ quantile(gapminder$lifeExp)
     - How many countries are there in the dataset? How many years?
         - The function `length()` calculates the length of a vector.
         - The function `unique()` returns the number of unique values in a vector.
+    - Choose a variable and multiply it by 2.  What happens? Check the variable in the data set to see if it changed. 
+  
+    
    
 #### On your own
 
