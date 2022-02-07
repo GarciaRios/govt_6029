@@ -1,0 +1,29 @@
+---
+title: "lab 1"
+author: "Sergio Garcia-Rios"
+date: "1/31/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+b <- 3
+```
+
+```{r}
+c<- b*5 + d
+```
+
+
+```{r}
+c
+```
+
