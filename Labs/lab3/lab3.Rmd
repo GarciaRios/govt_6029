@@ -91,7 +91,7 @@ summary(lm_bivar)
     
 ### A multivariate model 
 
-It's probably much more complicated than the number of parties. et's add more covariates
+It's probably much more complicated than the number of parties. Let's add more covariates
 
 What else do we have? 
 
@@ -141,7 +141,7 @@ lm_multi_interact <- lm(povred ~ lnenp * elec_sys, data = iver)
 
 ## Prelimnary analysis: 
 
-So the first thing that we whould have done, and that you should do every time is to strat by familiarizing with the data _before_  you run regressions
+So the first thing that we would have done, and that you should do every time is to strat by familiarizing with the data _before_  you run regressions
 
 
 Let's run a few `ggplots` to see what's going on
@@ -274,7 +274,7 @@ fitted(lm_multi)
 
 #### Standard errors
 
-If you notice the standard errors are missing from the `lm()` list. Let's calcualte it    
+If you notice the standard errors are missing from the `lm()` list. Let's calculate it    
 
 
 ```{r}
@@ -311,7 +311,7 @@ predict(object, # lm object
 ```
 
 
-So the newdata component refers to the specifc values we want. For instance, if our model is:
+So the newdata component refers to the specific values we want. For instance, if our model is:
 
 $y_1 = x1 + x2, x3$ where:
 
